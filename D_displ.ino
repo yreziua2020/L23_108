@@ -302,7 +302,10 @@ void showSimplePre() {
 }
 //==========ВИВІД НА ЕКРАН ДАВЛЕНИЯ========вывлд предыдужего давления=============================
 void showSimplePre2() {
-  byte indent = aliData * (NUM_MAX - 4);  dx=dy=0;  clr();  pd0 = (int)pred_dav;  if (sensorPrAl) pd0 += corrPress; //Выполняем корекцию при вывде
+  byte indent = aliData * (NUM_MAX - 4);  dx=dy=0;
+  clr();  
+  //pd0 = (int)pred_dav;  
+  if (sensorPrAl) pd0 += corrPress; //Выполняем корекцию при вывде
   pd1 = pd0 / 1000;  pd2 = (pd0 - pd1 * 1000) / 100;  pd3 = (pd0 - pd1 * 1000 - pd2 * 100) / 10;  pd4 = pd0 % 10;
   showDigit(pd2 , (p1 > 0 ? 10 : 5) + indent, dig5x8);  showDigit(pd3 , (p1 > 0 ? 16 : 11) + indent, dig5x8);  showDigit(pd4 , (p1 > 0 ? 22 : 17) + indent, dig5x8);  
   refreshAll();
@@ -312,7 +315,7 @@ void showSimplePre3() { fl_dav3=1;
   if (WiFi.status() == WL_CONNECTED) 
   {   //  dav_tmp="    \215"+String(((int)pressBmp)+corrPress)+"\223" +" max"+  (int)max_dav +" min"+ (int)min_dav+"     ";  //215 знак давления  259
      //dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
-       dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
+      // dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
      printStringWithShift( dav_tmp.c_str(), 30);
   }}
   //==========ВИВІД НА ЕКРАН ДАВЛЕНИЯ =========ДАВЛЕНИЯ== ВВиде строки =daf==================ДАВЛЕНИЯ===================

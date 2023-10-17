@@ -138,8 +138,8 @@ unsigned long tim_mp3 = millis();
 
 #define fol_papk_pes   15   //команда для проигрывания песни из папки  
 
-float pred_dav, raz_dav; //предыдущее давление  //разница в далениях
-float max_dav, min_dav;   //минимальное и максимальное давление
+//float pred_dav, raz_dav; //предыдущее давление  //разница в далениях
+//float max_dav, min_dav;   //минимальное и максимальное давление
 
 bool dav_pov;   //давление повышаеться 1
 int nask_dav; //насколько давление поменялось

@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void sensorsAll() {
-  if(pressBmp<min_dav) {min_dav=pressBmp;} //min давление больше чем текучее то огда приравниваем
-  if(pressBmp>max_dav) {max_dav=pressBmp;}
+  //if(pressBmp<min_dav) {min_dav=pressBmp;} //min давление больше чем текучее то огда приравниваем
+  //if(pressBmp>max_dav) {max_dav=pressBmp;}
   sensorsDs18b20();
  // sensorsSi7021();
   sensorsBmp();
   sensorsBme();
-//  sensorsDht();
+  sensorsDht();
   sensors();
 }
 //--------------------------------senn-----------------------------------------
