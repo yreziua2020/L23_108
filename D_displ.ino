@@ -458,7 +458,7 @@ unsigned char convert_UA_RU_PL_DE(unsigned char _c) {
   if (dualChar==4) {switch (_c) { case 132: c=177; break; case 147: c=166; break; case 150: c=179; break; case 156: c = 181; break; case 159: c=183; break; case 164: c=178; break; case 179: c=167; break; case 182: c=180; break; case 188: c=182; break; }  dualChar=0;  return c;  }
   if (dualChar==5) {if(c>=132 && c<136) {c +=26; }   switch (_c) {  case 152: c = 168; break;  case 153: c = 169; break;  }     dualChar = 0;    return c;  }
   if (dualChar==6) {if(c>=129 && c<133) {c +=33; } if (c>=154 && c<156) {c +=16; } if (c>=185 && c<189) {c -=13;}    dualChar=0;    return c;  }
-  //return 0; //добавил чтоб убрать ошибку
+  return 0; //добавил чтоб убрать ошибку
  }
 /*
 //==========
