@@ -42,8 +42,8 @@ IRsend irsend(kIrLed);
 #define _ZVUK    //чтобы звук отключить закоментровать
 //#define _ip_adr      // непрнятно зачем  без коментарии 102 если закоментировать то 103
 
-#define _ipad 104     //указываем адрес
-#define _getv 41     //указываем шлюз
+#define _ipad 102     //указываем адрес
+#define _getv 99     //указываем шлюз
 IPAddress local_IP(192, 168, 1, _ipad);// Задаем статический IP-адрес:
 IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
@@ -587,13 +587,13 @@ void loop() {
       }
   }
  if (_ipad==102) {
- if (hour==6 && minute==5)  
+ if (hour==5 && minute==5 && dayOfWeek>1 && dayOfWeek<5 )  
  {
     if (ir_flag2==0) 
     {   
         ir_flag2=1; 
       //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
-     // irsend.sendRaw(rawData_on_off,71,38); 
+      irsend.sendRaw(rawData_on_off,71,38); 
     }    
     }  else  {ir_flag2=0;}
  }

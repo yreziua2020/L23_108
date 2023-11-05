@@ -13,7 +13,7 @@ uint8_t b = 0;
           case 2:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,dayOfWeek+30);  break;} }
           case 3:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,day+40);break;}  }
           case 4:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,month+80); break;}}
-          case 5:{command2(15,7,hour); break;}
+          case 5:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,hour); break;}}
           case 6:{ if (f_kuku==1 ){caun_zv=0;  f_kuku=0;  break;} else {command2(15,7,minute+100); break;}}  //когда куку не возпроизводило минуты , минуты только при вебе 
           case 7:{caun_zv=0; pr_bip_vre3=0; one_f1=2; one_f2=2; one_f3=2; one_f4=2; one_f5=2; one_f6=2; one_f7=2; break;}
           default:{  break;}
@@ -32,6 +32,13 @@ uint8_t b = 0;
           //если даные закочаться выйдет, а если даные незакончятся то выйдет по условию что получено 20  байт
         } 
 }
+
+
+
+
+
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 void command2(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без ответа о файле вроде
