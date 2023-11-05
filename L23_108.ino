@@ -587,13 +587,13 @@ void loop() {
       }
   }
  if (_ipad==102) {
- if (hour==5 && minute==5 && dayOfWeek>1 && dayOfWeek<5 )  
+ if (hour==5 && minute==5  )  //&& dayOfWeek>1 && dayOfWeek<5
  {
     if (ir_flag2==0) 
     {   
         ir_flag2=1; 
       //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
-      irsend.sendRaw(rawData_on_off,71,38); 
+      //irsend.sendRaw(rawData_on_off,71,38); 
     }    
     }  else  {ir_flag2=0;}
  }
