@@ -46,9 +46,9 @@ IRsend irsend(kIrLed);
 #define _ZVUK    //чтобы звук отключить закоментровать
 //#define _ip_adr      // непрнятно зачем  без коментарии 102 если закоментировать то 103
 
-#define _ipad 104     //указываем адрес
+#define _ipi 104     //указываем адрес
 #define _getv 42     //указываем шлюз
-IPAddress local_IP(192, 168, 1, _ipad);// Задаем статический IP-адрес:
+IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-адрес:
 IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
 
@@ -494,7 +494,7 @@ void print_info () {
 void loop() {  
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);}
-      if (_ipad==102){
+      if (_ipi==102){       //для 102 адреса отправляем данные в sql температуры
        if (second==45) {  if (!f_otpr_skl){f_otpr_skl=1;bd_sql(); }
        }  else   { f_otpr_skl=0;}    
        }
@@ -570,7 +570,7 @@ void loop() {
   //------------- НАШ ЧАС ----------------------nach------------------------------------------
  // if (hour == 0 && minute == 51) {     bip();       /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/  }
  
-  if (_ipad==103) { 
+  if (_ipi==103) {  //с устра включаем напоминание временем для 103 адреса
       if (hour == 6) {
         if (minute == 5 ){if (one_f1==0) {one_f1=1;}      }  else  {one_f1=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
         if (minute == 10 ){if (one_f2==0) {one_f2=1;}      }  else  {one_f2=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
@@ -582,7 +582,7 @@ void loop() {
       }
   }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- if (_ipad==102) {
+ if (_ipi==102) {   //управляе телевизором с айпи 102
  if (hour==5 && minute==5 && dayOfWeek>1 && dayOfWeek<5 )  
  {
     if (ir_flag2==0) 
