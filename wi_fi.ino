@@ -14,7 +14,7 @@ void wifiConnect() {    //printTime -вывод времени в ком пор�
         { 
           String aaa=WiFi.localIP().toString() + "                ";  if(NUM_MAX > 4) {for (int j=0; j<NUM_MAX - 4; j++) aaa += "  "; }   clr(); printStringWithShift(" IP: ", 15); printStringWithShift(aaa.c_str(), 25);
           bip_privet();
-          printStringWithShift("ХАЙ!!! ", 25);
+          printStringWithShift(_ver, 25);
          }  //Печатаем ip
           firstStart=1; timeUpdateNTP(); amountNotStarts=0;   return;
     }
