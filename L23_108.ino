@@ -494,26 +494,17 @@ void print_info () {
 void loop() {  
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);}
- 
-       if (second==45) {  if (!f_otpr_skl){f_otpr_skl=1;
-       //bd_sql();
-       }
+      if (_ipad==102){
+       if (second==45) {  if (!f_otpr_skl){f_otpr_skl=1;bd_sql(); }
        }  else   { f_otpr_skl=0;}    
-    
+       }
 #ifdef _ZVUK    
     if (pr_bip_vre3) {bip_vre4();} //звук с веба   дублируеться когда бежит строка чтоб не замолк
     if (f_kuku) {bip_vre4();}      //звук скукушка дублируеться когда бежит строка чтоб не замолк
     if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1) {bip_vre4();}      //постоянно влетает пока незакончет произношение 0 не играет 1- запускает голос 2- неиграет и ждет сброса
-   
-
- // if ( (f_mp3)&& (millis() -  tim_mp3 > 1000) ) { tim_mp3 = millis(); if (digitalRead(MP3_PIN)==1) { if (hour > 5 && hour !=23) {mp3_play_file_in_fol (12,random(100));} } } // каждые полсекунды будет проерять закончился лм проиграш
- //vver(); 
-  //if (digitalRead(MP3_PIN)==1)
 #endif 
   if (updateOTA) ArduinoOTA.handle();
-  //if (priin) {command(3,0,222);priin=0;}
-    server.handleClient();   
-     
+  server.handleClient();   
   updateTime();   
   buttonInter();                     // дозволяємо HTTP серверу відповідать на запити // оновлюємо час//анадлиз интрвала нажатия хлавиши
   
@@ -579,7 +570,7 @@ void loop() {
   //------------- НАШ ЧАС ----------------------nach------------------------------------------
  // if (hour == 0 && minute == 51) {     bip();       /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/  }
  
-  if (_ipad==103) {
+  if (_ipad==103) { 
       if (hour == 6) {
         if (minute == 5 ){if (one_f1==0) {one_f1=1;}      }  else  {one_f1=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
         if (minute == 10 ){if (one_f2==0) {one_f2=1;}      }  else  {one_f2=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
@@ -590,14 +581,15 @@ void loop() {
         if (minute == 30 ){if (one_f7==0) {one_f7=1;}      }  else  {one_f7=0;}
       }
   }
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  if (_ipad==102) {
- if (hour==5 && minute==5  )  //&& dayOfWeek>1 && dayOfWeek<5
+ if (hour==5 && minute==5 && dayOfWeek>1 && dayOfWeek<5 )  
  {
     if (ir_flag2==0) 
     {   
         ir_flag2=1; 
       //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
-      //irsend.sendRaw(rawData_on_off,71,38); 
+      irsend.sendRaw(rawData_on_off,71,38); 
     }    
     }  else  {ir_flag2=0;}
  }
