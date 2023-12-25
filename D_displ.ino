@@ -5,7 +5,11 @@ void showTest() {    fl_dom=1;  wrem_tm="  "+String(t0Lux);      printStringWith
 void printStringWithShift(const char* s, int shiftDelay) {                                                    // коли працює ця функція, основний цикл зупиняється
   while (*s) 
   {  printCharWithShift(*s, shiftDelay);  s++;    
-     server.handleClient();                                      // зберігаемо можливість відповіді на HTML запити під час бігучої стоки
+     server.handleClient();  
+       //-------------------------PAJ7620-------------------------------  
+       obrabotka_paj7620();
+        //-------------------------PAJ7620-------------------------------    
+                                       // зберігаемо можливість відповіді на HTML запити під час бігучої стоки
      //MPR121_update(); 
       if (pr_bip_vre3) {bip_vre4();}  //звук с веба
       if (f_kuku) {bip_vre4();}  // кушка когда бежит стока стобы тоже звук воспроизводить
