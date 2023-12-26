@@ -1,39 +1,7 @@
-/*
- * paj7620.cpp
- * A library for Grove-Guesture 1.0
- *
- * Copyright (c) 2015 seeed technology inc.
- * Website    : www.seeed.cc
- * Author     : Wuruibin & Xiangnan
- * Modified Time: June 2015
- * 
- * The MIT License (MIT)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
- 
 #include <Wire.h>
 #include "paj7620.h"
 #include <Arduino.h>
 
-// PAJ7620U2_20140305.asc
-/* Registers' initialization data */
 unsigned char initRegisterArray[][2] = {
 	{0xEF,0x00},
 	{0x32,0x29},
@@ -256,14 +224,7 @@ unsigned char initRegisterArray[][2] = {
 	{0x7E,0x01},
 };
 
-
-/**************************************************************** 
- * Function Name: paj7620WriteReg
- * Description:  PAJ7620 Write reg cmd
- * Parameters: addr:reg address; cmd:function data
- * Return: error code; success: return 0
-****************************************************************/ 
-uint8_t paj7620WriteReg(uint8_t addr, uint8_t cmd) {
+uint8_t paj7620::paj7620WriteReg(uint8_t addr, uint8_t cmd) {
 	char i = 1;
 	Wire.beginTransmission(PAJ7620_ID);		// start transmission to device 
 	Wire.write(addr);						// send register address
@@ -275,15 +236,8 @@ uint8_t paj7620WriteReg(uint8_t addr, uint8_t cmd) {
 	return i;
 }
 
-/**************************************************************** 
- * Function Name: paj7620ReadReg
- * Description:  PAJ7620 read reg data
- * Parameters: addr:reg address;
- *			   qty:number of data to read, addr continuously increase;
- *			   data[]:storage memory start address
- * Return: error code; success: return 0
-****************************************************************/ 
-uint8_t paj7620ReadReg(uint8_t addr, uint8_t qty, uint8_t data[]) {
+
+uint8_t paj7620::paj7620ReadReg(uint8_t addr, uint8_t qty, uint8_t data[]) {
 	uint8_t error;
 	Wire.beginTransmission(PAJ7620_ID);
 	Wire.write(addr);
@@ -311,13 +265,8 @@ uint8_t paj7620ReadReg(uint8_t addr, uint8_t qty, uint8_t data[]) {
 	return 0;
 }
 
-/**************************************************************** 
- * Function Name: paj7620SelectBank
- * Description:  PAJ7620 select register bank
- * Parameters: BANK0, BANK1
- * Return: none
-****************************************************************/ 
-void paj7620SelectBank(bank_e bank) {
+
+void paj7620::paj7620SelectBank(bank_e bank) {
 	switch(bank){
 		case BANK0:
 			paj7620WriteReg(PAJ7620_REGITER_BANK_SEL, PAJ7620_BANK0);
@@ -330,13 +279,8 @@ void paj7620SelectBank(bank_e bank) {
 	}
 }
 
-/**************************************************************** 
- * Function Name: paj7620Init
- * Description:  Initialise the PAJ7620 registers
- * Parameters: none
- * Return: error code; success: return 0
-****************************************************************/ 
-uint8_t paj7620Init() {
+
+uint8_t paj7620::paj7620Init() {
 	uint8_t error;
 	uint8_t data0=0, data1=0;
 	
@@ -365,6 +309,7 @@ uint8_t paj7620Init() {
 	}
 		
 	/**
+	 Установка обычного режима или игрового режима в регистре BANK1 0x65/0x66 R_IDLE_TIME[15:0]
 	 * Setting normal mode or gaming mode at BANK1 register 0x65/0x66 R_IDLE_TIME[15:0]
 	 * T = 256/System CLK = 32us, 
 	 * Ex:
@@ -392,19 +337,19 @@ uint8_t paj7620Init() {
 	return 0;
 }
 
-/**************************************************************** 
-****************************************************************/ 
-void obrabotka_paj7620(){
+
+
+void paj7620::obrabotka_paj7620(){
 	byte gesture;
  	int data_eror;// Error variable holds any error code
 	data_eror = paj7620ReadReg(0x43, 1, &gesture);
  
 	if(!data_eror) {
 		switch (gesture) {
-			case GES_RIGHT_FLAG:		Serial.println(F("Right"));         break;
-			case GES_LEFT_FLAG: 		Serial.println(F("Left"));         	break;
-			case GES_UP_FLAG:				Serial.println(F("Up"));        		break;
-			case GES_DOWN_FLAG:			Serial.println(F("Down"));         	break;
+			case GES_RIGHT_FLAG:	Serial.println(F("Right"));         break;
+			case GES_LEFT_FLAG: 	Serial.println(F("Left"));         	break;
+			case GES_UP_FLAG:		Serial.println(F("Up"));        		break;
+			case GES_DOWN_FLAG:		Serial.println(F("Down"));         	break;
 			case GES_FORWARD_FLAG:	Serial.println(F("Forward"));				break;
 			case GES_BACKWARD_FLAG:	Serial.println(F("Backward"));			break;
       // Library also defines GES_CLOCKWISE_FLAG GES_COUNT_CLOCKWISE_FLAG and GES_WAVE_FLAG, but I found these unreliable
@@ -413,3 +358,8 @@ void obrabotka_paj7620(){
 	}
  else { Serial.print(F("Error code: "));    Serial.println(data_eror); }
 }
+
+//реализация класса
+
+
+

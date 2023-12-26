@@ -96,7 +96,7 @@ for (int i = 0; i < 16; i++) {
   irsend.begin();  // Инициализируем ИК передатчик
 
   //-------------------------PAJ7620-------------------------------
-  int error = paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
+  int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
 //-------------------------PAJ7620-------------------------------
 
 }
