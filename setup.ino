@@ -74,18 +74,18 @@ for (int i = 0; i < 16; i++) {
    pressure2 = aver_sens();          // найти текущее давление по среднему арифметическому
   for (byte i = 0; i < 6; i++) {   pressure_array[i] = pressure2;  time_array[i] = i; }            // забить массив времени числами 0 - 5 // забить весь массив текущим давлением
  */
-  #ifdef _ZVUK
+#ifdef _ZVUK
    command2(Volu,0,gromk);
-  #endif 
+#endif 
  
   //timeUpdateNTP();
-
+#ifdef d_102
   irsend.begin();  // Инициализируем ИК передатчик
- 
+#endif  
   //-------------------------PAJ7620-------------------------------
- #ifdef d_103
+#ifdef d_104
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
- #endif 
+#endif 
 //-------------------------PAJ7620-------------------------------
 
 }
