@@ -13,10 +13,42 @@ const short UserID=3;
 #include <WiFiClient.h>
 #include <Wire.h>
 
+//#define d_102  //d_102  по умолчанию 
+//#define d_103
+#define d_104
+
+
+#ifdef defined(d_102)
+#define _ipi 102     //указываем адрес
+#define _getv 199     //указываем шлюз
+
+#elif defined(d_103)
+#define _ipi 103     //указываем адрес
+#define _getv 199     //указываем шлюз
+
+#elif defined(d_104)
+#define _ipi 104     //указываем адрес
+#define _getv 41     //указываем шлюз
+
+#else 
+#define _ipi 102     //указываем адрес
+#define _getv 199     //указываем шлюз
+#endif
+
+IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-адрес:
+IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
+IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
+String weatherHost0 = "api.weatherbit.io";
+IPAddress subnet(255, 255, 255, 0);
+IPAddress secondaryDNS(8, 8, 8, 8); // опционально
+
 //-------------------------PAJ7620------------------------------------------
+#ifdef d_104
 #include "src/PAJ7620/paj7620.h"
 paj7620 paj7620_t;
+#endif 
 //-------------------------PAJ7620----------------------------------------------
+#ifdef d_102
 #include <IRremoteESP8266.h>
 #include <IRsend.h>
 int16_t ir_flag1,ir_flag2; // переменаю для работы с пультом
@@ -47,36 +79,7 @@ IRsend irsend(kIrLed);
 
 #define _ZVUK    //чтобы звук отключить закоментровать
 
-//#define d_102  //d_102  по умолчанию 
-#define d_103
-//#define d_104
 
-
-#ifdef defined(d_102)
-#define _ipi 102     //указываем адрес
-#define _getv 199     //указываем шлюз
-
-#elif defined(d_103)
-#define _ipi 103     //указываем адрес
-#define _getv 199     //указываем шлюз
-
-#elif defined(d_104)
-#define _ipi 104     //указываем адрес
-#define _getv 41     //указываем шлюз
-
-#else 
-#define _ipi 102     //указываем адрес
-#define _getv 199     //указываем шлюз
-#endif
-
-IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-адрес:
-IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
-IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
-
-String weatherHost0 = "api.weatherbit.io";
-
-IPAddress subnet(255, 255, 255, 0);
-IPAddress secondaryDNS(8, 8, 8, 8); // опционально
 
 
 #include <FS.h>
@@ -96,10 +99,7 @@ uint16_t voll=zad_vool;   //громкость
 static uint32_t myTimer_pl;
 static uint8_t i_bat ;
 float  b; //bip_bud_vs() для звука
-
-//плеер  pppppp
 bool fl_bud_mp;  //флаг для будильника мп3 ччтобы установить начальную громкость и запустить трек только одинн раз при зсрабатывании будильника
-
 byte trek=222;   //номер мелодии для будильника  //220
 //----------------------------------------------------------
 #include "Adafruit_Si7021.h"

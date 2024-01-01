@@ -1,10 +1,8 @@
 void setup() {
-// randomSeed(analogRead(0)); Не понятно для чего
+
 uint32_t seed = 0;
 for (int i = 0; i < 16; i++) {
-  seed *= 4;
-  seed += analogRead(A0) & 3;
-  randomSeed(seed); //устанавливаю какоето случайное чмсло для функции random проверял очень разные числа получаются 1414862165 290805013
+  seed *= 4; seed += analogRead(A0) & 3;  delay(1);  randomSeed(seed); //устанавливаю какоето случайное чмсло для функции random проверял очень разные числа получаются 1414862165 290805013
 }
 
   Wire.begin();
@@ -13,12 +11,7 @@ for (int i = 0; i < 16; i++) {
    Serial.begin(9600);  //ддля плеера 
    //mp3_com.begin(9600); 
    ////mp3_set_serial (mySerial); 
-
-   #ifdef _ZVUK
-   //mp3_set_serial (mp3_com);
-    //mp3_set_serial (Serial);
-   #endif 
-  
+ 
     
   if (printCom) Serial.println("");
   pinMode(16,INPUT); 
@@ -83,20 +76,16 @@ for (int i = 0; i < 16; i++) {
  */
   #ifdef _ZVUK
    command2(Volu,0,gromk);
-   //vver();
-   #endif 
+  #endif 
  
   //timeUpdateNTP();
-//kurs_s= "USD buy=";
- // delay(1000);
-  //  kurs();
-  //Serial.println("Start 14");
-  //randomSeed(analogRead(0));
-   //Serial.println("analogRead="); Serial.println(analogRead(brightPin));
-  irsend.begin();  // Инициализируем ИК передатчик
 
+  irsend.begin();  // Инициализируем ИК передатчик
+ 
   //-------------------------PAJ7620-------------------------------
+ #ifdef d_103
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
+ #endif 
 //-------------------------PAJ7620-------------------------------
 
 }
