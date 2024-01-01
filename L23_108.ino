@@ -45,7 +45,6 @@ IRsend irsend(kIrLed);
     //#include <DNSServer.h>
 #endif
 
-
 #define _ZVUK    //чтобы звук отключить закоментровать
 
 //#define d_102  d_102  по умолчанию 
@@ -471,7 +470,9 @@ static uint8_t ansbuf[20] = {0};
 //*********************************************************************************************************************************************************************************************************************************************************************
 void loop() {  
   //-------------------------PAJ7620-------------------------------  
+#ifdef d_104
   paj7620_t.obrabotka_paj7620();
+#endif 
   //-------------------------PAJ7620-------------------------------    
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);}
@@ -551,8 +552,8 @@ void loop() {
    //Serial.print(String(secFr)); 
   //------------- НАШ ЧАС ----------------------nach------------------------------------------
  // if (hour == 0 && minute == 51) {     bip();       /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/  }
- 
-  if (_ipi==103) {  //с устра включаем напоминание временем для 103 адреса
+ #ifdef d_103
+   //с устра включаем напоминание временем для 103 адреса
       if (hour == 6) {
         if (minute == 5 ){if (one_f1==0) {one_f1=1;}      }  else  {one_f1=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
         if (minute == 10 ){if (one_f2==0) {one_f2=1;}      }  else  {one_f2=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
@@ -562,9 +563,11 @@ void loop() {
         if (minute == 27 ){if (one_f6==0) {one_f6=1;}      }  else  {one_f6=0;}
         if (minute == 30 ){if (one_f7==0) {one_f7=1;}      }  else  {one_f7=0;}
       }
-  }
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- if (_ipi==102) {   //управляе телевизором с айпи 102
+ 
+#endif
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#ifdef d_102
+ 
  if (hour==5 && minute==5 && dayOfWeek>1 && dayOfWeek<5 )  
  {
     if (ir_flag2==0) 
@@ -574,8 +577,8 @@ void loop() {
       irsend.sendRaw(rawData_on_off,71,38); 
     }    
     }  else  {ir_flag2=0;}
- }
  
+#endif
  
  // if (minute % 5 == 1) {if ( pred_dav!=pressBmp) {if (pressBmp>pred_dav){nask_dav=int(pressBmp-pred_dav); dav_pov=1;} else {dav_pov=0; nask_dav=int(pred_dav-pressBmp);} pred_dav=pressBmp;}}
  

@@ -7,7 +7,9 @@ void printStringWithShift(const char* s, int shiftDelay) {                      
   {  printCharWithShift(*s, shiftDelay);  s++;    
      server.handleClient();  
        //-------------------------PAJ7620-------------------------------  
+      #ifdef d_104
       paj7620_t.obrabotka_paj7620();
+      #endif
         //-------------------------PAJ7620-------------------------------    
                                        // зберігаемо можливість відповіді на HTML запити під час бігучої стоки
      //MPR121_update(); 
