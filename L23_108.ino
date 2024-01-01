@@ -142,20 +142,7 @@ const int   Port = 80;
 const char* database_pass = "nsq8VHqjzt1u"; //пароль пользователя базы данных
 boolean f_otpr_skl; //флаг отправки пакетов запуска по времени для серверов 8.30
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const char * host2 = "api.privatbank.ua";
-const int httpsPort2 = 443;  //HTTPS= 443 and HTTP = 80
-//SHA1 finger print of certificate use web browser to view and copy
-const char fingerprint[] PROGMEM = "D9 52 CF 21 14 87 71 E5 7A 86 23 99 19 41 5C 4B 4E 7E FA EC";
-String datarx,Kurs_disp;
 
-float USDbuy ;  
-float USDsale ;  
-float EURbuy ;  
-float EURsale ;  
-float BTCbuy ;  
-float BTCsale ;  
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------
 float t0Lux;    //для яркости
@@ -166,9 +153,6 @@ uint8_t f_mp3;  //флаг  понять что запучен проиграш 
 unsigned long tim_mp3 = millis();
 
 #define fol_papk_pes   15   //команда для проигрывания песни из папки  
-
-//float pred_dav, raz_dav; //предыдущее давление  //разница в далениях
-//float max_dav, min_dav;   //минимальное и максимальное давление
 
 bool dav_pov;   //давление повышаеться 1
 int nask_dav; //насколько давление поменялось
@@ -183,18 +167,18 @@ int kol_chasov; //сколько часов предыдущего давлен�
 
 unsigned long sumX, sumY, sumX2, sumXY;
 float a, b;
-boolean  move_arrow;
+//boolean  move_arrow;
 uint8_t   kol_dav;
 int   angle, delta, pressure_del[6];
-bool outKurs = false;
-int updateKursPrivat = 0;
-String kursString = "";
-const char* kursPrivat2 = "api.privatbank.ua";//https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
+//bool outKurs = false;
+//int updateKursPrivat = 0;
+//String kursString = "";
+//const char* kursPrivat2 = "api.privatbank.ua";//https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
 //String tMes, tNow, tPress, tSpeed, tMin, tTom, tKurs, tSale, tYour, tPoint;
-String tKurs,tSale;
-float buy;
-float sale;
-float ttmp;
+//String tKurs,tSale;
+//float buy;
+//float sale;
+//float ttmp;
 
 String ssid = "home";                                                         // Назва локального WiFi
 String password = "30011980";                                               // Пароль локального WiFi
