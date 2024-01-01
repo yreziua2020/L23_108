@@ -95,6 +95,7 @@ const uint16_t zad_vool=2;//заданная громкость минималь
 uint16_t voll=zad_vool;   //громкость
 static uint32_t myTimer_pl;
 static uint8_t i_bat ;
+float  b; //bip_bud_vs() для звука
 
 //плеер  pppppp
 bool fl_bud_mp;  //флаг для будильника мп3 ччтобы установить начальную громкость и запустить трек только одинн раз при зсрабатывании будильника
@@ -168,7 +169,6 @@ byte perek;
  //unsigned long  pressure2,aver_pressure, pressure_array[6], time_array[6];
 
 
-float  b; //bip_bud_vs() для звука
 
 
 
