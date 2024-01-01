@@ -55,7 +55,7 @@ byte alarms() { //dav
   {   if (alarme[i][0]==hour && alarme[i][1]==minute && (alarme[i][2]==dayOfWeek || (alarme[i][2]==8 && (dayOfWeek>1 && dayOfWeek<7)) || (alarme[i][2]==9 && dayOfWeek>1) || (alarme[i][2]==10 && (dayOfWeek==1 || dayOfWeek==7)) || alarme[i][2]>10)) 
       {  alarm_numer=i;  
          if (printCom){ Serial.println( String(alarm_numer)+" "+String(alarm_hold)+" "+String (alarm_stat));}      
-         Serial.println( String(alarm_numer)+" "+String(alarm_hold)+" "+String (alarm_stat));
+        // Serial.println( String(alarm_numer)+" "+String(alarm_hold)+" "+String (alarm_stat));
          return 1;   
        }
   }

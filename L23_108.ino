@@ -90,10 +90,16 @@ IPAddress secondaryDNS(8, 8, 8, 8); // опционально
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk 15 //17//11  //9
-#define gromk2 0  //насколько увеличить громкость
+#define gromk 15 //17//11  //9 //максимальная громкость
+const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
+uint16_t voll=zad_vool;   //громкость
 static uint32_t myTimer_pl;
 static uint8_t i_bat ;
+
+//плеер  pppppp
+bool fl_bud_mp;  //флаг для будильника мп3 ччтобы установить начальную громкость и запустить трек только одинн раз при зсрабатывании будильника
+
+byte trek=222;   //номер мелодии для будильника  //220
 //----------------------------------------------------------
 #include "Adafruit_Si7021.h"
 #include <Adafruit_Sensor.h>
@@ -432,10 +438,7 @@ byte butFlag = 0; // 1 - кнопка нажата, 0 - не нажата
 int butCount = 0; // счетчик времени нажатия кнопки
 int butMillis = 0;
 bool runningLine = 0;
-//плеер  pppppp
-bool fl_bud_mp;  //флаг для будильника мп3
-uint16_t voll=2;   //громкость
-byte trek=222;   //номер мелодии для будильника  //220
+
 
 int tracks[2] = {0, 0};              // tracks in microSD
 
@@ -530,19 +533,20 @@ void loop() {
   //----------- РОБОТА З БУДИЛЬНИКОМ------------------------------------------------------
   if (secFr==0)  {   
       if (second>0 && alarms()) 
-      { 
-         Serial.println("влет в будильник");
-        if (!alarm_stat && alarm_numer!=255 && !alarm_hold)  alarm_stat=1; 
+      {     //суда влетает постоянно когда сработал будильник
+         
+        if (!alarm_stat && alarm_numer!=255 && !alarm_hold)  {alarm_stat=1; }
       }    //alarm_hold для кнопки зачемто
-      else if (alarm_stat)    { alarm_stat = 0; voll=2; fl_bud_mp=0;  
+      else if (alarm_stat)    { alarm_stat = 0; 
+                                  voll=zad_vool; //задаем начальный уровень громкости для будильника
+                                  fl_bud_mp=0;  //чтобы установить начальную громкость и запустить трек только одинн раз при зсрабатывании будильника
+                                //Serial.println("обнуляем");
                               #ifdef d_102
-                                  if (ir_flag2==0) 
+                                  if (hour==5||hour==5)  //чтобы только утром включало по будильнику
                                   {  
-                                    ir_flag2=1; 
                                     //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
                                     irsend.sendRaw(rawData_on_off,71,38); 
                                   }    
-                                  }  else  {ir_flag2=0;}
                                #endif
 
                                 bip_bud_vs(); //будильник всавка часов если играет или посто говорит время после окончания минуты
@@ -684,7 +688,7 @@ void loop() {
     if (second == 46 && hour >= timeScrollStart && hour <= timeScrollStop && !alarm_stat)     //(minute % 5 == 1) && 
     {
     if (minute % 2 == 0 )  {dav_opros();kol_dav++; if(kol_dav>5) {kol_dav=0;}}
-      Serial.println ("каждую 47 секуду"); 
+      //Serial.println ("каждую 47 секуду"); 
      // if (minute == 1 || minute == 31 || updateForecast || updateForecasttomorrow ||updateKursPrivat) 
       if (minute == 1  || updateForecast || updateForecasttomorrow )    //updateForecast -обновление погоды сейчас  обновление погоды на завтра
       {
@@ -692,13 +696,13 @@ void loop() {
         if ((minute == 1 ) && displayForecast)  
         {
             /// dav_opros();kol_dav++; if(kol_dav>5) {kol_dav=0;}
-           Serial.println ("Первый влет по погоде");      //влетает плвторно каждую минуту
+           //Serial.println ("Первый влет по погоде");      //влетает плвторно каждую минуту
           if (!weatherHost) {getWeatherData0();} else {getWeatherData1();   }                                  
           if (!weatherHost) {getWeatherDataz0(); } else {getWeatherDataz1();  }     
           } 
         else  
         {
-           Serial.println ("Второй влет по погоде");     
+           //Serial.println ("Второй влет по погоде");     
           if (updateForecast) {          if (!weatherHost) {getWeatherData0();}   else {getWeatherData1();  }}  
           if (updateForecasttomorrow) {  if (!weatherHost) {getWeatherDataz0(); } else {getWeatherDataz1();} }     
         }
