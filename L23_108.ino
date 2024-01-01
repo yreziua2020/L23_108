@@ -116,8 +116,8 @@ byte trek=222;   //номер мелодии для будильника  //220
 #define CS_PIN    15                                                                    //GPIO 15 / D8
 #define CLK_PIN   14                                                                    //GPIO 14 / D5
 //#define buzzerPin 12            пустой будет пуль                                                         //GPIO 12 / D6
-#include "fonts.h" 
-
+//#include "fonts.h" 
+#include "src/fonts.h"
 WiFiClient ESPclient;
 //WiFiClientSecure httpsClient;
 
@@ -126,14 +126,14 @@ WiFiClient ESPclient;
 // Веб сервер
 File fsUploadFile;
 IPAddress apIP(192, 168, 4, 1);
-#include "P_js.h"
-#include "P_css.h"
-#include "P_index.h"
-#include "P_time.h"
-#include "P_weath.h"
-#include "P_setup.h"
-#include "P_help.h"
-#include "P_mqtt.h"
+#include "src/html/P_js.h"
+#include "src/html/P_css.h"
+#include "src/html/P_index.h"
+#include "src/html/P_time.h"
+#include "src/html/P_weath.h"
+#include "src/html/P_setup.h"
+#include "src/html/P_help.h"
+#include "src/html/P_mqtt.h"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
