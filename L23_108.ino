@@ -469,7 +469,7 @@ void loop() {
   server.handleClient();   
   updateTime();   
   buttonInter();                     // дозволяємо HTTP серверу відповідать на запити // оновлюємо час//анадлиз интрвала нажатия хлавиши
-  
+ /* 
     int cb2 = udp.parsePacket(); 
   if (cb2) 
   {  udp.read(packetBuffer2, NTP_PACKET_SIZE);   String  req2=(packetBuffer2); //char reg3=(packetBuffer2);
@@ -484,7 +484,7 @@ void loop() {
   // byte  
      memset(packetBuffer2, 0, NTP_PACKET_SIZE);  //очищаем буфер для приема следующей команды   //зполняем packetBuffer нулем(0) по размеру NTP_PACKET_SIZE
   }
-                                                                      
+  */                                                                    
  if (second != lastSecond) 
  {                                                           
     lastSecond = second;      //елсли регулеровка включена автоматически то оправляем яркость в зависимости от освечения  иначе если ЧАС больше дневного и Меньше Ночного часма то оправляем яркость дненую, инач яркость ночную
