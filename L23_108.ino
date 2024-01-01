@@ -47,10 +47,29 @@ IRsend irsend(kIrLed);
 
 
 #define _ZVUK    //чтобы звук отключить закоментровать
-//#define _ip_adr      // непрнятно зачем  без коментарии 102 если закоментировать то 103
 
+//#define d_102  d_102  по умолчанию 
+//#define d_103
+#define d_104
+
+
+#ifdef defined(d_102)
+#define _ipi 102     //указываем адрес
+#define _getv 199     //указываем шлюз
+
+#elif defined(d_103)
+#define _ipi 103     //указываем адрес
+#define _getv 199     //указываем шлюз
+
+#elif defined(d_104)
 #define _ipi 104     //указываем адрес
 #define _getv 41     //указываем шлюз
+
+#else 
+#define _ipi 102     //указываем адрес
+#define _getv 199     //указываем шлюз
+#endif
+
 IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-адрес:
 IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
@@ -456,10 +475,11 @@ void loop() {
   //-------------------------PAJ7620-------------------------------    
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);}
-      if (_ipi==102){       //для 102 адреса отправляем данные в sql температуры
+#ifdef d_102
+           //для 102 адреса отправляем данные в sql температуры
        if (second==45) {  if (!f_otpr_skl){f_otpr_skl=1;bd_sql(); }
        }  else   { f_otpr_skl=0;}    
-       }
+#endif 
 #ifdef _ZVUK    
     if (pr_bip_vre3) {bip_vre4();} //звук с веба   дублируеться когда бежит строка чтоб не замолк
     if (f_kuku) {bip_vre4();}      //звук скукушка дублируеться когда бежит строка чтоб не замолк
