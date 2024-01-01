@@ -307,6 +307,7 @@ String jsonTime = "{}";
 // ---------- Змінні для роботи локального годинника ЧАССЫ----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 float timeZone = 4.0;     //было 2                                                                    //  часовий пояс  
+int  timeZone_p = 2; //для погоды было 3
 float hourCorr;
 bool isDayLightSaving = true;
 long localEpoc = 0;
@@ -527,12 +528,29 @@ void loop() {
  //на 10 секунде читаем значение датчиков
  if (secFr == 0 && second == 25 && !alarm_stat) {sensorsAll();  /*dav_opros();kol_dav++;*/}//читаем значеение датчков  if (printCom){Serial.println("Обновление датчиков");};
   //----------- РОБОТА З БУДИЛЬНИКОМ------------------------------------------------------
-  if (secFr==0)  {   if (second>0 && alarms()) { if (!alarm_stat && alarm_numer!=255 && !alarm_hold)  alarm_stat=1; }  
-  else if (alarm_stat)  
-  {alarm_stat = 0; voll=2; fl_bud_mp=0;  bip_bud_vs(); //будильник всавка часов если играет или посто говорит время
-   if (alarme[alarm_numer][2] == 11) alarme[alarm_numer][2] = 0;  
-  } else if (alarm_hold != 0){ Serial.println("что то связано с выключением думаю");}}
-    //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
+  if (secFr==0)  {   
+      if (second>0 && alarms()) 
+      { 
+         Serial.println("влет в будильник");
+        if (!alarm_stat && alarm_numer!=255 && !alarm_hold)  alarm_stat=1; 
+      }    //alarm_hold для кнопки зачемто
+      else if (alarm_stat)    { alarm_stat = 0; voll=2; fl_bud_mp=0;  
+                              #ifdef d_102
+                                  if (ir_flag2==0) 
+                                  {  
+                                    ir_flag2=1; 
+                                    //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
+                                    irsend.sendRaw(rawData_on_off,71,38); 
+                                  }    
+                                  }  else  {ir_flag2=0;}
+                               #endif
+
+                                bip_bud_vs(); //будильник всавка часов если играет или посто говорит время после окончания минуты
+                                if (alarme[alarm_numer][2] == 11) alarme[alarm_numer][2] = 0;   
+                              } 
+      else if (alarm_hold != 0){ Serial.println("что то связано с выключением думаю");}
+  }
+  //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
   if (secFr == 0) {  //КАЖДУЮ СЕКУДУ
     //if (minute == 0) { // minute % 5 == 1   //1, 6, 11, 16...56 хв.
      if (minute==1 || minute==30) { 
@@ -566,19 +584,7 @@ void loop() {
  
 #endif
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#ifdef d_102
- 
- if (hour==5 && minute==5 && dayOfWeek>1 && dayOfWeek<5 )  
- {
-    if (ir_flag2==0) 
-    {   
-        ir_flag2=1; 
-      //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
-      irsend.sendRaw(rawData_on_off,71,38); 
-    }    
-    }  else  {ir_flag2=0;}
- 
-#endif
+
  
  // if (minute % 5 == 1) {if ( pred_dav!=pressBmp) {if (pressBmp>pred_dav){nask_dav=int(pressBmp-pred_dav); dav_pov=1;} else {dav_pov=0; nask_dav=int(pred_dav-pressBmp);} pred_dav=pressBmp;}}
  

@@ -171,8 +171,8 @@ void getWeatherDataz0() {
   if (hour < 12) weatherStringZ += "   " + String(data_0_min_temp, 1) + "...." + String(data_0_max_temp, 1) + "\202" + "C  "; //Если мень 12 то выдаем прогноз на сегодня
   if (hour < 18) weatherStringZ += "   " + String(data_0_weather_description); //+ "       ";  //после 12 и до 18 выводим сегодня только облочность, а прогноз не выводим уже, а после 18 выводим только сегоднишнюю  день недели дату и месяц
 
-  int sr = location_sunrise.substring(0, 2).toInt() + 3;  if(sr>23) sr -= 24;  if(sr<0) sr += 24;  String sunrise = String(sr) + location_sunrise.substring(2, 5); //расвет восход
-  int ss =  location_sunset.substring(0, 2).toInt() + 3;  if(ss>23) ss -= 24;  if(ss<0) ss += 24;  String sunset =  String(ss) +  location_sunset.substring(2, 5); //закат
+  int sr = location_sunrise.substring(0, 2).toInt() + timeZone_p;  if(sr>23) sr -= 24;  if(sr<0) sr += 24;  String sunrise = String(sr) + location_sunrise.substring(2, 5); //расвет восход
+  int ss = location_sunset.substring(0, 2).toInt() +  timeZone_p;  if(ss>23) ss -= 24;  if(ss<0) ss += 24;  String sunset =  String(ss) +  location_sunset.substring(2, 5); //закат
   //Serial.print(String (hourCorr));
   weatherStringZ +="  Расвет: " +sunrise+"  Закат: "+sunset;  weatherStringZ += "        ";         //чтобы уежала сторока  не стиралась
                                                                                                     //отображать погоду на завтра
