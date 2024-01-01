@@ -77,10 +77,10 @@ for (int i = 0; i < 16; i++) {
   
    // lightMeter.begin(BH1750::CONTINUOUS_HIGH_RES_MODE_2);  //Serial.println(F("BH1750 Test"));
   //MPR121_inic();  //иницилизация MPR121
- 
+ /*
    pressure2 = aver_sens();          // найти текущее давление по среднему арифметическому
   for (byte i = 0; i < 6; i++) {   pressure_array[i] = pressure2;  time_array[i] = i; }            // забить массив времени числами 0 - 5 // забить весь массив текущим давлением
- 
+ */
   #ifdef _ZVUK
    command2(Volu,0,gromk);
    //vver();

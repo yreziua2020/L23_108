@@ -316,31 +316,7 @@ void showSimplePre2() {
   showDigit(pd2 , (p1 > 0 ? 10 : 5) + indent, dig5x8);  showDigit(pd3 , (p1 > 0 ? 16 : 11) + indent, dig5x8);  showDigit(pd4 , (p1 > 0 ? 22 : 17) + indent, dig5x8);  
   refreshAll();
 }
-//==========ВИВІД НА ЕКРАН ДАВЛЕНИЯ =========ДАВЛЕНИЯ== ВВиде строки =daf==================ДАВЛЕНИЯ===================
-void showSimplePre3() { fl_dav3=1;
-  if (WiFi.status() == WL_CONNECTED) 
-  {   //  dav_tmp="    \215"+String(((int)pressBmp)+corrPress)+"\223" +" max"+  (int)max_dav +" min"+ (int)min_dav+"     ";  //215 знак давления  259
-     //dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
-      // dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
-     printStringWithShift( dav_tmp.c_str(), 30);
-  }}
-  //==========ВИВІД НА ЕКРАН ДАВЛЕНИЯ =========ДАВЛЕНИЯ== ВВиде строки =daf==================ДАВЛЕНИЯ===================
-void showSimplePre4() { //fl_dav3=1;
-  if (WiFi.status() == WL_CONNECTED) 
-  {   //  dav_tmp="    \215"+String(((int)pressBmp)+corrPress)+"\223" +" max"+  (int)max_dav +" min"+ (int)min_dav+"     ";  //215 знак давления  259
-     //dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
-     dav_tmp=" K="+ String(kol_dav)+"del="+String(delta)+", "+ String((int)pressure_del[0])+"," + String((int)pressure_del[1])+"," + String((int)pressure_del[2])+","+ String((int)pressure_del[3])+","+ String((int)pressure_del[4])+","+String((int)pressure_del[5])+","+ String((int)pressure_array[6])+" ";  //215 знак давления  259
-     printStringWithShift( dav_tmp.c_str(), 30);
-  }}
- 
-  //==========ВИВІД НА ЕКРАН ДАВЛЕНИЯ =========ДАВЛЕНИЯ== ВВиде строки =daf==================ДАВЛЕНИЯ===================
-void showSimplePre5() { //fl_dav3=1;
-  if (WiFi.status() == WL_CONNECTED) 
-  {   //  dav_tmp="    \215"+String(((int)pressBmp)+corrPress)+"\223" +" max"+  (int)max_dav +" min"+ (int)min_dav+"     ";  //215 знак давления  259
-     //dav_tmp="    \237"+ String((int)max_dav+corrPress) +"   \236"+ String((int)min_dav+corrPress)+" ";  //215 знак давления  259
-     dav_tmp="  Ch "+ String(dav_po_chasu[0]) + "."+ String(dav_po_chasu[1]) + "."+ String(dav_po_chasu[2]) + "."+ String(dav_po_chasu[3]) + "."+ String(dav_po_chasu[4]) +  "."+String(dav_po_chasu[5]) +"."+ String(dav_po_chasu[6])+"." + String(dav_po_chasu[7])+"."+ String(dav_po_chasu[8]);  //215 знак давления  259
-     printStringWithShift( dav_tmp.c_str(), 30);
-  }}
+
  
 //==========ВИВІД НА ЕКРАН ДАТИ==============ddd===========================================
 void showSimpleDate() {

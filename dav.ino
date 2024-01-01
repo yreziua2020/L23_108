@@ -1,3 +1,5 @@
+
+/*
 void dav_opros  (void)
 {   if (printCom) {  printTime();    Serial.print("Опрос давления2\r\n");    } 
     pressure2 = (aver_sens());                          // найти текущее давление по среднему арифметическому // сдвинуть массив давлений КРОМЕ ПОСЛЕДНЕЙ ЯЧЕЙКИ на шаг назад
@@ -48,3 +50,4 @@ unsigned long aver_sens() {
   aver_pressure = pressure2 / 10;
   return aver_pressure;
 }
+*/

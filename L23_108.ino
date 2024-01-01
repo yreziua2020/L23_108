@@ -152,33 +152,25 @@ int t2Lux = 0, tt2Lux = 0;
 uint8_t f_mp3;  //флаг  понять что запучен проиграш песен для случайного выбора песни
 unsigned long tim_mp3 = millis();
 
-#define fol_papk_pes   15   //команда для проигрывания песни из папки  
+//#define fol_papk_pes   15   //команда для проигрывания песни из папки  
 
-bool dav_pov;   //давление повышаеться 1
-int nask_dav; //насколько давление поменялось
+byte perek;
+
+//bool dav_pov;   //давление повышаеться 1
+//int nask_dav; //насколько давление поменялось
 
 //bool outForecast = true;
- String wrem_tm,dav_tmp;
+ String wrem_tm;
  bool fl_per, fl_dat, fl_dom,fl_dom2, fl_uli, fl_dav, fl_dav3, fl_vla;// флаг для вывода даты ЧТОБЫ ВЛЕТАЛО В ВЫВОД ТОЛЬКО ОДИН РАЗ А НЕ НЕ НЕСКОЛЬКО ПОКА ВРЕМЯ НЕ ИСЧТИЧЕТ ВЫВОДА
- byte perek;
-int dav_po_chasu[9]; //дельта давления по каждому часу для начала последних  6 часов
-int kol_chasov; //сколько часов предыдущего давления помнить
- unsigned long  pressure2,aver_pressure, pressure_array[6], time_array[6];
+ 
+//int dav_po_chasu[9]; //дельта давления по каждому часу для начала последних  6 часов
+//int kol_chasov; //сколько часов предыдущего давления помнить
+ //unsigned long  pressure2,aver_pressure, pressure_array[6], time_array[6];
 
-unsigned long sumX, sumY, sumX2, sumXY;
-float a, b;
-//boolean  move_arrow;
-uint8_t   kol_dav;
-int   angle, delta, pressure_del[6];
-//bool outKurs = false;
-//int updateKursPrivat = 0;
-//String kursString = "";
-//const char* kursPrivat2 = "api.privatbank.ua";//https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
-//String tMes, tNow, tPress, tSpeed, tMin, tTom, tKurs, tSale, tYour, tPoint;
-//String tKurs,tSale;
-//float buy;
-//float sale;
-//float ttmp;
+
+float  b; //bip_bud_vs() для звука
+
+
 
 String ssid = "home";                                                         // Назва локального WiFi
 String password = "30011980";                                               // Пароль локального WiFi
@@ -614,10 +606,10 @@ void loop() {
             case 12:{showSimpleTempDom1();   break;}
             case 13:{showSimpleHum(); break;}
             case 14:{/*showSimpleHum();*/ break;}
-            case 15:{showSimplePre4();   break;}
+            
             case 16:{  break;}
             case 17:{showSimplePre();  break;}
-            case 18:{showSimplePre3();  break;}
+         
             case 19:{showSimpleDate2();   break;}
             case 20:{showSimpleDate2(); break;}
             case 21:{showSimpleDate2();  break;}  
@@ -671,7 +663,7 @@ void loop() {
  //1, 6, 11, 16...56 хв.
     if (second == 46 && hour >= timeScrollStart && hour <= timeScrollStop && !alarm_stat)     //(minute % 5 == 1) && 
     {
-    if (minute % 2 == 0 )  {dav_opros();kol_dav++; if(kol_dav>5) {kol_dav=0;}}
+    //if (minute % 2 == 0 )  {dav_opros();kol_dav++; if(kol_dav>5) {kol_dav=0;}}
       //Serial.println ("каждую 47 секуду"); 
      // if (minute == 1 || minute == 31 || updateForecast || updateForecasttomorrow ||updateKursPrivat) 
       if (minute == 1  || updateForecast || updateForecasttomorrow )    //updateForecast -обновление погоды сейчас  обновление погоды на завтра
