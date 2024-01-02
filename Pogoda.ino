@@ -3,8 +3,12 @@
 //===============================================================================================================================//
 void getWeatherData0() {
   location_name = "";  location_region = "";  location_country = "";  location_localtime = "";  location_temp = 0;  location_app_temp = 0;  location_rh = 0;  location_pres = 0;  location_wind_spd = 0;  location_wind_cdir_full = "";  location_sunrise = "";  location_sunset = "";  location_clouds = 0;  location_vis = 0;  location_uv = 0;  location_weather_description = "";
-  if (!WIFI_connected) {    updateForecast++;    if (updateForecast >= 360) weatherString = tWeatrNot;    return;  }   if (printCom) {    printTime();    Serial.println("Getting weather forecast for City " +  cityID0 + "...");  }  //печать в каом порт если разрешена
-  
+  if (!WIFI_connected) {    
+                        updateForecast++;    
+                        if (updateForecast >= 1440) weatherString = tWeatrNot;    return;  }  
+                        if (printCom) {    printTime();    Serial.println("Getting weather forecast for City " +  cityID0 + "..."); 
+                         }  //печать в каом порт если разрешена
+  Serial.println("start conect -1");
    WiFi.hostByName(weatherHost0.c_str(), pogodaIP);
   // if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP)){printStringWithShift("ok ", 25);} else  {printStringWithShift("no ", 25);} 
    //Serial.print("pogodaIP ="); Serial.println(pogodaIP); 
@@ -17,7 +21,7 @@ void getWeatherData0() {
   } 
   else 
   { 
-     if (printCom) Serial.println("  Not connection server!!!"); updateForecast++;  if (updateForecast >= 360) weatherString = tWeatrNot;   return;  
+     if (printCom) Serial.println("  Not connection server!!!"); updateForecast++;  if (updateForecast >= 1440) weatherString = tWeatrNot;   return;  
   }
 
   HTTPClient http;
@@ -56,7 +60,7 @@ void getWeatherData0() {
   const size_t capacity = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(2) + JSON_OBJECT_SIZE(3) + JSON_OBJECT_SIZE(37) + 1128; //https://arduinojson.org/v6/assistant/
   DynamicJsonDocument doc(capacity);
   deserializeJson(doc, line);
-  if (!doc.capacity()) {   if (printCom) Serial.println("          Parse weather forecast - FAILED!!!"); updateForecast++; if (updateForecast >= 360) weatherString = tWeatrNot;  return;  }
+  if (!doc.capacity()) {   if (printCom) Serial.println("          Parse weather forecast - FAILED!!!"); updateForecast++; if (updateForecast >= 1440) weatherString = tWeatrNot;  return;  }
   JsonObject data = doc["data"][0];
   location_rh = data["rh"];                       //Влажность   
   location_pres = data["pres"];                    //давление 999.3
@@ -196,8 +200,8 @@ void getWeatherDataz0() {
 void getWeatherData1() {
   location_name = ""; location_region = ""; location_country = ""; location_localtime = "";       location_temp = 0;       location_app_temp = 0;  location_rh = 0;    location_pres = 0; 
   location_wind_spd = 0;  location_wind_cdir_full = "";  location_sunrise = "";  location_sunset = "";  location_clouds = 0;  location_vis = 0;  location_uv = 0;  location_weather_description = "";  
-  if (!WIFI_connected) {    updateForecast++;    if (updateForecast >= 360) weatherString = tWeatrNot;    return;  }  if (printCom) {    printTime();  Serial.println("Getting weather forecast for City " +  cityID1 + "...");  }
-  if (ESPclient.connect(weatherHost1.c_str(), 80))  {  } else {  if (printCom) Serial.println("          Not connection server!!!"); updateForecast++;  if (updateForecast >= 360) weatherString = tWeatrNot;  return;  }
+  if (!WIFI_connected) {    updateForecast++;    if (updateForecast >= 1440) weatherString = tWeatrNot;    return;  }  if (printCom) {    printTime();  Serial.println("Getting weather forecast for City " +  cityID1 + "...");  }
+  if (ESPclient.connect(weatherHost1.c_str(), 80))  {  } else {  if (printCom) Serial.println("          Not connection server!!!"); updateForecast++;  if (updateForecast >= 1440) weatherString = tWeatrNot;  return;  }
  
   HTTPClient http;
   String line = "";  String reqline = "http://" + weatherHost1 + "/data/2.5/weather?id=" + urlencode(cityID1) + "&lang=" + weatherLang + "&units=metric&appid=" + weatherKey1;
@@ -219,7 +223,7 @@ void getWeatherData1() {
   if (!doc.capacity()) {
     if (printCom) Serial.println("          Parse weather forecast - FAILED!!!");
     updateForecast++;
-    if (updateForecast >= 360) weatherString = tWeatrNot;
+    if (updateForecast >= 1440) weatherString = tWeatrNot;
     return;
   }
   JsonObject weather_0 = doc["weather"][0];

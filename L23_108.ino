@@ -708,4 +708,4 @@ String chr_to_str(String str) {   String chr_to_str = "";  for (int i = 0; i < s
 
 //--------------------------Язык---------------------------
 void lang() {if(weatherLang=="ru") {tNow="Сейчас"; tPress0="гПа"; tPress="мР"; tSpeed="м/с"; tMin="м."; tCurr="Сегодня"; tTom="Завтра"; tYour="Ваш"; tIp="и введите в браузере адрес"; tPass="пароль";
-tWeatrNot=" Нет обновления погоды более 6 часов!!!   "; tWeatrTN=".-";  } }   ///tWeatrTN="нет об.пог.-";
+tWeatrNot=" Нет обновления погоды более 24 часов!!!   "; tWeatrTN=".-";  } }   ///tWeatrTN="нет об.пог.-";
