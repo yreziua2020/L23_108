@@ -23,7 +23,7 @@ const short UserID=3;
 
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
-#define _getv 41     //указываем шлюз
+#define _getv 42     //указываем шлюз
 
 #else 
 #define _ipi 102     //указываем адрес
