@@ -9,7 +9,7 @@ void getWeatherData0() {
                         if (printCom) {    printTime();    Serial.println("Getting weather forecast for City " +  cityID0 + "..."); 
                          }  //печать в каом порт если разрешена
   Serial.println("start conect -1");
-   WiFi.hostByName(weatherHost0.c_str(), pogodaIP);
+   WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000);
   // if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP)){printStringWithShift("ok ", 25);} else  {printStringWithShift("no ", 25);} 
    //Serial.print("pogodaIP ="); Serial.println(pogodaIP); 
   //if (ESPclient.connect(weatherHost0.c_str(), 80)) {
