@@ -8,7 +8,10 @@ void printStringWithShift(const char* s, int shiftDelay) {                      
      server.handleClient();  
        //-------------------------PAJ7620-------------------------------  
       #ifdef d_104
-      paj7620_t.obrabotka_paj7620();
+      
+        f_iz_znach=paj7620_t.obrabotka_paj7620();
+         if(f_iz_znach!=255) {Serial.println(f_iz_znach);}
+
       #endif
         //-------------------------PAJ7620-------------------------------    
                                        // зберігаемо можливість відповіді на HTML запити під час бігучої стоки

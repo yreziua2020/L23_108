@@ -52,6 +52,8 @@
 
 typedef enum {	BANK0 = 0,	BANK1,		} bank_e;
 
+
+
 #define GES_RIGHT_FLAG				PAJ7620_VAL(1,0)
 #define GES_LEFT_FLAG				PAJ7620_VAL(1,1)
 #define GES_UP_FLAG					PAJ7620_VAL(1,2)
@@ -67,13 +69,13 @@ typedef enum {	BANK0 = 0,	BANK1,		} bank_e;
 class paj7620 {
 public: 
  //свойства
-
+enum znach {	   UP,	RIGHT,	DOWN,	LEFT, FORWARD , BACKWARD		} znach_t;
     //методы
 uint8_t paj7620Init(void);
 uint8_t paj7620WriteReg(uint8_t addr, uint8_t cmd);
 uint8_t paj7620ReadReg(uint8_t addr, uint8_t qty, uint8_t data[]);
 void paj7620SelectBank(bank_e bank);
-void obrabotka_paj7620();
+int obrabotka_paj7620();
 
  
 };

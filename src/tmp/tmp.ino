@@ -5,6 +5,25 @@
 //-------------------bbbbbbb--------------------------------------------------------------------------
 //void bip()          {   command2(Fold,11,13); }   //201  двойное нажатие нопки
 
+
+ /* 
+    int cb2 = udp.parsePacket(); 
+  if (cb2) 
+  {  udp.read(packetBuffer2, NTP_PACKET_SIZE);   String  req2=(packetBuffer2); //char reg3=(packetBuffer2);
+    if (req2.indexOf("63") != -1)   // yyyyy    Осуществляет поиск символа или подстроки в строке (req2)  -1 если 63 не найдено (можно указать и определенную позицию, с которой необходимо начать поис через запятую)
+    {  
+      char myStr8[10];  req2=req2.substring(2);req2.toCharArray(myStr8, req2.length()+1);t3 = atof(myStr8)/10;   //возращает значение начиная с совторо символа, можно указать и позиц символа чере запатую// копирование String в массив myStr8 //преобразуем char в флоат
+      t4 = int(t3);  t5 = int(t3 * 10 * (t3 > 0 ? 1 : -1)) % 10;  
+    } 
+    if (req2.indexOf("64") != -1)  {  char myStr8[10];  req2=req2.substring(2);req2.toCharArray(myStr8, req2.length()+1);t1kom = atof(myStr8)/10; t2kom = int(t1kom); t3kom = int(t1kom * 10 * (t1kom > 0 ? 1 : -1)) % 10; } 
+    if (req2.indexOf("65") != -1)  {  char myStr8[10];  req2=req2.substring(2);req2.toCharArray(myStr8, req2.length()+1);t1kux = atof(myStr8)/10; t2kux = int(t1kux); t3kux = int(t1kux * 10 * (t1kux > 0 ? 1 : -1)) % 10; } 
+    if (req2.indexOf("60") != -1)  {  char myStr8[10];  req2=req2.substring(2);req2.toCharArray(myStr8, req2.length()+1);t1kom = atof(myStr8)/10; t2kom = int(t1kom); t3kom = int(t1kom * 10 * (t1kom > 0 ? 1 : -1)) % 10; } 
+  // byte  
+     memset(packetBuffer2, 0, NTP_PACKET_SIZE);  //очищаем буфер для приема следующей команды   //зполняем packetBuffer нулем(0) по размеру NTP_PACKET_SIZE
+  }
+  */    
+
+
 //void vver(){delay(1000);  command(15,6,6);wait_play(); }
 /*
 

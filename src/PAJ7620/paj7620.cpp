@@ -339,24 +339,26 @@ uint8_t paj7620::paj7620Init() {
 
 
 
-void paj7620::obrabotka_paj7620(){
+int  paj7620::obrabotka_paj7620(){
 	byte gesture;
  	int data_eror;// Error variable holds any error code
 	data_eror = paj7620ReadReg(0x43, 1, &gesture);
- 
+
 	if(!data_eror) {
 		switch (gesture) {
-			case GES_RIGHT_FLAG:	Serial.println(F("Right"));         break;
-			case GES_LEFT_FLAG: 	Serial.println(F("Left"));         	break;
-			case GES_UP_FLAG:		Serial.println(F("Up"));        		break;
-			case GES_DOWN_FLAG:		Serial.println(F("Down"));         	break;
-			case GES_FORWARD_FLAG:	Serial.println(F("Forward"));				break;
-			case GES_BACKWARD_FLAG:	Serial.println(F("Backward"));			break;
-      // Library also defines GES_CLOCKWISE_FLAG GES_COUNT_CLOCKWISE_FLAG and GES_WAVE_FLAG, but I found these unreliable
-			default:				break;
+			Serial.println( gesture);
+			case GES_RIGHT_FLAG:	znach_t=RIGHT;		return znach_t;        	break;
+			case GES_LEFT_FLAG: 	znach_t=LEFT;  		return znach_t;       	break;
+			case GES_UP_FLAG:		znach_t=UP;    		return znach_t;    		break;
+			case GES_DOWN_FLAG:		znach_t=DOWN; 		return znach_t;       	break;
+			case GES_FORWARD_FLAG:	znach_t=FORWARD;	return znach_t;			break;
+			case GES_BACKWARD_FLAG:	znach_t=BACKWARD;	return znach_t;			break;
+      		default: return -1;			break;
 		}
 	}
- else { Serial.print(F("Error code: "));    Serial.println(data_eror); }
+	else { Serial.print(F("Error code: "));    Serial.println(data_eror);  }
+ 
+	return -1;
 }
 
 //реализация класса

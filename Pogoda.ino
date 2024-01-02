@@ -9,6 +9,8 @@ void getWeatherData0() {
   // if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP)){printStringWithShift("ok ", 25);} else  {printStringWithShift("no ", 25);} 
    //Serial.print("pogodaIP ="); Serial.println(pogodaIP); 
   //if (ESPclient.connect(weatherHost0.c_str(), 80)) {
+    
+  //ESPclient.setTimeout(500);
   if (ESPclient.connect(pogodaIP, 80)) 
   {
      if (printCom) { Serial.println("conect yas");}
