@@ -33,7 +33,7 @@ void getWeatherData0() {
   String line = "";   //http://api.weatherbit.io/v2.0/forecast/daily?city=Dnipro&lang=uk&days=2&key=f872b893a4c842258c72f8226f46706e
   //String reqline = "http://" + weatherHost0 + "/v2.0/current/daily?city=" + urlencode(cityID0) + "&lang=" + weatherLang + "&key=" + weatherKey0;
   String reqline = "http://" + weatherHost0 + "/v2.0/current/daily?lat=48.463730&lon=34.975109&lang=" + weatherLang + "&key=" + weatherKey0;
-  if (printCom) {   Serial.println("===========первый запроос начало сейчас ========================================================================================");   
+  if (printCom) {   Serial.println("===========первый запроос начало сейчас пршил кординаты=====================================================================");   
                     Serial.println(reqline); 
                  }
   if (http.begin(ESPclient, reqline)) 
@@ -134,7 +134,7 @@ void getWeatherDataz0() {
   String reqline = "http://" + weatherHost0 + "/v2.0/forecast/daily?lat=48.463730&lon=34.975109&lang=" + weatherLang + "&days=2&key=" + weatherKey0;
   if (printCom) { 
        Serial.println(reqline);    
-       Serial.println("===========второй запроос на  два дня окончачнеие ========================================================================================");  
+       Serial.println("===========второй запроос на  два дня окончачнеие прошил кординаты================================================================================");  
       }
   if (http.begin(ESPclient, reqline)) { // HTTP
 

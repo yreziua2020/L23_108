@@ -41,7 +41,7 @@ IPAddress secondaryDNS(8, 8, 8, 8); // опционально
 #ifdef d_104
 #include "src/PAJ7620/paj7620.h"
 paj7620 paj7620_t;
-uint8_t f_iz_znach; //флаг изминение значения с дачика жестов znach_t
+int8_t f_iz_znach; //флаг изминение значения с дачика жестов znach_t
 #endif 
 //-------------------------PAJ7620----------------------------------------------
 //--------------------------IRsend-----------------------------------------------------
@@ -446,8 +446,7 @@ void loop() {
  //paj7620_t.obrabotka_paj7620();
   //if (f_iz_znach!=f_iz_znach) {f_iz_znach=znach_t; Serial.println(znach_t);}
 #endif 
-
-  //-------------------------PAJ7620-------------------------------    
+ 
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);}
 #ifdef d_102

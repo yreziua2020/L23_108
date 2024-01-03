@@ -10,7 +10,7 @@ void printStringWithShift(const char* s, int shiftDelay) {                      
       #ifdef d_104
       
         f_iz_znach=paj7620_t.obrabotka_paj7620();
-         if(f_iz_znach!=255) {Serial.println(f_iz_znach);}
+         if(f_iz_znach!=-1) {Serial.println(f_iz_znach);}
 
       #endif
         //-------------------------PAJ7620-------------------------------    
