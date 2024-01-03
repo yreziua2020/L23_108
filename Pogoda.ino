@@ -137,7 +137,8 @@ void getWeatherDataz0() {
   if (http.begin(ESPclient, reqline)) { // HTTP
     
     Serial.println("до");
-    int httpCode = http.GET();
+    http.setTimeout(2000);//время ожидание ответа   /5 секун держит
+    int httpCode = http.GET(); 
     Serial.println("после");
     if (httpCode > 0) {
       if (printCom){Serial.printf("[HTTP] GET... code: %d\n", httpCode);}
