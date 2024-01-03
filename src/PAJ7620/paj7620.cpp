@@ -347,12 +347,12 @@ int  paj7620::obrabotka_paj7620(){
 	if(!data_eror) {
 		switch (gesture) {
 			Serial.println( gesture);
-			case GES_RIGHT_FLAG:	znach_t=RIGHT;		return znach_t;        	break;
-			case GES_LEFT_FLAG: 	znach_t=LEFT;  		return znach_t;       	break;
-			case GES_UP_FLAG:		znach_t=UP;    		return znach_t;    		break;
-			case GES_DOWN_FLAG:		znach_t=DOWN; 		return znach_t;       	break;
-			case GES_FORWARD_FLAG:	znach_t=FORWARD;	return znach_t;			break;
-			case GES_BACKWARD_FLAG:	znach_t=BACKWARD;	return znach_t;			break;
+			case GES_RIGHT_FLAG:	znach_t=RIGHT;		return 1;        	break;
+			case GES_LEFT_FLAG: 	znach_t=LEFT;  		return 3;       	break;
+			case GES_UP_FLAG:		znach_t=UP;    		return 0;    		break;
+			case GES_DOWN_FLAG:		znach_t=DOWN; 		return 2;       	break;
+			case GES_FORWARD_FLAG:	znach_t=FORWARD;	return 10;			break;
+			case GES_BACKWARD_FLAG:	znach_t=BACKWARD;	return 11;			break;
       		default: return -1;			break;
 		}
 	}
