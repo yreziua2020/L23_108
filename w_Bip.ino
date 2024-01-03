@@ -165,6 +165,16 @@ Serial.println (" даные дальше ");
       }
 Serial.println (" даные дальше 2");
 
+Serial.println (" даные дальше 3");
+      i_bat = 0;
+      while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
+      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
+      i_bat++; delay(1); 
+      if( i_bat == 20) { for (uint32_t i=0; i<20; i++){Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;  }
+      }
+Serial.println (" даные дальше 4");
+
+
     Serial.println("первая фраза");
  //***************************************
  //***************************************   
