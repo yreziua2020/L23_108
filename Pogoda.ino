@@ -132,12 +132,10 @@ void getWeatherDataz0() {
   String line = "";
   //String reqline = "http://" + weatherHost0 + "/v2.0/forecast/daily?city=" + urlencode(cityID0) + "&lang=" + weatherLang + "&days=2&key=" + weatherKey0;
   String reqline = "http://" + weatherHost0 + "/v2.0/forecast/daily?lat=48.463730&lon=34.975109&lang=" + weatherLang + "&days=2&key=" + weatherKey0;
-  if (printCom) { 
-       Serial.println(reqline);    
-       Serial.println("===========второй запроос на  два дня окончачнеие прошил кординаты================================================================================");  
-      }
+  if (printCom) { Serial.println(reqline);    Serial.println("===========второй запроос на  два дня окончачнеие прошил кординаты================================================================================");        }
+    Serial.println("перед запросом");
   if (http.begin(ESPclient, reqline)) { // HTTP
-
+    Serial.println("после запросом");
     int httpCode = http.GET();
     if (httpCode > 0) {
       if (printCom){Serial.printf("[HTTP] GET... code: %d\n", httpCode);}
