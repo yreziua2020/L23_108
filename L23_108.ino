@@ -23,7 +23,7 @@ const short UserID=3;
 
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
-#define _getv 42     //указываем шлюз
+#define _getv 41     //указываем шлюз
 
 #else 
 #define _ipi 102     //указываем адрес
@@ -33,7 +33,9 @@ const short UserID=3;
 IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-адрес:
 IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
-String weatherHost0 = "api.weatherbit.io";
+//String weatherHost0 = "api.weatherbit.io";
+String weatherHost0 = "api.weatherbit.iod"; //не верный для проверки
+//String weatherHost0 = "15.235.118.221";  //надо 158.69.116.36
 IPAddress subnet(255, 255, 255, 0);
 IPAddress secondaryDNS(8, 8, 8, 8); // опционально
 
@@ -441,7 +443,7 @@ void loop() {
 #ifdef d_104
  
   f_iz_znach=paj7620_t.obrabotka_paj7620();
-  if(f_iz_znach!=255) {Serial.println(f_iz_znach);}
+  if(f_iz_znach!=-1) {Serial.println(f_iz_znach);}
 
  //paj7620_t.obrabotka_paj7620();
   //if (f_iz_znach!=f_iz_znach) {f_iz_znach=znach_t; Serial.println(znach_t);}
