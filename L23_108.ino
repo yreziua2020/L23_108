@@ -34,9 +34,9 @@ IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-
 IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
 //String weatherHost0 = "api.weatherbit.io";
-//String weatherHost0 = "api.weatherbit.iod"; //не верный для проверки
+String weatherHost0 = "api.weatherbit.iod"; //не верный для проверки
 //String weatherHost0 = "128.140.48.82";  //надо 158.69.116.36
-String weatherHost0 = "228.140.48.22";  //надо 158.69.116.36
+//String weatherHost0 = "228.140.48.22";  //надо 158.69.116.36
 IPAddress subnet(255, 255, 255, 0);
 IPAddress secondaryDNS(8, 8, 8, 8); // опционально
 
@@ -449,6 +449,7 @@ void loop() {
   //Serial.println(paj7620.znach_t);
   if(f_iz_znach!=-1) {Serial.println(f_iz_znach);
   if (f_iz_znach==1) bip_RIGHT();
+  if (f_iz_znach==3) bip_LEFT();
   
   }
 
