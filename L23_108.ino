@@ -448,6 +448,7 @@ void loop() {
  // paj7620_tt.znach=UP;
   //Serial.println(paj7620.znach_t);
   if(f_iz_znach!=-1) {Serial.println(f_iz_znach);
+  if (f_iz_znach==1) bip_RIGHT();
   
   }
 
