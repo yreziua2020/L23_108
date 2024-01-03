@@ -35,7 +35,8 @@ IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетево
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
 //String weatherHost0 = "api.weatherbit.io";
 //String weatherHost0 = "api.weatherbit.iod"; //не верный для проверки
-String weatherHost0 = "128.140.48.82";  //надо 158.69.116.36
+//String weatherHost0 = "128.140.48.82";  //надо 158.69.116.36
+String weatherHost0 = "228.140.48.22";  //надо 158.69.116.36
 IPAddress subnet(255, 255, 255, 0);
 IPAddress secondaryDNS(8, 8, 8, 8); // опционально
 
