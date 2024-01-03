@@ -135,21 +135,20 @@ void bip_prazn()  {   command2(Volu,0,gromk); delay(100); command2(Fold,7,198); 
 void bip_bud_vs()  //Вызываеться один раз когда сбрасываються все флаги будильника
 {     unsigned long t_tmp = millis() ;  
          
-     delay(100); command2(ADVE,0,hour);  //проиграть файль из рекламы
+     delay(100); 
+     command2(ADVE,0,hour);  //проиграть файль из рекламы
      t_tmp = millis() ;
      uint32_t wrem=0;
-     // delay(500); 
  //*************ждем остутвияя даных поидеи говорит поэтому данных нет**************************
  Serial.println (" начало ожидание даных ");
      while(!Serial.available()) 
       {  //пока нет даных ждеи,но если привышено будет время ожидание то прекращаем цикл
         yield(); //использую чтобы сбросить сторожевой таймер в цикличиских выражениях, а работает в паре с delay, в ней пожно вызывать обработки кнопопок пока работает  delay
         if (millis() - t_tmp >= 8000) {  break;} //для того чоб выйти с цикла по привышению времени на всякий случай
-        wrem++;
+        wrem++; //для фиксации было превышено ожидание
        }
 Serial.println (" даных пошли ");
 
-       //Serial.print("нет даных в порте wrem=");   Serial.println(wrem);
  //***************************************
       i_bat = 0;
       while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
@@ -157,6 +156,15 @@ Serial.println (" даных пошли ");
       i_bat++; delay(1); 
       if( i_bat == 20) { for (uint32_t i=0; i<20; i++){Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;  }
       }//если даные закочаться выйдет, а если даные незакончятся то выйдет по условию что получено 20  байт
+Serial.println (" даные дальше ");
+      i_bat = 0;
+      while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
+      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
+      i_bat++; delay(1); 
+      if( i_bat == 20) { for (uint32_t i=0; i<20; i++){Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;  }
+      }
+Serial.println (" даные дальше 2");
+
     Serial.println("первая фраза");
  //***************************************
  //***************************************   
