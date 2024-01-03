@@ -136,15 +136,15 @@ void getWeatherDataz0() {
     
   if (http.begin(ESPclient, reqline)) { // HTTP
     
-    Serial.println("до");
-    http.setTimeout(2000);//время ожидание ответа   /5 секун держит
+    http.setTimeout(3000);//время ожидание ответа   /5 секун по умолчанию
     int httpCode = http.GET(); 
-    Serial.println("после");
+
     if (httpCode > 0) {
       if (printCom){Serial.printf("[HTTP] GET... code: %d\n", httpCode);}
       if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {        line = http.getString();      }
     } else {
       if (printCom){Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());}
+       http.end(); return;
     }
     http.end();
   } else { if (printCom){   Serial.printf("[HTTP} Unable to connect\n");  }}
