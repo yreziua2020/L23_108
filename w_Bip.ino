@@ -108,16 +108,24 @@ void bip_restart2()  {
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 void bip_RIGHT()  { 
-#ifdef _ZVUK   
-  printStringWithShift(" Право ", 5);  command_Ot(Volu,0,gromk);delay(200);command2(Fold,7,235);delay(1000);
+#ifdef _ZVUK   //меньше быстрее прокрутка текста
+  printStringWithShift(" Право", 5);  command_Ot(Volu,0,gromk);delay(200);command2(Fold,7,235);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
 void bip_LEFT()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Лево ", 5);  command_Ot(Volu,0,gromk);delay(200);command2(Fold,7,236);delay(1000);
+  printStringWithShift(" Лево", 5);  command_Ot(Volu,0,gromk);delay(200);command2(Fold,7,236);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
+
+void bip_UP()  { 
+#ifdef _ZVUK   
+  printStringWithShift(" Верх", 5);  command2(Stop,0,0);delay(1000);
+#endif
+}  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
+
+
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------
 //-----------старое только вроде----------------------------------------------------------------------------------------------
