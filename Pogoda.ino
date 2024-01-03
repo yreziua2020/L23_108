@@ -3,16 +3,17 @@
 //===============================================================================================================================//
 void getWeatherData0() {
   location_name = "";  location_region = "";  location_country = "";  location_localtime = "";  location_temp = 0;  location_app_temp = 0;  location_rh = 0;  location_pres = 0;  location_wind_spd = 0;  location_wind_cdir_full = "";  location_sunrise = "";  location_sunset = "";  location_clouds = 0;  location_vis = 0;  location_uv = 0;  location_weather_description = "";
-  if (!WIFI_connected) {    
-                        updateForecast++;   if (updateForecast >= 1440) weatherString = tWeatrNot;    
-                        return;  }  
+  if (!WIFI_connected) {  //если к файфай не подключен  
+                          if (updateForecast++ >= 1440) weatherString = tWeatrNot;    
+                          return;  
+                        }  
    if (printCom) {    printTime();    Serial.println("Получение прогноза погоды в городе " +  cityID0 + "...");   }  //печать в каом порт если разрешена
   Serial.println("start conect -1");
   
   // WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000);
    if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000))  //если не удалось получить айпи то прерываем обновление погоды 
-          {if (printCom) {  Serial.println("получен ip из имени "); } }
-   else  {if (printCom) {  Serial.println("Не получен ip из имени "); }return; }
+         {if (printCom) {  Serial.println("получен ip из имени "); } }
+   else  {if (printCom) {  Serial.println("Не получен ip из имени "); } if (updateForecast++ >= 1440) weatherString = tWeatrNot; return; }
  
   // if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP)){printStringWithShift("ok ", 25);} else  {printStringWithShift("no ", 25);} 
    //Serial.print("pogodaIP ="); Serial.println(pogodaIP); 
@@ -25,7 +26,7 @@ void getWeatherData0() {
   } 
   else 
   { 
-     if (printCom) Serial.println("  Not connection server!!!"); updateForecast++;  if (updateForecast >= 1440) weatherString = tWeatrNot;   return;  
+     if (printCom) Serial.println("  Not connection server!!!");  if (updateForecast++ >= 1440) weatherString = tWeatrNot;   return;  
   }
 
   HTTPClient http;
