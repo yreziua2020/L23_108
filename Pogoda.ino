@@ -11,9 +11,9 @@ void getWeatherData0() {
   Serial.println("start conect -1");
   
   // WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000);
-   if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000))  //если не удалось получить айпи то прерываем обновление погоды 
+   if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000)) //если инет есть то бысто даже если непверный адрес// при отсутвиии интернет подвисает по  таймауту 
          {if (printCom) {  Serial.println("получен ip из имени "); } }
-   else  {if (printCom) {  Serial.println("Не получен ip из имени "); } if (updateForecast++ >= 1440) weatherString = tWeatrNot; return; }
+   else  {if (printCom) {  Serial.println("Не получен ip из имени "); } if (updateForecast++ >= 1440) weatherString = tWeatrNot; return; } //если не удалось получить айпи то прерываем обновление погоды 
  
   // if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP)){printStringWithShift("ok ", 25);} else  {printStringWithShift("no ", 25);} 
    //Serial.print("pogodaIP ="); Serial.println(pogodaIP); 
@@ -122,7 +122,7 @@ void getWeatherData0() {
 }
 
 // ============================================================================//
-//               Беремо ПРОГНОЗ!!! погоди з сайту https://www.weatherbit.io     //
+//               Беремо ПРОГНОЗ!!!  на завтра погоди з сайту https://www.weatherbit.io     //
 // ============================================================================//
 void getWeatherDataz0() {
   if (!WIFI_connected) {    updateForecasttomorrow++;    if (updateForecast >= 360) weatherStringZ = "";    return; }
@@ -195,7 +195,7 @@ void getWeatherDataz0() {
     weatherStringZav += "             ";
    }
  
-  if (printCom) {Serial.println("         Getting weather forecast for tomorrow - is OK.");}
+  if (printCom) {Serial.println("         Получение прогноза погоды на завтра - is OK.");}
    
   updateForecasttomorrow = 0;
 }
