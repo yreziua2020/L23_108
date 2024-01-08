@@ -72,24 +72,24 @@ void bip_privet()  {
 #ifdef _ZVUK  
   //int8_t pov_grom;  //для повышения громкости еслине максимум
     ////if (gromk<25 ) {pov_grom=gromk+3;} else pov_grom=30; //если громкость меньше 25 то увеличиваем на 5 если бельше то прото увиличиваем на максимум
-     if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1) {command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,216); }//command2_bilo(Fold,7,216);}   //216if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,216);} else {command2_bilo(Fold,7,218);}
-     else if (hour>=kuOn+4 && hour<kuOff){                          command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,216); }  //play_frazi(1 ,216 ); }//command2_bilo(Fold,7,216);} //if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,216);} else {command2_bilo(Fold,7,218);}
+     if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1) {command2(Volu,0,gromk);delay(200);command2(Fold,7,216); }//command2_bilo(Fold,7,216);}   //216if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,216);} else {command2_bilo(Fold,7,218);}
+     else if (hour>=kuOn+4 && hour<kuOff){                          command2(Volu,0,gromk);delay(200);command2(Fold,7,216); }  //play_frazi(1 ,216 ); }//command2_bilo(Fold,7,216);} //if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,216);} else {command2_bilo(Fold,7,218);}
 #endif  
 }  
 //--------------------------------------------------  Вайфай ------------------------------------------
 void bip_Wi_Fi() { 
 #ifdef _ZVUK  
      if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1)    
-     {command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,210); } //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
+     {command2(Volu,0,gromk);delay(200);command2(Fold,7,210); } //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
      else 
      if (hour>=kuOn+4 && hour<kuOff){
-     command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,210);}     //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
+     command2(Volu,0,gromk);delay(200);command2(Fold,7,210);}     //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
 #endif  
  }  //звук аськи при соединии с файфаем
 //---------------------------------------------------------------------------------------------------------
 void bip2()  {     //при внисения изминеий на странице
 #ifdef _ZVUK   
-  command2_bilo(Volu,0,gromk);delay(100); command2_bilo(Fold,7,218);  
+  command2_bilo(Volu,0,gromk);delay(100); command2_bilo(Fold,7,218);  Serial.println("внисение изминений на странице") ;
 #endif  
 } 
 void bip_restart() {  //211- типа завершения
