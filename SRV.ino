@@ -491,7 +491,7 @@ void handle_timepc() {
   saveConfig();
  
  //pr_bip_vre3=1; 
- play_frazi(5 ,212,  day+40, month+80, hour , minute+100);   //dayOfWeek+30,
+ play_frazi(6 ,212, 212, day+40, month+80, hour , minute+100);   //dayOfWeek+30,
  
   server.send(200, "text/plain", "OK");
 }
