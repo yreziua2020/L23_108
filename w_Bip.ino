@@ -109,7 +109,8 @@ void bip_restart2()  {
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 void bip_RIGHT()  { 
 #ifdef _ZVUK   //меньше быстрее прокрутка текста
-  printStringWithShift(" Право", 5);  command_Ot(Volu,0,gromk);delay(200);command2_bilo(Fold,7,235);delay(1000);
+  printStringWithShift(" Право", 5);  command_Ot(Volu,0,gromk);delay(200);command2_bilo(3,0,3);
+  //command2_bilo(Fold,7,235);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
