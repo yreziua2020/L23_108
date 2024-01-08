@@ -14,7 +14,7 @@ for (int i = 0; i < 16; i++) {
  
     
   if (printCom) Serial.println("");
-  pinMode(16,INPUT); 
+  pinMode(12,INPUT); 
   //digitalWrite(BUT_PIN, !butStat);  delay(500);
   initMAX7219();
   sendCmdAll(CMD_SHUTDOWN, 1);  sendCmdAll(CMD_INTENSITY, 1);
