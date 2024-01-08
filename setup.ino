@@ -87,7 +87,7 @@ for (int i = 0; i < 16; i++) {
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
 #endif 
 //-------------------------PAJ7620-------------------------------
-
+  pinMode(PIN_MP3,INPUT_PULLUP );
   attachInterrupt(PIN_MP3, btnIsr, RISING);
 
 }
