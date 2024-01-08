@@ -1,4 +1,4 @@
-const int8_t PIN_MP3=15; //пин статуса плеера
+const int8_t PIN_MP3=12; //пин статуса плеера
 static uint8_t otp_kom2; //отправить команду если  ноль то отправляем комаду плееру
 static uint32_t myTimer_pl2;
 uint16_t masiv[9];
