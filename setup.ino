@@ -90,6 +90,6 @@ for (int i = 0; i < 16; i++) {
   pinMode(PIN_MP3,INPUT_PULLUP );
   attachInterrupt(PIN_MP3, btnIsr, RISING);
 
-  command2_bilo(3,0,3); delay(500);
+ // command2_bilo(3,0,3); delay(500);
 
 }
