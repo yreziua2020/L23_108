@@ -260,7 +260,7 @@ bool saveConfig() {
   if(serializeJson(doc, configFile)==0){if (printCom) {Serial.println(F("Failed to write to file"));}  } 
   if(printCom) {    printTime();    Serial.print("Save Config : ");    Serial.println(jsonConfig);  }
   configFile.close();
-  bip2();
+  /////bip2();
   return true;
 }
 //======================================================

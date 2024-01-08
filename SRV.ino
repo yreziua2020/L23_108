@@ -511,7 +511,7 @@ void handle_weather_update() {
       }
     }
     ////if(sensorUl==9)getNarodmon();
-    //bip2();
+    /////bip2();
     server.send(200, "text/plain", "OK");
   }
 }
