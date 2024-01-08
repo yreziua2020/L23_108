@@ -490,7 +490,7 @@ void handle_timepc() {
   localEpoc = (hour * 60 * 60 + minute * 60 + second);
   saveConfig();
  
- pr_bip_vre3=1;
+ pr_bip_vre3=1; play_frazi(6 ,212, dayOfWeek+30, day+40, month+80, hour , minute+100);
  
   server.send(200, "text/plain", "OK");
 }
