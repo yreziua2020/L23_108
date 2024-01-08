@@ -75,7 +75,7 @@ for (int i = 0; i < 16; i++) {
   for (byte i = 0; i < 6; i++) {   pressure_array[i] = pressure2;  time_array[i] = i; }            // забить массив времени числами 0 - 5 // забить весь массив текущим давлением
  */
 #ifdef _ZVUK
-   command2(Volu,0,gromk);
+   command2_bilo(Volu,0,gromk);
 #endif 
  
   //timeUpdateNTP();
@@ -87,5 +87,7 @@ for (int i = 0; i < 16; i++) {
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
 #endif 
 //-------------------------PAJ7620-------------------------------
+
+  attachInterrupt(PIN_MP3, btnIsr, RISING);
 
 }

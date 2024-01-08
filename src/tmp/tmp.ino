@@ -3,7 +3,7 @@
 //void bip4()       {   if (digitalRead(MP3_PIN)==1) {mp3_play_file_in_fol (2,3);} }  //естли играет смкелодия то звук ненужен
 //void bip()        {  mp3_set_volume (gromk);delay(100); mp3_play_file_in_fol (11,3);}   //201
 //-------------------bbbbbbb--------------------------------------------------------------------------
-//void bip()          {   command2(Fold,11,13); }   //201  двойное нажатие нопки
+//void bip()          {   command2_bilo(Fold,11,13); }   //201  двойное нажатие нопки
 
 
  /* 
@@ -39,14 +39,14 @@ void bip_v7re4()   // проговариваем время с веба
       st_pler=1;    //нужно для того чтоб включить первую мелодию не дожидаясь ответа
         switch (++caun_zv)    
             {
-            case 1:{command2(15,7,212);delay(500); break;}
-          //case 2:{if(wr_tmp==1) {command2(15,7,212); delay(100);}else {command2(15,7,dayOfWeek+30); delay(100);} break;}
-            case 2:{if(wr_tmp==1) {command2(15,7,212);delay(500);}else {command2(15,7,dayOfWeek+30); delay(100);} break;}
-            //case 2:{if(wr_tmp==1) {command2(15,7,dayOfWeek+30);delay(100);}else {command2(15,7,dayOfWeek+30); delay(100);} break;}
-            case 3:{command2(15,7,day+40); delay(100); break;} 
-            case 4:{command2(15,7,month+80); delay(100); break;}
-            case 5:{command2(15,7,hour); delay(100);  break;}
-            case 6:{command2(15,7,minute+100);delay(100);  break;}
+            case 1:{command2_bilo(15,7,212);delay(500); break;}
+          //case 2:{if(wr_tmp==1) {command2_bilo(15,7,212); delay(100);}else {command2_bilo(15,7,dayOfWeek+30); delay(100);} break;}
+            case 2:{if(wr_tmp==1) {command2_bilo(15,7,212);delay(500);}else {command2_bilo(15,7,dayOfWeek+30); delay(100);} break;}
+            //case 2:{if(wr_tmp==1) {command2_bilo(15,7,dayOfWeek+30);delay(100);}else {command2_bilo(15,7,dayOfWeek+30); delay(100);} break;}
+            case 3:{command2_bilo(15,7,day+40); delay(100); break;} 
+            case 4:{command2_bilo(15,7,month+80); delay(100); break;}
+            case 5:{command2_bilo(15,7,hour); delay(100);  break;}
+            case 6:{command2_bilo(15,7,minute+100);delay(100);  break;}
             case 7:{caun_zv=0; pr_bip_vre3=0;st_pler=0;delay(100); break;}
             default:{  break;}
          

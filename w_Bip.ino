@@ -10,12 +10,12 @@ uint8_t b = 0;
         myTimer_pl= millis(); //запускаем отсчет ели вдруг не будет ответа чтобы не стопорить а все обновить
         switch (++caun_zv)    
             {
-          case 1:{delay(100);clr();showAnimClock(); refreshAll();command2(15,7,212);break;}
-          case 2:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,dayOfWeek+30);  break;} }
-          case 3:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,day+40);break;}  }
-          case 4:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,month+80); break;}}
-          case 5:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2(15,7,hour); break;}}
-          case 6:{ if (f_kuku==1 ){caun_zv=0;  f_kuku=0;  break;} else {command2(15,7,minute+100); break;}}  //когда куку не возпроизводило минуты , минуты только при вебе 
+          case 1:{delay(100);clr();showAnimClock(); refreshAll();command2_bilo(15,7,212);break;}
+          case 2:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,dayOfWeek+30);  break;} }
+          case 3:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,day+40);break;}  }
+          case 4:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,month+80); break;}}
+          case 5:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,hour); break;}}
+          case 6:{ if (f_kuku==1 ){caun_zv=0;  f_kuku=0;  break;} else {command2_bilo(15,7,minute+100); break;}}  //когда куку не возпроизводило минуты , минуты только при вебе 
           case 7:{caun_zv=0; pr_bip_vre3=0; one_f1=2; one_f2=2; one_f3=2; one_f4=2; one_f5=2; one_f6=2; one_f7=2; break;}
           default:{  break;}
          }
@@ -38,7 +38,7 @@ uint8_t b = 0;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-void command2(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без ответа о файле вроде
+void command2_bilo(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без ответа о файле вроде
 {
  // f_otv=1;
     //7EFF060F0007D4EF
@@ -72,56 +72,56 @@ void bip_privet()  {
 #ifdef _ZVUK  
   //int8_t pov_grom;  //для повышения громкости еслине максимум
     ////if (gromk<25 ) {pov_grom=gromk+3;} else pov_grom=30; //если громкость меньше 25 то увеличиваем на 5 если бельше то прото увиличиваем на максимум
-     if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1) {command2(Volu,0,gromk);delay(200);command2(Fold,7,216);}   //216if (Wiat_otv(100)) {delay(100);command2(Fold,7,216);} else {command2(Fold,7,218);}
-     else if (hour>=kuOn+4 && hour<kuOff){                          command2(Volu,0,gromk);delay(200);command2(Fold,7,216);} //if (Wiat_otv(100)) {delay(100);command2(Fold,7,216);} else {command2(Fold,7,218);}
+     if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1) {command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,216);}   //216if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,216);} else {command2_bilo(Fold,7,218);}
+     else if (hour>=kuOn+4 && hour<kuOff){                          command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,216);} //if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,216);} else {command2_bilo(Fold,7,218);}
 #endif  
 }  
 //--------------------------------------------------  Вайфай ------------------------------------------
 void bip_Wi_Fi() { 
 #ifdef _ZVUK  
      if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1)    
-     {command2(Volu,0,gromk);delay(200);command2(Fold,7,210); } //20wait_play();if (Wiat_otv(100)) {delay(100);command2(Fold,7,210);} else {command2(Fold,7,218);}
+     {command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,210); } //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
      else 
      if (hour>=kuOn+4 && hour<kuOff){
-     command2(Volu,0,gromk);delay(200);command2(Fold,7,210);}     //20wait_play();if (Wiat_otv(100)) {delay(100);command2(Fold,7,210);} else {command2(Fold,7,218);}
+     command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,210);}     //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
 #endif  
  }  //звук аськи при соединии с файфаем
 //---------------------------------------------------------------------------------------------------------
 void bip2()  {     //при внисения изминеий на странице
 #ifdef _ZVUK   
-  command2(Volu,0,gromk);delay(100); command2(Fold,7,218);  
+  command2_bilo(Volu,0,gromk);delay(100); command2_bilo(Fold,7,218);  
 #endif  
 } 
 void bip_restart() {  //211- типа завершения
 #ifdef _ZVUK
-  printStringWithShift(" R_Web", 25); command2(Volu,0,gromk);delay(200);command2(Fold,7,211);delay(3400);
+  printStringWithShift(" R_Web", 25); command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,211);delay(3400);
 #endif
 }  
 void bip_restart_up(){ 
 #ifdef _ZVUK  
-  printStringWithShift(" R_Upd", 25); command2(Volu,0,gromk);delay(200);command2(Fold,7,219);
+  printStringWithShift(" R_Upd", 25); command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,219);
 #endif  
 }                                    //тмпа зарчдки оружия
 void bip_restart2()  { 
 #ifdef _ZVUK   
-  printStringWithShift("Resta", 15);  command2(Volu,0,gromk);delay(200);command2(Fold,7,218);delay(3400);
+  printStringWithShift("Resta", 15);  command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,218);delay(3400);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 void bip_RIGHT()  { 
 #ifdef _ZVUK   //меньше быстрее прокрутка текста
-  printStringWithShift(" Право", 5);  command_Ot(Volu,0,gromk);delay(200);command2(Fold,7,235);delay(1000);
+  printStringWithShift(" Право", 5);  command_Ot(Volu,0,gromk);delay(200);command2_bilo(Fold,7,235);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
 void bip_LEFT()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Лево", 5);  command_Ot(Volu,0,gromk);delay(200);command2(Fold,7,236);delay(1000);
+  printStringWithShift(" Лево", 5);  command_Ot(Volu,0,gromk);delay(200);command2_bilo(Fold,7,236);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
 void bip_UP()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Верх", 5);  command2(Stop,0,0);delay(1000);
+  printStringWithShift(" Верх", 5);  command2_bilo(Stop,0,0);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
@@ -130,13 +130,13 @@ void bip_UP()  {
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------праздники напоминаия---------------------------------------------
-void bip_prazn()  {   command2(Volu,0,gromk); delay(100); command2(Fold,7,198);  delay(500);}   //11
+void bip_prazn()  {   command2_bilo(Volu,0,gromk); delay(100); command2_bilo(Fold,7,198);  delay(500);}   //11
 //--------------------------------будильник
 void bip_bud_vs()  //Вызываеться один раз когда сбрасываються все флаги будильника
 {     unsigned long t_tmp = millis() ;  
          
      delay(100); 
-     command2(ADVE,0,hour);  //проиграть файль из рекламы
+     command2_bilo(ADVE,0,hour);  //проиграть файль из рекламы
      t_tmp = millis() ;
      uint32_t wrem=0;
  //*************ждем остутвияя даных поидеи говорит поэтому данных нет**************************
@@ -179,7 +179,7 @@ Serial.println (" даные дальше 4");
  //***************************************
  //***************************************   
      delay(1500); 
-     command2(ADVE,0,minute+100);  //проиграть файль из рекламы
+     command2_bilo(ADVE,0,minute+100);  //проиграть файль из рекламы
      t_tmp = millis() ;
 //*************************поидеи говорит поэтому данных нет**************
  Serial.println (" начало ожидание даных 2 ");
@@ -223,12 +223,12 @@ void bip_budil() ///срабатывание будильника
       {   
         //if  ((gromk-15) >0) voll=(gromk-15); else  voll=10;
            if  (voll>zad_vool) voll=zad_vool;
-           command2(Volu,0,voll);   delay(200);
+           command2_bilo(Volu,0,voll);   delay(200);
            trek= random(222,242);  //случайное  число в таких приделах
-          command2(Fold,7,trek);  //проиграть файль trek из папки 7 
+          command2_bilo(Fold,7,trek);  //проиграть файль trek из папки 7 
           fl_bud_mp=1; 
       } 
-      else  {   if (voll++<gromk) { Serial.println ("громкость ");delay(100); command2(Volu,0,voll); } }  //использую else чтобы в первый раз не менять громкость а только включить трек //для плаввнго включения громкости //17
+      else  {   if (voll++<gromk) { Serial.println ("громкость ");delay(100); command2_bilo(Volu,0,voll); } }  //использую else чтобы в первый раз не менять громкость а только включить трек //для плаввнго включения громкости //17
 #endif 
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
