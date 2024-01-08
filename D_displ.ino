@@ -22,7 +22,7 @@ void printStringWithShift(const char* s, int shiftDelay) {                      
       //if (pr_bip_vre3) {bip_vre4();}  //звук с веба
       if (pr_bip_full) {b_time_full_ad();}
       //if (f_kuku) {bip_vre4();}  // кушка когда бежит стока чтобы тоже звук воспроизводить
-      if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1) {bip_vre4();} 
+      //if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1) {bip_vre4();} 
      buttonInter(); if(butMode !=0) {  clr(); refreshAll(); runningLine=0; return; } //анадлиз интрвала нажатия хлавиши //при любом нажатии прекращаем бегущую сторку наверное
   }
 }
