@@ -7,7 +7,7 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
     {   // Serial.println("");
         intFlag=0;////для прерывания
         
-        if (caun_zv==masiv[0]) {Serial.println("");Serial.print("cmd");Serial.print(caun_zv);Serial.print(" ");caun_zv=0; pr_bip_full=0;  return;}
+        if (caun_zv==masiv[0]) {Serial.println("");Serial.print("cmd");Serial.print(caun_zv);Serial.print(" ");caun_zv=0; pr_bip_full=0; f_kuku=0;   return;}
          caun_zv++;
         Serial.println();Serial.print("cmd");Serial.print(caun_zv);Serial.print(" ");
         if (caun_zv ==1) { if (digitalRead(PIN_MP3))  {f_Fold_ADVE=1; }  else  {f_Fold_ADVE=0;} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
