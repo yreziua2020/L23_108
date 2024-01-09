@@ -457,7 +457,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
   if (f_iz_znach==3) bip_LEFT();
   } 
 }
-else { if (printCom) Serial.println("говорим фразу. paj7620_t в следующий раз обнновим");}
+//else { if (printCom) Serial.println("говорим фразу. paj7620_t в следующий раз обнновим");}
  //paj7620_t.obrabotka_paj7620();
   //if (f_iz_znach!=f_iz_znach) {f_iz_znach=znach_t; Serial.println(znach_t);}
 #endif 
