@@ -1,8 +1,11 @@
 void bd_sql() {
- 
+   if (!f_govorit_fraz)  //если говорим фразу то не опрашиваем датчики
+  {
+
+ Serial.println(" Connection");
 if (!ESPclient.connect(DB_host,Port)) {
-    //Serial.print(DB_host);
-    //Serial.println(" - Connection failed.");
+    Serial.print(DB_host);
+    Serial.println(" - Connection failed.");
     ESPclient.stop();
   }
     if (ESPclient.connect(DB_host, Port))
@@ -33,6 +36,6 @@ if (!ESPclient.connect(DB_host,Port)) {
     
     }
 
- 
+  } //  if (!f_govorit_fraz) 
   
 }

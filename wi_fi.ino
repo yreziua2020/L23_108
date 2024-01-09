@@ -14,18 +14,18 @@ void wifiConnect() {    //printTime -вывод времени в ком пор�
         { 
           String aaa=WiFi.localIP().toString() + "                ";  if(NUM_MAX > 4) {for (int j=0; j<NUM_MAX - 4; j++) aaa += "  "; }   clr(); printStringWithShift(" IP: ", 15); printStringWithShift(aaa.c_str(), 25);
           
-          //bip_privet();
-          printStringWithShift(_ver, 25);
           bip_privet();
+          printStringWithShift(_ver, 25);
+         
          }  //Печатаем ip
           firstStart=1; timeUpdateNTP(); amountNotStarts=0;   return;
     }
-    //bip_Wi_Fi();  
+    bip_Wi_Fi();  
    // mp3_play_file_in_fol (6,i);wait_play();  
     
     if (printCom) Serial.print(".");
     if (!firstStart)  { int j=0;  while (j<500) {if (j%10 == 0) showAnimWifi(i);   j++; delay(1);   }   }  // showAnimWifi анимация для вайфай
-    bip_Wi_Fi();  //тут и так пау за на проговорку
+   
      delay (700);//800
   } //for
   

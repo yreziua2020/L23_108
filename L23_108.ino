@@ -471,8 +471,8 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
 #endif 
  
     //MPR121_update(); 
-    //if(mp3_com.available()){ answer(100);}
-#ifdef d_102
+    //if(mp3_com.available()){ answer(100);} //102
+#ifdef d_104
            //для 102 адреса отправляем данные в sql температуры
        if (second==45) {  if (!f_otpr_skl){f_otpr_skl=1;bd_sql(); }
        }  else   { f_otpr_skl=0;}    
