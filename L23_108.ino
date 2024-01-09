@@ -446,8 +446,8 @@ void loop() {
          if ( (millis()-pl_timer) > 25000)  
        {  pl_timer=millis();
 
-          play_frazi(5 ,212,  day+40, month+80, hour , minute+100); 
-          delay(100); 
+          ///play_frazi(5 ,212,  day+40, month+80, hour , minute+100); 
+          //delay(100); 
        }
   
   //-------------------------PAJ7620-------------------------------  
@@ -460,6 +460,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
   //Serial.println(paj7620.znach_t);
   if(f_iz_znach!=-1) {Serial.println(f_iz_znach);
   if (f_iz_znach==0) bip_UP();
+  if (f_iz_znach==2) bip_DOW();
   if (f_iz_znach==1) bip_RIGHT();
   if (f_iz_znach==3) bip_LEFT();
   } 
