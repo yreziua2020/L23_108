@@ -81,10 +81,10 @@ void bip_Wi_Fi() {
 #ifdef _ZVUK  
      if ((hour>=kuOn  && hour<kuOff)&& dayOfWeek!=7&&dayOfWeek!=1)    
      //{command2(Volu,0,gromk);delay(200);command2(Fold,7,210); } //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
-     {command2(Volu,0,gromk);delay(200);play_frazi(1 ,210 ); while(pr_bip_full) {b_time_full_ad();}  } //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
+     {command2(Volu,0,gromk);delay(200);play_frazi(1 ,210 ); while(pr_bip_full) { delay(1); b_time_full_ad();}  } //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
      else 
      if (hour>=kuOn+4 && hour<kuOff){
-     command2(Volu,0,gromk);delay(200);play_frazi(1 ,210 ); while(pr_bip_full) {b_time_full_ad();}}     //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
+     command2(Volu,0,gromk);delay(200);play_frazi(1 ,210 ); while(pr_bip_full) {delay(1);b_time_full_ad();}}     //20wait_play();if (Wiat_otv(100)) {delay(100);command2_bilo(Fold,7,210);} else {command2_bilo(Fold,7,218);}
 #endif  
  }  //звук аськи при соединии с файфаем
 //---------------------------------------------------------------------------------------------------------
