@@ -10,9 +10,9 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
         if (caun_zv2==masiv[0]) {Serial.println("");Serial.print("cmd");Serial.print(caun_zv2);Serial.print(" ");caun_zv2=0; pr_bip_full=0; f_kuku=0; pr_bip_vre3=0;  return;}
          caun_zv2++;
         Serial.println();Serial.print("cmd");Serial.print(caun_zv2);Serial.print(" ");
-        if (caun_zv2 ==1) { if (digitalRead(PIN_MP3))  {f_Fold_ADVE=1; }  else  {f_Fold_ADVE=0;} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
+        if (caun_zv2 ==1) { if (digitalRead(PIN_MP3))  {Serial.println("Input hide"); f_Fold_ADVE=1; }  else  {f_Fold_ADVE=0; Serial.println("Input low");} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
     
-         if (f_Fold_ADVE) { Serial.print("старт_F"); command2(Fold,7,masiv[caun_zv2]); Serial.print(masiv[caun_zv2]); } else  {Serial.print("старт_A="); Serial.print(masiv[caun_zv2]); command2(ADVE,0,masiv[caun_zv2]); }
+         if (f_Fold_ADVE) { Serial.print("старт_F");  Serial.print(masiv[caun_zv2]); command2(Fold,7,masiv[caun_zv2]); } else  {Serial.print("старт_A="); Serial.print(masiv[caun_zv2]); command2(ADVE,0,masiv[caun_zv2]); }
           
         
         //command2(masiv[caun_zv][0],masiv[caun_zv][1],masiv[caun_zv][2]);     
