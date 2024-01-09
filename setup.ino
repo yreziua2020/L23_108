@@ -1,9 +1,8 @@
 void setup() {
 
-uint32_t seed = 0;
-for (int i = 0; i < 16; i++) {
-  seed *= 4; seed += analogRead(A0) & 3;  delay(1);  randomSeed(seed); //устанавливаю какоето случайное чмсло для функции random проверял очень разные числа получаются 1414862165 290805013
-}
+uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(A0) & 3;  delay(1);  randomSeed(seed); } //устанавливаю какоето случайное чмсло для функции random проверял очень разные числа получаются 1414862165 290805013
+
+
 
   Wire.begin();
   
@@ -13,6 +12,9 @@ for (int i = 0; i < 16; i++) {
    ////mp3_set_serial (mySerial); 
  
     
+  pinMode(PIN_MP3,INPUT_PULLUP );
+  attachInterrupt(PIN_MP3, btnIsr, RISING);
+
   if (printCom) Serial.println("");
   //pinMode(12,INPUT); 
   //digitalWrite(BUT_PIN, !butStat);  delay(500);
@@ -87,8 +89,7 @@ for (int i = 0; i < 16; i++) {
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
 #endif 
 //-------------------------PAJ7620-------------------------------
-  pinMode(PIN_MP3,INPUT_PULLUP );
-  attachInterrupt(PIN_MP3, btnIsr, RISING);
+
 
  // command2_bilo(3,0,3); delay(500);
 
