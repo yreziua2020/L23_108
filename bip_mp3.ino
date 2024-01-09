@@ -37,7 +37,7 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
 
     //if ( pr_bip_full) obrabotka_inp_A(); else obrabotka_inp_A_adv();
 
-  if ( f_Fold_ADVE){  Serial.print(" intFlag=");  Serial.print(intFlag);   if(intFlag>0){ otp_kom2=0; Serial.print("завершено_F"); }}  else { if(intFlag>1){ otp_kom2=0; Serial.print("завершено_A");} }
+  if ( f_Fold_ADVE){ /* Serial.print(" intFlag=");  Serial.print(intFlag); */  if(intFlag>0){ otp_kom2=0; Serial.print("завершено_F"); }}  else { if(intFlag>1){ otp_kom2=0; Serial.print("завершено_A");} }
   //if ( pr_bip_adve){  if(intFlag>1){ otp_kom=0; Serial.print("завершено_A"); }}
 
 }
