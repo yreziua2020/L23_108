@@ -1,44 +1,5 @@
-//------------------------------------ говорит время при обновлении времени с веб страици---------------
-void bip_vre4()   // проговариваем время с веба одинаковое добавил только проговор минут
-{ 
-static uint8_t otp_kom; //отправить команду если  ноль то отправляем комаду плееру
-uint8_t b = 0;
-//char b = 0;
-     
-    if(otp_kom==0)   
-    {  
-        myTimer_pl= millis(); //запускаем отсчет ели вдруг не будет ответа чтобы не стопорить а все обновить
-        switch (++caun_zv)    
-            {
-          case 1:{delay(100);clr();showAnimClock(); refreshAll();command2_bilo(15,7,212);break;}
-          case 2:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,dayOfWeek+30);  break;} }
-          case 3:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,day+40);break;}  }
-          case 4:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,month+80); break;}}
-          case 5:{if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1 ){caun_zv++;} else {command2_bilo(15,7,hour); break;}}
-          case 6:{ if (f_kuku==1 ){caun_zv=0;  f_kuku=0;  break;} else {command2_bilo(15,7,minute+100); break;}}  //когда куку не возпроизводило минуты , минуты только при вебе 
-          case 7:{caun_zv=0; pr_bip_vre3=0; one_f1=2; one_f2=2; one_f3=2; one_f4=2; one_f5=2; one_f6=2; one_f7=2; break;}
-          default:{  break;}
-         }
-         otp_kom=1; 
-     } 
-      else
-      {
-        if (millis() - myTimer_pl >= 3000) {  otp_kom=0;i_bat = 0; } // Serial.println("Привышенно время ожидания ответа для команды"); для того чтобы обнолить если вдруг не прийдет ответ, чтобы следующая команда выполнилась, а также повторно с работала    
-      }
-        //если пришел ответ влетаем в цикл
-        while((Serial.available())&&(i_bat < 20) ) //ждем пока не появляться данные в порте, как только появяться вычитываем 20 байт два ответа по 10
-        {   //unsigned long t_tmp = millis()  ;
-          delay(5); b=Serial.read(); delay(1); ansbuf[i_bat]=b;  i_bat++; delay(1);   //можно не вычитывать не испльзую нужен фак окончание передачи данных
-          //Serial.print(sbyte2hex(ansbuf[i_bat]));
-          if( i_bat == 20) { i_bat = 0;  otp_kom=0;     }   //после получения ответа в 20 байт можно отправлять следующую команду  => otp_kom=0;
-          //if (millis() - t_tmp >= 3000) {i_bat = 0;  otp_kom=0; break;} //для того чоб выйти с цикла по привышению времени на всякий случай думаю лишнее 
-          //если даные закочаться выйдет, а если даные незакончятся то выйдет по условию что получено 20  байт
-        } 
-}
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
-void command2_bilo(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без ответа о файле вроде
+void tcommand2_bilo(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без ответа о файле вроде
 {
  // f_otv=1;
     //7EFF060F0007D4EF
@@ -53,8 +14,8 @@ void command2_bilo(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без от
   for (uint8_t i = 0; i < 8; i++) {   Serial.write(cmdbuf[i]);   }
 }
 //-------------------------------------------------------------------------------------
-void command_Ot(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)  //вроде с ответом   cmdbuf[4] = 0x01; данный байт 
-{
+void command_Ot2(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)  //вроде с ответом   cmdbuf[4] = 0x01; данный байт 
+{   //будет отправляться ответ сразуже после получение даных -- подтверждение приема
   cmdbuf[0] = 0x7e;
   cmdbuf[1] = 0xFF;
   cmdbuf[2] = 0x06;
@@ -92,40 +53,40 @@ void bip_Wi_Fi() {
 //---------------------------------------------------------------------------------------------------------
 void bip2()  {     //при внисения изминеий на странице
 #ifdef _ZVUK   
-  command2_bilo(Volu,0,gromk);delay(100); command2_bilo(Fold,7,218);  Serial.println("внисение изминений на странице") ;
+  command2(Volu,0,gromk);delay(100); command2(Fold,7,218);  Serial.println("внисение изминений на странице") ;
 #endif  
 } 
 void bip_restart() {  //211- типа завершения
 #ifdef _ZVUK
-  printStringWithShift(" R_Web", 25); command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,211);delay(3400);
+  printStringWithShift(" R_Web", 25); command2(Volu,0,gromk);delay(200);command2(Fold,7,211);delay(3400);
 #endif
 }  
 void bip_restart_up(){ 
 #ifdef _ZVUK  
-  printStringWithShift(" R_Upd", 25); command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,219);
+  printStringWithShift(" R_Upd", 25); command2(Volu,0,gromk);delay(200);command2(Fold,7,219);
 #endif  
 }                                    //тмпа зарчдки оружия
 void bip_restart2()  { 
 #ifdef _ZVUK   
-  printStringWithShift("Resta", 15);  command2_bilo(Volu,0,gromk);delay(200);command2_bilo(Fold,7,218);delay(3400);
+  printStringWithShift("Resta", 15);  command2(Volu,0,gromk);delay(200);command2(Fold,7,218);delay(3400);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 void bip_RIGHT()  { 
 #ifdef _ZVUK   //меньше быстрее прокрутка текста
-  printStringWithShift(" Право", 5);  command_Ot(Volu,0,gromk);delay(200);command2_bilo(3,0,3);
+  printStringWithShift(" Право", 5);  command2(Volu,0,gromk);delay(200);command2(3,0,3);
   //command2_bilo(Fold,7,235);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
 void bip_LEFT()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Лево", 5);  command_Ot(Volu,0,gromk);delay(200);command2_bilo(Fold,7,236);delay(1000);
+  printStringWithShift(" Лево", 5);  command2(Volu,0,gromk);delay(200);command2(Fold,7,236);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
 void bip_UP()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Верх", 5);  command2_bilo(Stop,0,0);delay(1000);
+  printStringWithShift(" Верх", 5);  command2(Stop,0,0);delay(1000);
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
@@ -139,105 +100,27 @@ void bip_DOW()  {
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------праздники напоминаия---------------------------------------------
-void bip_prazn()  {   command2_bilo(Volu,0,gromk); delay(100); command2_bilo(Fold,7,198);  delay(500);}   //11
+void bip_prazn()  {   command2(Volu,0,gromk); delay(100); command2(Fold,7,198);  delay(500);}   //11
 //--------------------------------будильник
-void bip_bud_vs()  //Вызываеться один раз когда сбрасываються все флаги будильника
-{     unsigned long t_tmp = millis() ;  
-         
-     delay(100); 
-     command2_bilo(ADVE,0,hour);  //проиграть файль из рекламы
-     t_tmp = millis() ;
-     uint32_t wrem=0;
- //*************ждем остутвияя даных поидеи говорит поэтому данных нет**************************
- Serial.println (" начало ожидание даных ");
-     while(!Serial.available()) 
-      {  //пока нет даных ждеи,но если привышено будет время ожидание то прекращаем цикл
-        yield(); //использую чтобы сбросить сторожевой таймер в цикличиских выражениях, а работает в паре с delay, в ней пожно вызывать обработки кнопопок пока работает  delay
-        if (millis() - t_tmp >= 8000) {  break;} //для того чоб выйти с цикла по привышению времени на всякий случай
-        wrem++; //для фиксации было превышено ожидание
-       }
-Serial.println (" даных пошли ");
-
- //***************************************
-      i_bat = 0;
-      while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
-      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
-      i_bat++; delay(1); 
-      if( i_bat == 20) { for (uint32_t i=0; i<20; i++){Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;  }
-      }//если даные закочаться выйдет, а если даные незакончятся то выйдет по условию что получено 20  байт
-Serial.println (" даные дальше ");
-      i_bat = 0;
-      while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
-      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
-      i_bat++; delay(1); 
-      if( i_bat == 20) { for (uint32_t i=0; i<20; i++){Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;  }
-      }
-Serial.println (" даные дальше 2");
-
-Serial.println (" даные дальше 3");
-      i_bat = 0;
-      while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
-      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
-      i_bat++; delay(1); 
-      if( i_bat == 20) { for (uint32_t i=0; i<20; i++){Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;  }
-      }
-Serial.println (" даные дальше 4");
-
-
-    Serial.println("первая фраза");
- //***************************************
- //***************************************   
-     delay(1500); 
-     command2_bilo(ADVE,0,minute+100);  //проиграть файль из рекламы
-     t_tmp = millis() ;
-//*************************поидеи говорит поэтому данных нет**************
- Serial.println (" начало ожидание даных 2 ");
-     while(!Serial.available()) 
-      {  //пока нет даных ждеи,но если привышено будет время ожидание то прекращаем цикл
-        yield(); //использую чтобы сбросить сторожевой таймер в цикличиских выражениях, а работает в паре с delay, в ней пожно вызывать обработки кнопопок пока работает  delay
-        wrem++;       
-        if (millis() - t_tmp >= 8000) { break;} //для того чоб выйти с цикла по привышению времени на всякий случай
-       }
-      //Serial.print("нет даных в порте wrem=");   Serial.println(wrem);
-//******************************после проговора по идеи даные долны пойти*********
-Serial.println (" даных пошли 2 ");
-     i_bat = 0;
-     while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
-      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
-     // Serial.println( ansbuf[i_bat],HEX);
-      i_bat++; delay(1); 
-      if( i_bat == 20) {  for (uint32_t i=0; i<20; i++){
-        //Serial.print(sbyte2hex(ansbuf[i]));
-        Serial.print( ansbuf[i],HEX); Serial.print (" ");} Serial.println("20 байт получено"); break;   }
-      }//если даные закочаться выйдет, а если даные незакончятся то выйдет по условию что получено 20  байт
-  Serial.println("Вторая фраза");
-
-       i_bat = 0;
-     while((Serial.available())&&(i_bat < 20) ) {delay(1); //также сбрасывает сторожевой таймер
-      b=Serial.read(); delay(1); ansbuf[i_bat]=b;  
-     // Serial.println( ansbuf[i_bat],HEX);
-      i_bat++; delay(1); 
-      if( i_bat == 20) {  for (uint32_t i=0; i<20; i++){
-        //Serial.print(sbyte2hex(ansbuf[i]));
-        Serial.print( ansbuf[i],HEX);Serial.print (" "); } Serial.println("20 байт получено"); break;   }
-      }//если даные закочаться выйдет, а если даные незакончятся то выйдет по условию что получено 20  байт
-
+void bip_bud_end()  //Вызываеться один раз когда сбрасываються все флаги будильника
+{    
+Serial.println ("end будильник ");
 
 }
 //----------------------------------------------------------------------------------------------------------------
-void bip_budil() ///срабатывание будильника
+void bip_budil_start() ///срабатывание будильника
  { 
 #ifdef _ZVUK
       if(fl_bud_mp==0)      //чтобы сработола только один раз   обнулим при обнулении alarm_stat
       {   
         //if  ((gromk-15) >0) voll=(gromk-15); else  voll=10;
            if  (voll>zad_vool) voll=zad_vool;
-           command2_bilo(Volu,0,voll);   delay(200);
+           command2(Volu,0,voll);   delay(200);
            trek= random(222,242);  //случайное  число в таких приделах
-          command2_bilo(Fold,7,trek);  //проиграть файль trek из папки 7 
+          command2(Fold,7,trek);  //проиграть файль trek из папки 7 
           fl_bud_mp=1; 
       } 
-      else  {   if (voll++<gromk) { Serial.println ("громкость ");delay(100); command2_bilo(Volu,0,voll); } }  //использую else чтобы в первый раз не менять громкость а только включить трек //для плаввнго включения громкости //17
+      else  {   if (voll++<gromk) { Serial.println ("громкость ");delay(100); command2(Volu,0,voll); } }  //использую else чтобы в первый раз не менять громкость а только включить трек //для плаввнго включения громкости //17
 #endif 
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------

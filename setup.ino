@@ -77,7 +77,7 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
   for (byte i = 0; i < 6; i++) {   pressure_array[i] = pressure2;  time_array[i] = i; }            // забить массив времени числами 0 - 5 // забить весь массив текущим давлением
  */
 #ifdef _ZVUK
-   command2_bilo(Volu,0,gromk);
+   command2(Volu,0,gromk);
 #endif 
  
   //timeUpdateNTP();
