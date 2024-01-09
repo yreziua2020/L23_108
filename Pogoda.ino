@@ -2,6 +2,7 @@
 //  dav                            БЕРЕМО ПОГОДУ З САЙТУ  https://www.weatherbit.io                                                 //
 //===============================================================================================================================//
 void getWeatherData0() {
+  if (f_govorit_fraz) { if (printCom) { Serial.println("говорим фразу чтоб не блокировать на долго" +  cityID0 + "...");   } return ; }
   location_name = "";  location_region = "";  location_country = "";  location_localtime = "";  location_temp = 0;  location_app_temp = 0;  location_rh = 0;  location_pres = 0;  location_wind_spd = 0;  location_wind_cdir_full = "";  location_sunrise = "";  location_sunset = "";  location_clouds = 0;  location_vis = 0;  location_uv = 0;  location_weather_description = "";
   if (!WIFI_connected) {  //если к файфай не подключен  
                           if (updateForecast++ >= 1440) weatherString = tWeatrNot;    

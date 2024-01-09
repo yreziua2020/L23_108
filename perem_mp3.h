@@ -9,6 +9,8 @@ bool pr_bip_full; //пременая для бп чтобы отказаться
 uint8_t caun_zv2;
 //static uint8_t otp_kom2; //отправить команду если  ноль то отправляем комаду плееру
 
+bool f_govorit_fraz; //флаг говориться фраза , чтобы не выполнять все тормозящиие запросы
+
 void  IRAM_ATTR btnIsr(){
   intFlag++;
   //intFlag=digitalRead(12) ;
