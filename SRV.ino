@@ -492,6 +492,7 @@ void handle_timepc() {
  
  //pr_bip_vre3=1; 
  //command2_bilo(3,0,3);  delay(500); 
+ Serial.println("звук страницы"); 
  play_frazi(6 ,212, 212, day+40, month+80, hour , minute+100);   //dayOfWeek+30,
  
   server.send(200, "text/plain", "OK");
