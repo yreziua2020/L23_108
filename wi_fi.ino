@@ -26,7 +26,7 @@ void wifiConnect() {    //printTime -вывод времени в ком пор�
     if (printCom) Serial.print(".");
     if (!firstStart)  { int j=0;  while (j<500) {if (j%10 == 0) showAnimWifi(i);   j++; delay(1);   }   }  // showAnimWifi анимация для вайфай
     bip_Wi_Fi();  //тут и так пау за на проговорку
-    // delay (800);//800
+     delay (700);//800
   } //for
   
   WiFi.disconnect();   if (printCom) Serial.println(" Not connected!!!");
