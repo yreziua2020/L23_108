@@ -536,7 +536,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
   //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
   if (secFr == 0) {  //КАЖДУЮ СЕКУДУ
     //if (minute == 0) { // minute % 5 == 1   //1, 6, 11, 16...56 хв.
-     if (minute==1 || minute==30) { 
+     if (minute==1 || minute==30 || minute==50 ) { 
       if (hour >= memory_hour_start && hour <= memory_hour_end && second < 30 && second > 2 && !alarm_stat) {
         for (byte i = 0; i < 9; i++) 
         {   if (memory_date[i][0] == day && memory_date[i][1] == month) 
