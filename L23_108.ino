@@ -91,7 +91,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  12  // 15 //17//11  //9 //максимальная громкость
+#define gromk  20  // 15 //17//11  //9 //максимальная громкость
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 static uint32_t myTimer_pl;
@@ -536,7 +536,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
   //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
   if (secFr == 0) {  //КАЖДУЮ СЕКУДУ
     //if (minute == 0) { // minute % 5 == 1   //1, 6, 11, 16...56 хв.
-     if (minute==1 || minute==30 || minute==50 ) { 
+     if (minute==1 || minute==30 || minute==57 ) { 
       if (hour >= memory_hour_start && hour <= memory_hour_end && second < 30 && second > 2 && !alarm_stat) {
         for (byte i = 0; i < 9; i++) 
         {   if (memory_date[i][0] == day && memory_date[i][1] == month) 
