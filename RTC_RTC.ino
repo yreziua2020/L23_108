@@ -63,7 +63,7 @@ byte alarms() { //dav
 }
 //==========ОТРИМАННЯ ДАТИ ТА ЧАСУ ВІД СЕРВЕРА ТОЧНОГО ЧАСУ =============================================================
 void getNTPtime() {
-   
+   if (!f_govorit_fraz)  {  //если говорим фразу то не читаем время из интернета
   WiFi.hostByName(ntpServerName.c_str(), timeServerIP);   //определяет по именм айпи в timeServerIP может возвращать ошибку
   int cb;
   for (int i = 0; i < 3; i++) {  /////mp3_play_file_in_fol (11,8);
@@ -128,5 +128,7 @@ void getNTPtime() {
     return;
   }
   udp.begin(localPort2);  if (printCom) Serial.println("Нет времени(((");
+   }// if (!f_govorit_fraz) 
+   else { if (printCom) Serial.println("говорим фразу. время в следующий раз обнновим");}
 }
 //===============================================================================================================================//

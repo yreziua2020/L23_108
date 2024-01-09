@@ -446,6 +446,8 @@ void loop() {
   //-------------------------PAJ7620-------------------------------  
 #ifdef d_104
  
+if (!f_govorit_fraz)  //если говорим фразу то не опрашиваем датчики
+{
   f_iz_znach=paj7620_t.obrabotka_paj7620();
  // paj7620_tt.znach=UP;
   //Serial.println(paj7620.znach_t);
@@ -453,9 +455,9 @@ void loop() {
   if (f_iz_znach==0) bip_UP();
   if (f_iz_znach==1) bip_RIGHT();
   if (f_iz_znach==3) bip_LEFT();
-  
-  }
-
+  } 
+}
+else { if (printCom) Serial.println("говорим фразу. paj7620_t в следующий раз обнновим");}
  //paj7620_t.obrabotka_paj7620();
   //if (f_iz_znach!=f_iz_znach) {f_iz_znach=znach_t; Serial.println(znach_t);}
 #endif 
@@ -467,7 +469,8 @@ void loop() {
        if (second==45) {  if (!f_otpr_skl){f_otpr_skl=1;bd_sql(); }
        }  else   { f_otpr_skl=0;}    
 #endif 
-#ifdef _ZVUK    
+#ifdef _ZVUK   
+    if (pr_bip_full) {b_time_full_ad();} 
     //if (pr_bip_vre3) {bip_vre4();} //звук с веба   дублируеться когда бежит строка чтоб не замолк
     //if (f_kuku) {bip_vre4();}      //звук скукушка дублируеться когда бежит строка чтоб не замолк
     // если установлен флаг говориться фраза то  постоянно  влетает а там проговариваем фразы из масива за ранее созданного
