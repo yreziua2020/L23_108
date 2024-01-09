@@ -26,7 +26,7 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
       {
         if (millis() - myTimer_pl2 >= 5000) {  
           otp_kom2=0;
-          Serial.println("Привышенно время ожидания ответа для команды");   Serial.println(" intFlag=");  Serial.println(intFlag); 
+          Serial.println("Привышенно время ожидания ответа для команды");   Serial.print(" intFlag=");  Serial.println(intFlag); 
           return;
         } // Serial.println("Привышенно время ожидания ответа для команды"); для того чтобы обнолить если вдруг не прийдет ответ, чтобы следующая команда выполнилась, а также повторно с работала    
         
@@ -35,7 +35,7 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
 
     //if ( pr_bip_full) obrabotka_inp_A(); else obrabotka_inp_A_adv();
 
-  if ( f_Fold_ADVE){  if(intFlag>0){ otp_kom2=0; Serial.print("завершено_F"); }}  else { if(intFlag>1){ otp_kom2=0; Serial.print("завершено_A");} }
+  if ( f_Fold_ADVE){  Serial.print(" intFlag=");  Serial.print(intFlag);   if(intFlag>0){ otp_kom2=0; Serial.print("завершено_F"); }}  else { if(intFlag>1){ otp_kom2=0; Serial.print("завершено_A");} }
   //if ( pr_bip_adve){  if(intFlag>1){ otp_kom=0; Serial.print("завершено_A"); }}
 
 }
