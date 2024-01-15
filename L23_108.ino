@@ -91,7 +91,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  20  // 15 //17//11  //9 //максимальная громкость
+#define gromk  15  // 15 //17//11  //9 //максимальная громкость
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 static uint32_t myTimer_pl;
@@ -703,7 +703,7 @@ String urlencode(String str) {    // функция взята от http://forum
   char c;
   char code0;
   char code1;
-  for (int i = 0; i < str.length(); i++) {
+  for (uint i = 0; i < str.length(); i++) {
     c = str.charAt(i);
     if (c == ' ') {
       encodedString += '+';
