@@ -166,7 +166,7 @@ function load_time(submit){
 }
 function knopki(submit){
     server = "/knopki";
-    console.log('submit='+rsubmit);
+    console.log('submit='+submit);
    // send_request(submit,server);
    // load();
 }
