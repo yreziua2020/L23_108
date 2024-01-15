@@ -15,12 +15,7 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
         if (caun_zv2 ==1) { if (digitalRead(PIN_MP3))  {Serial.println("Input hide"); f_Fold_ADVE=1; }  else  {f_Fold_ADVE=0; Serial.println("Input low");} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
     
          if (f_Fold_ADVE) { Serial.print("ст_F=");  Serial.print(masiv[caun_zv2]); command2(Fold,7,masiv[caun_zv2]); } else  {Serial.print("ст_A="); Serial.print(masiv[caun_zv2]); command2(ADVE,0,masiv[caun_zv2]); }
-          
-        
-        //command2(masiv[caun_zv][0],masiv[caun_zv][1],masiv[caun_zv][2]);     
-        
-        
-        //t_adve= millis() ; 
+ 
         myTimer_pl2= millis(); //запускаем отсчет ели вдруг не будет ответа чтобы не стопорить а все обновить
         otp_kom2=1; 
      } 
@@ -33,9 +28,6 @@ void b_time_full_ad()  //Вызываеться один раз когда сб�
         } // Serial.println("Привышенно время ожидания ответа для команды"); для того чтобы обнолить если вдруг не прийдет ответ, чтобы следующая команда выполнилась, а также повторно с работала    
         
       }        //if(otp_
-
-
-    //if ( pr_bip_full) obrabotka_inp_A(); else obrabotka_inp_A_adv();
 
   if ( f_Fold_ADVE){ /* Serial.print(" intFlag=");  Serial.print(intFlag); */  if(intFlag>0){ otp_kom2=0; Serial.print("завершено_F"); }}  else { if(intFlag>1){ otp_kom2=0; Serial.print("завершено_A");} }
   //if ( pr_bip_adve){  if(intFlag>1){ otp_kom=0; Serial.print("завершено_A"); }}
