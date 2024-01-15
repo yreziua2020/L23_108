@@ -470,6 +470,7 @@ void handle_ntp() {
   memory_hour_start = server.arg("md_start").toInt();
   memory_hour_end = server.arg("md_stop").toInt();
   if(printCom) {  printTime();  Serial.println("Set NTP Server Name: " + ntpServerName + ",  NTP Time Zone: " + String(timeZone) + ",  isDayLightSaving: " + String(isDayLightSaving));  }
+  play_frazi(1 ,218 );  
   alarm_hold=0;
   saveConfig();
   timeUpdateNTP(); //при охранении настроек обновляем время
