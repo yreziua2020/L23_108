@@ -112,6 +112,11 @@ function send_request(submit,server){
   request.send();
   save_status(submit,request);
 }
+function send_request2(submit,server){
+  request = new XMLHttpRequest();
+  request.open("GET", server, true);
+  request.send();
+ }
 function save_status(submit,request){
   old_submit = submit.value;
   request.onreadystatechange = function() {
@@ -167,7 +172,7 @@ function load_time(submit){
 function knopki(submit){
     server = "/knopki";
     console.log('submit='+submit);
-   // send_request(submit,server);
+    send_request2(submit,server);
    // load();
 }
 )=====";
