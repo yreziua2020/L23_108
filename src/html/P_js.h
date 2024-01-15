@@ -164,4 +164,9 @@ function load_time(submit){
     send_request(submit,server);
     load();
 }
+function knopki(submit){
+    server = "/knopki";
+    send_request(submit,server);
+    load();
+}
 )=====";
