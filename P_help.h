@@ -15,7 +15,7 @@ const char P_help[] PROGMEM =  R"=====(
                 send_request(submit, server);
             }
             function set_printCom2(submit) {
-                server = "/printCom2?printCom=" + val_sw('printCom2');
+                server = "/printCom2?printCom2=" + val_sw('printCom2');
                
                  console.log('server='+server);
                 send_request(submit, server);
@@ -59,7 +59,15 @@ const char P_help[] PROGMEM =  R"=====(
                     <input class="checkbox" type="checkbox" id="printCom" name="switch-btn" onclick="set_printCom(this);">
                     <span class="switch-btn"></span>
                 </label>
+            
+                <label class="switch">
+                    <span class="opt_cn">выключаем будильник</span>
+                    <input class="checkbox" type="checkbox" id="printCom2" name="switch-btn2" onclick="set_printCom2(this);">
+                    <span class="switch-btn"></span>
+                </label>
+          <hr>
             </div>
+
             <hr>
             <center>
                 <div>
@@ -78,13 +86,7 @@ const char P_help[] PROGMEM =  R"=====(
                         </div>
                     </form>
  -->
-              <hr>
-                <label class="switch">
-                    <span class="opt_cn">выключаем будильник</span>
-                    <input class="checkbox" type="checkbox" id="printCom2" name="switch-btn" onclick="set_printCom2(this);">
-                    <span class="switch-btn"></span>
-                </label>
-          <hr>
+
                           <!--  <span class="save_booton" onclick="knopki(this);">будильник</span>  -->
                     
                 </div>
