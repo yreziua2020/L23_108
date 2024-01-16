@@ -69,12 +69,15 @@ function load_setup(){
   }
 }
 function loadBlock() {
+
+
   var data2 = JSON.parse(xmlHttp.responseText);
+  console.log('data2='+data2);
   data = document.getElementsByTagName('body')[0].innerHTML;
+  console.log('data='+data);
   var new_string;
   for (var key in data2) {
     new_string = data.replace(new RegExp('{{'+key+'}}', 'g'), data2[key]);
-    console.log('new_string='+new_string);
     data = new_string;
   }
   document.getElementsByTagName('body')[0].innerHTML = new_string;
