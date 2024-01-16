@@ -684,10 +684,10 @@ void handle_set_printCom() {
 }
 //======================================================================================================
 void handle_set_printCom2() {
-  printCom = server.arg("printCom").toInt();
+  printCom2 = server.arg("printCom2").toInt();
   ///// priin = server.arg("priin").toInt();
 
-  if(printCom) {    printTime();    Serial.println("Set printCom: " + String(printCom));  }
+  if(printCom) {    printTime();    Serial.println("Set printCom2: " + String(printCom2));  }
   
   server.send(200, "text/plain", "OK"); 
 }

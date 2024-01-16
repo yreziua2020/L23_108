@@ -227,6 +227,7 @@ int sensors_ID1 = 3300;   //88459 Frankfurt
 int sensors_ID2 = 0;
 // =====================================================================================
 bool printCom =  false;
+bool printCom2 =  false;
 bool priin;
 #define MAX_DIGITS 16
 byte NUM_MAX = 4;
