@@ -11,6 +11,7 @@ const char P_help[] PROGMEM =  R"=====(
             function set_printCom(submit) {
                 server = "/printCom?printCom=" + val_sw('printCom');
                ///// server = "/priin?priin=" + val_sw('priin');
+                 console.log('server='+server);
                 send_request(submit, server);
             }
             function resetConfig(submit,texts) {

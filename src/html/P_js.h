@@ -72,9 +72,7 @@ function loadBlock() {
 
 
   var data2 = JSON.parse(xmlHttp.responseText);
-  console.log('data2='+data2);
   data = document.getElementsByTagName('body')[0].innerHTML;
-  console.log('data='+data);
   var new_string;
   for (var key in data2) {
     new_string = data.replace(new RegExp('{{'+key+'}}', 'g'), data2[key]);
