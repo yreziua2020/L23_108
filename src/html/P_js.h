@@ -74,6 +74,7 @@ function loadBlock() {
   var new_string;
   for (var key in data2) {
     new_string = data.replace(new RegExp('{{'+key+'}}', 'g'), data2[key]);
+    console.log('new_string='+new_string);
     data = new_string;
   }
   document.getElementsByTagName('body')[0].innerHTML = new_string;

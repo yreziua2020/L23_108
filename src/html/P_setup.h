@@ -12,7 +12,7 @@ const char P_setup[] PROGMEM =  R"=====(
                 server = "/setup?tbd=" + val('tbd') + "&vbd=" + val('vbd') + "&tbn=" + val('tbn') + "&vbn=" + val('vbn') + "&vba=" + val_sw('vba') + "&rotate=" + val('rotate') + "&kuOn=" + val('kuOn') + "&kuOff=" + val('kuOff');
                 server += "&sensorDom=" + val('sensorDom') + "&sensorUl=" + val('sensorUl') + "&sensorHome=" + val('sensorHome') + "&sensorHumi=" + val('sensorHumi') + "&sensorPrAl=" + val('sensorPrAl') + "&pressSys=" + val('pressSys') + "&clockNight=" + val_sw('clockNight') + "&buzzerSet=" + val_sw('buzzerSet');
                 server += "&fontCLOCK=" + val('fontCLOCK') + "&aliData=" + val('aliData') + "&corrTempD=" + val('corrTempD') + "&corrTempU=" + val('corrTempU') + "&corrTempH=" + val('corrTempH') + "&corrHumi=" + val('corrHumi') + "&corrPress=" + val('corrPress') + "&NUM_MAX=" + val('NUM_MAX') + "&butStat=" + val('butStat');
-                console.log('server='+server);
+               // ('server='+server);
                 send_request(submit,server);
 
             }

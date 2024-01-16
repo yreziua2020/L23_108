@@ -401,7 +401,7 @@ void handle_ConfigSetupJson() {
   json += butStat;
   json += "\"}";
 //console.log('submit='+submit);
-Serial.println("json: " + json );
+//Serial.println("json: " + json );
 
   server.send(200, "text/json", json);
 }
