@@ -64,15 +64,15 @@ const char P_help[] PROGMEM =  R"=====(
                         </div>
                     </form>
 
-<!--
-                    <form method="POST" action="/update" enctype="multipart/form-data">
+
+                    <form method="POST" action="/update2" enctype="multipart/form-data">
                         <div>
-                            <input type="submit2" class="save_booton" value="будильник" onclick="this.value='Please wait...';", "knopki(this);">
+                            <input type="submit" class="save_booton" value="будильник" onclick="this.value='Please wait...';">
                         </div>
                     </form>
 
--->
-                            <span class="save_booton" onclick="knopki(this);">будильник</span>
+ 
+                          <!--  <span class="save_booton" onclick="knopki(this);">будильник</span>  -->
                     
                 </div>
             </center>
