@@ -688,7 +688,7 @@ void handle_set_printCom2() {
   ///// priin = server.arg("priin").toInt();
 
   if(printCom) {    printTime();    Serial.println("Set printCom2: " + String(printCom2));  }
-  
+  command2(Fold,7,210);
   server.send(200, "text/plain", "OK"); 
 }
 
