@@ -35,6 +35,7 @@ void server_init(void) {
   server.on("/restart", handle_Restart);            // перезавантаження можуля по запиту типу http://192.168.1.11/restart?device=ok
   server.on("/resetConfig", handle_resetConfig);
   server.on("/printCom", handle_set_printCom);
+  server.on("/printCom2", handle_set_printCom2);
  // server.on("/priin", handle_set_printCom);
 #ifdef ESP8266    //для обновления
   httpUpdater.setup(&server);
@@ -681,6 +682,16 @@ void handle_set_printCom() {
   saveConfig();
   server.send(200, "text/plain", "OK"); 
 }
+//======================================================================================================
+void handle_set_printCom2() {
+  printCom = server.arg("printCom").toInt();
+  ///// priin = server.arg("priin").toInt();
+
+  if(printCom) {    printTime();    Serial.println("Set printCom: " + String(printCom));  }
+  
+  server.send(200, "text/plain", "OK"); 
+}
+
 //======================================================================================================
 void handle_Restart() {
   String restart = server.arg("device");

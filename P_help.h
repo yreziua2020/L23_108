@@ -14,6 +14,12 @@ const char P_help[] PROGMEM =  R"=====(
                  console.log('server='+server);
                 send_request(submit, server);
             }
+            function set_printCom2(submit) {
+                server = "/printCom2?printCom=" + val_sw('printCom');
+               
+                 console.log('server='+server);
+                send_request(submit, server);
+            }
             function resetConfig(submit,texts) {
                 if(confirm(texts)) {
                     server = "/resetConfig?device=ok";
@@ -65,14 +71,20 @@ const char P_help[] PROGMEM =  R"=====(
                         </div>
                     </form>
 
-
+ <!-- 
                     <form method="POST" action="/update2" enctype="multipart/form-data">
                         <div>
                             <input type="submit" class="save_booton" value="будильник" onclick="this.value='Please wait...';">
                         </div>
                     </form>
-
- 
+ -->
+              <hr>
+                <label class="switch">
+                    <span class="opt_cn">выключаем будильник</span>
+                    <input class="checkbox" type="checkbox" id="printCom2" name="switch-btn" onclick="set_printCom2(this);">
+                    <span class="switch-btn"></span>
+                </label>
+          <hr>
                           <!--  <span class="save_booton" onclick="knopki(this);">будильник</span>  -->
                     
                 </div>
