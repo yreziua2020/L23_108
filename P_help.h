@@ -55,17 +55,17 @@ const char P_help[] PROGMEM =  R"=====(
                 <a class = "btn btn-block btn-default" href = "/configs.json">Открыть файл конфигурации</a>
                 <hr>
                 <label class="switch">
-                    <span class="opt_cn">Отображать выполняемые функции и их результат в COM порт</span>
+                    <span class="opt_cn">Отображать результат в COM порт</span>
                     <input class="checkbox" type="checkbox" id="printCom" name="switch-btn" onclick="set_printCom(this);">
                     <span class="switch-btn"></span>
                 </label>
             
                 <label class="switch">
-                    <span class="opt_cn">выключаем будильник</span>
+                    <span class="opt_cn">Выключаем будильник</span>
                     <input class="checkbox" type="checkbox" id="printCom2" name="switch-btn2" onclick="set_printCom2(this);">
                     <span class="switch-btn"></span>
                 </label>
-          <hr>
+          
             </div>
 
             <hr>
