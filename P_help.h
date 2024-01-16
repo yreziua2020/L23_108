@@ -59,7 +59,7 @@ const char P_help[] PROGMEM =  R"=====(
                     <input class="checkbox" type="checkbox" id="printCom" name="switch-btn" onclick="set_printCom(this);">
                     <span class="switch-btn"></span>
                 </label>
-            
+              <br>
                 <label class="switch">
                     <span class="opt_cn">Выключаем будильник</span>
                     <input class="checkbox" type="checkbox" id="printCom2" name="switch-btn2" onclick="set_printCom2(this);">
