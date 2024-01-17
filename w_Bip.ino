@@ -66,7 +66,7 @@ void bip_RIGHT()  {
 void bip_LEFT()  { 
 #ifdef _ZVUK   
   trek= random(220,273);  //случайное  число в таких приделах
-  String disp_l= "Лево " + trek;
+  String disp_l= "Лево " + String (trek);
   Serial.println("disp_l");  Serial.println(disp_l);
   printStringWithShift(disp_l.c_str(), 5);  
          command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
