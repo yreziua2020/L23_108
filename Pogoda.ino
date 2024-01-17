@@ -11,7 +11,7 @@ void getWeatherData0() {
    if (printCom) {    printTime();    Serial.println("Получение прогноза погоды в городе " +  cityID0 + "...");   }  //печать в каом порт если разрешена
     
   // WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000); //если передать айпи а не адрес то все окей, даже если айпи не пингуеться
-   if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP)) //если инет есть то бысто даже если непверный адрес// при отсутвиии интернет подвисает по  таймауту 
+   if(WiFi.hostByName(weatherHost0.c_str(), pogodaIP, 2000)) //если инет есть то бысто даже если непверный адрес// при отсутвиии интернет подвисает по  таймауту 
          {if (printCom) {  Serial.println("получен ip из имени "); } }
    else  {if (printCom) {  Serial.println("Не получен ip из имени "); } if (updateForecast++ >= 1440) weatherString = tWeatrNot; return; } //если не удалось получить айпи то прерываем обновление погоды 
  
