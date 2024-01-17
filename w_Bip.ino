@@ -102,7 +102,7 @@ void bip_budil_start() ///срабатывание будильника
         //if  ((gromk-15) >0) voll=(gromk-15); else  voll=10;
            if  (voll>zad_vool) voll=zad_vool;
            command2(Volu,0,voll);   delay(200);
-           trek= random(222,242);  //случайное  число в таких приделах
+           trek= random(220,273);  //случайное  число в таких приделах
           command2(Fold,7,trek);  //проиграть файль trek из папки 7 
           fl_bud_mp=1; 
       } 
