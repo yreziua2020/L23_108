@@ -26,7 +26,7 @@ String weatherHost0 = "api.weatherbit.io";
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
 #define _getv 41     //указываем шлюз
-String weatherHost0 = "api.weatherbit.io";
+String weatherHost0 = "api.weatherbit.iot";
 
 #else 
 #define _ipi 102     //указываем адрес
