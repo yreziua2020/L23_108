@@ -60,14 +60,14 @@ void bip_RIGHT()  {
 void bip_LEFT()  { 
 #ifdef _ZVUK   
 uint16_t trek_=0; 
- trek_= random(220,273);
+ trek_= random(1,54);
   
   String disp_l= " L " + String (trek_);
   Serial.println("disp_l");  Serial.println(disp_l);
-  printStringWithShift(disp_l.c_str(), 15);  
+  printStringWithShift(disp_l.c_str(), 25);  
          command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
   
-          command2(Fold,7,trek_);  //проиграть файль trek из папки 7 
+          command2(Fold,1,trek_);  //проиграть файль trek из папки 7 
 
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
@@ -105,8 +105,8 @@ void bip_budil_start() ///срабатывание будильника
         //if  ((gromk-15) >0) voll=(gromk-15); else  voll=10;
            if  (voll>zad_vool) voll=zad_vool;
            command2(Volu,0,voll);   delay(200);
-           trek= random(220,273);  //случайное  число в таких приделах
-          command2(Fold,7,trek);  //проиграть файль trek из папки 7 
+           trek= random(1,54);  //случайное  число в таких приделах
+          command2(Fold,1,trek);  //проиграть файль trek из папки 7 
           fl_bud_mp=1; 
       } 
       else  {   if (voll++<gromk) { Serial.println ("громкость ");delay(100); command2(Volu,0,voll); } }  //использую else чтобы в первый раз не менять громкость а только включить трек //для плаввнго включения громкости //17
