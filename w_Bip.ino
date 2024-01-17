@@ -49,25 +49,13 @@ void bip_RIGHT()  {
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
-// byte random_pr(uint min, uint max ){   //почемуто выдавала другие значениия выходячие из указаного нтервала
-//  while(1){
-//  byte trek_= random(min,min);  //случайное  число в таких приделах
-//  delay(1);
-//   if ( (trek>=220) && (trek<=max)  ) return trek_;
-//  }
-// }
 
 void bip_LEFT()  { 
 #ifdef _ZVUK   
-uint16_t trek_=0; 
- trek_= random(1,54);
-  
+uint8_t trek_=random(1,54); 
   String disp_l= " L " + String (trek_);
-  Serial.println("disp_l");  Serial.println(disp_l);
-  printStringWithShift(disp_l.c_str(), 25);  
-         command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
-  
-          command2(Fold,1,trek_);  //проиграть файль trek из папки 7 
+  printStringWithShift(disp_l.c_str(), 20);  
+  command2(Volu,0,gromk);delay(200);    command2(Fold,1,trek_);  //проиграть файль trek из папки 1 
 
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
@@ -100,12 +88,15 @@ play_frazi(3 ,212, hour , minute+100);  //delay(500);
 void bip_budil_start() ///срабатывание будильника
  { 
 #ifdef _ZVUK
+
       if(fl_bud_mp==0)      //чтобы сработола только один раз   обнулим при обнулении alarm_stat
-      {   
+      {   uint8_t trek=random(1,54); 
+          String disp_l= " L " + String (trek);
+          printStringWithShift(disp_l.c_str(), 20);        
         //if  ((gromk-15) >0) voll=(gromk-15); else  voll=10;
            if  (voll>zad_vool) voll=zad_vool;
            command2(Volu,0,voll);   delay(200);
-           trek= random(1,54);  //случайное  число в таких приделах
+           //trek= random(1,54);  //случайное  число в таких приделах
           command2(Fold,1,trek);  //проиграть файль trek из папки 7 
           fl_bud_mp=1; 
       } 
