@@ -65,8 +65,10 @@ void bip_RIGHT()  {
 
 void bip_LEFT()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Лево", 5);  command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
-          trek= random(220,273);  //случайное  число в таких приделах
+  trek= random(220,273);  //случайное  число в таких приделах
+  String disp_l= "Лево " + trek;
+  printStringWithShift(disp_l.c_str(), 5);  
+         command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
           command2(Fold,7,trek);  //проиграть файль trek из папки 7 
 
 #endif
