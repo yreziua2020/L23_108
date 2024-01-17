@@ -63,12 +63,21 @@ void bip_RIGHT()  {
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодки
 
+// byte random_pr(uint min, uint max ){   //почемуто выдавала другие значениия выходячие из указаного нтервала
+//  while(1){
+//  byte trek_= random(min,min);  //случайное  число в таких приделах
+//  delay(1);
+//   if ( (trek>=220) && (trek<=max)  ) return trek_;
+//  }
+// }
+
 void bip_LEFT()  { 
 #ifdef _ZVUK   
-  trek= random(220,273);  //случайное  число в таких приделах
-  String disp_l= "Лево " + String (trek);
+ 
+  trek=random(220,273);
+  String disp_l= " L " + String (trek);
   Serial.println("disp_l");  Serial.println(disp_l);
-  printStringWithShift(disp_l.c_str(), 5);  
+  printStringWithShift(disp_l.c_str(), 15);  
          command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
           command2(Fold,7,trek);  //проиграть файль trek из папки 7 
 
