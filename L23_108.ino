@@ -16,33 +16,30 @@ const short UserID=3;
 #ifdef defined(d_102)
 #define _ipi 102     //указываем адрес
 #define _getv 199     //указываем шлюз
-
+String weatherHost0 = "api.weatherbit.io";
 
 #elif defined(d_103)
 #define _ipi 103     //указываем адрес
 #define _getv 199     //указываем шлюз
+String weatherHost0 = "api.weatherbit.io";
 
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
 #define _getv 41     //указываем шлюз
+String weatherHost0 = "api.weatherbit.io";
 
 #else 
 #define _ipi 102     //указываем адрес
 #define _getv 199     //указываем шлюз
+String weatherHost0 = "api.weatherbit.io";
+
 #endif
 
 IPAddress local_IP(192, 168, 1, _ipi);// Задаем статический IP-адрес:
 IPAddress gateway(192, 168, 1, _getv);// Задаем IP-адрес сетевого шлюза:
 IPAddress primaryDNS(192, 168, 1, _getv);   // опционально
-#ifdef defined(d_104)
-//String weatherHost0 = "api.weatherbit.iod"; //не верный для проверки
-String weatherHost0 = "api.weatherbit.io";
-#else 
-//String weatherHost0 = "api.weatherbit.io";
-String weatherHost0 = "api.weatherbit.iod"; //не верный для проверки
-#endif
-//String weatherHost0 = "api.weatherbit.io";
 
+//String weatherHost0 = "api.weatherbit.io";
 //String weatherHost0 = "128.140.48.82";  //надо 158.69.116.36
 //String weatherHost0 = "228.140.48.22";  //надо 158.69.116.36
 IPAddress subnet(255, 255, 255, 0);
