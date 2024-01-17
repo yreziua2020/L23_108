@@ -596,7 +596,8 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
             //case 5:{Kurs_disp();   break;}
             case 5:{showSimpleTempDom1();   break;}
             case 6:{ showAnimClock(); break;}  
-            case 7:{showSimpleHum(); perek=0;break;}
+            case 7:{showSimpleHum(); break;}
+            case 8:{showAnimClock(); perek=0;break;}  
             //case 2:{ perek=0; break;}
            // case 2:{showSimpleTempDom1();  break;}
            // case 3:{showSimpleHum();   break;} 
@@ -605,8 +606,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
            // case 5:{showSimplePre4();     break;}  //showLux2();showSimplePre4();
     //        case 6:{showSimplePre();  break;}
    //         case 7:{/*showSimplePre();*/  break;}
-            case 8:{showSimplePre();  break;}
-            case 9:{showSimpleDate();   break;}
+               case 9:{showSimpleDate();   break;}
             case 10:{showAnimClock();  break;}  
             case 11:{showSimpleTempDom1();  break;}  
             case 12:{showSimpleTempDom1();   break;}

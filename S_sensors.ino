@@ -51,7 +51,7 @@ void sensors() {
 void sensorsDs18b20() {  //1
    if (printCom) { Serial.println("Опрос 18b20");}
   byte present = 0;
-  byte type_s;
+  byte type_s=0;    //непонятно зачем
   byte data[12];
   byte addr[8];
   if (!ds.search(addr)) {                               // Стартуємо функцію пошук першого або наступного датчика в addr-возвращаем ответ датчика
