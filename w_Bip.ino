@@ -73,12 +73,13 @@ void bip_RIGHT()  {
 
 void bip_LEFT()  { 
 #ifdef _ZVUK   
- 
-  trek=random(220,273);
+ trek= random(220,273);
+  
   String disp_l= " L " + String (trek);
   Serial.println("disp_l");  Serial.println(disp_l);
   printStringWithShift(disp_l.c_str(), 15);  
          command2(Volu,0,gromk);delay(200);//command2(Fold,7,236);delay(1000);
+  
           command2(Fold,7,trek);  //проиграть файль trek из папки 7 
 
 #endif
