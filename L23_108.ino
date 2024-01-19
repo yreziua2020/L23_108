@@ -9,9 +9,9 @@ const short UserID=3;
 #include <WiFiClient.h>
 #include <Wire.h>
 
-//#define d_102  //d_102  по умолчанию 
+#define d_102  //d_102  по умолчанию 
 //#define d_103
-#define d_104
+//#define d_104
 
 #ifdef defined(d_102)
 #define _ipi 102     //указываем адрес

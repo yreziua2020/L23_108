@@ -498,7 +498,7 @@ void handle_timepc() {
  //pr_bip_vre3=1; 
  //command2_bilo(3,0,3);  delay(500); 
   if(printCom) { Serial.println("время с ПК наверноез вук страницы");}
- play_frazi(6 ,218, 212, day+40, month+80, hour , minute+100);   //dayOfWeek+30,
+ play_frazi(7 ,218, 212, day+40, month+80, dayOfWeek+30, hour , minute+100);   //dayOfWeek+30,
  
   server.send(200, "text/plain", "OK");
 }
