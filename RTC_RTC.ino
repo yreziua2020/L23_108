@@ -25,7 +25,7 @@ void timeUpdateNTP() {
     minuteTest[timeTest] = (g_minute || (g_minute == 59 ? 0 : g_minute++));
   
     if (statusUpdateNtpTime == 0) {  /////mp3_play_file_in_fol (11,6);    delay(500);  
-    if (printCom) {        printTime();        Serial.print("ERROR TIME!!1!\r\n");    }      return;    }
+    if (printCom) {        printTime();       Serial.print("ERROR TIME!!1!\r\n");    }      return;    }
     if (timeTest > 0) 
     {
        if ((hourTest[timeTest] != hourTest[timeTest - 1] || minuteTest[timeTest] != minuteTest[timeTest - 1])) 
@@ -79,7 +79,7 @@ void getNTPtime() {
 
     cb = udp.parsePacket();
     if (!cb && printCom) Serial.println("          no packet yet..." + String (i + 1));
-    if (!cb && i == 2) {   statusUpdateNtpTime = 0;  udp.begin(localPort2);    return; }    // якщо час не отримано       // вихіз з getNTPtime()
+    if (!cb && i == 2) {   statusUpdateNtpTime = 0;  /*udp.begin(localPort2);*/    return; }    // якщо час не отримано       // вихіз з getNTPtime()
     if (cb) i = 3;
   }
   if (cb) {                                                  // якщо отримали пакет з серверу
@@ -124,11 +124,11 @@ void getNTPtime() {
     g_month++;
     g_day = time + 1;
     g_year += 1970;
-    udp.begin(localPort2);
+   // udp.begin(localPort2);
     return;
   }
-  udp.begin(localPort2);  if (printCom) Serial.println("Нет времени(((");
+  //udp.begin(localPort2);  if (printCom) Serial.println("Нет времени(((");
    }// if (!f_govorit_fraz) 
-   else { if (printCom) Serial.println("говорим фразу. время в следующий раз обнновим");}
+   else { if (printCom) Serial.println("говорим фразу. поєтому время в следующий раз обнновим");}
 }
 //===============================================================================================================================//
