@@ -197,66 +197,8 @@ String sbyte2hex(uint8_t b)
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-void play_frazi(int kol_fraz, int fraz1 ){
-    if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;
-    pr_bip_full=1;
-   b_time_full_ad();
-    }
-
-  }
-
-void play_frazi(int kol_fraz, int fraz1 , int fraz2){
-   if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1; masiv[2] =fraz2;
-     pr_bip_full=1; 
-   b_time_full_ad();
-   }
-
-  }
-
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3){
-     if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;
-    pr_bip_full=1; 
-    b_time_full_ad();
-    }
-  }
-
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3, int fraz4){
-   if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;masiv[4] =fraz4;
-    pr_bip_full=1; 
-    b_time_full_ad();
-    }
-
-  }
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3, int fraz4 , int fraz5){
-   if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;masiv[4] =fraz4; masiv[5] =fraz5;
-    pr_bip_full=1; 
-    b_time_full_ad();
-    }
-  }
-
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3, int fraz4 , int fraz5 , int fraz6){
-   if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;masiv[4] =fraz4; masiv[5] =fraz5; masiv[6] =fraz6;
-    pr_bip_full=1; 
-    b_time_full_ad();
-    }
-  }
-
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3, int fraz4 , int fraz5 , int fraz6 , int fraz7){
-   if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;masiv[4] =fraz4; masiv[5] =fraz5; masiv[6] =fraz6; masiv[7] =fraz7;
-    pr_bip_full=1; 
-    b_time_full_ad();
-    }
-  }
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3, int fraz4 , int fraz5 , int fraz6 , int fraz7 , int fraz8){
+//на ноль часов нет фразы
+void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3 , int fraz4 , int fraz5 , int fraz6 , int fraz7 , int fraz8){
    if (!pr_bip_full){
     masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;masiv[4] =fraz4; masiv[5] =fraz5; masiv[6] =fraz6; masiv[7] =fraz7; masiv[8] =fraz8;
     pr_bip_full=1; 
