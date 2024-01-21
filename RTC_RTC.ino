@@ -73,10 +73,12 @@ void getNTPtime() {
     udp.beginPacket(timeServerIP, 123);                     //NTP порт 123
     udp.write(packetBuffer, NTP_PACKET_SIZE);
     udp.endPacket();
-    //delay(800);                                                 // чекаємо пів секуни
+    //delay(800);    
+                                                 // чекаємо пів секуни
+   if (printCom) Serial.println("старт ожидания данных");
     unsigned long timeout = millis() + 1000;
     while ((udp.available() < NTP_PACKET_SIZE) && (millis() < timeout)) {}
-
+   if (printCom) Serial.println("данные пошли");
     cb = udp.parsePacket();
     if (!cb && printCom) Serial.println("          no packet yet..." + String (i + 1));
     if (!cb && i == 2) {   statusUpdateNtpTime = 0;  /*udp.begin(localPort2);*/    return; }    // якщо час не отримано       // вихіз з getNTPtime()
