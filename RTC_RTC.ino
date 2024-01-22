@@ -77,7 +77,7 @@ void getNTPtime() {
                                                  // чекаємо пів секуни
    if (printCom) Serial.println("старт ожидания данных");
     unsigned long timeout = millis() + 1000;
-    while ((udp.available() < NTP_PACKET_SIZE) && (millis() < timeout)) {}
+    while ((udp.available() < NTP_PACKET_SIZE) && (millis() < timeout)) {delay(1); if (printCom) {Serial.print(".");}}
    if (printCom) Serial.println("данные пошли");
     cb = udp.parsePacket();
     if (!cb && printCom) Serial.println("          no packet yet..." + String (i + 1));

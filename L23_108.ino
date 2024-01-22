@@ -25,7 +25,7 @@ String weatherHost0 = "api.weatherbit.io";
 
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
-#define _getv 199     //указываем шлюз
+#define _getv 41     //указываем шлюз
 String weatherHost0 = "api.weatherbit.iot";
 
 #else 
@@ -96,7 +96,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  2  // 15 //17//11  //9 //максимальная громкость
+#define gromk  15  // 15 //17//11  //9 //максимальная громкость
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 //static uint32_t myTimer_pl;
