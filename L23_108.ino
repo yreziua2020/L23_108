@@ -96,7 +96,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  12  // 15 //17//11  //9 //максимальная громкость
+#define gromk  10  // 15 //17//11  //9 //максимальная громкость
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 //static uint32_t myTimer_pl;
@@ -458,7 +458,14 @@ void loop() {
   
   //-------------------------PAJ7620-------------------------------  
 #ifdef d_104
- 
+ if (f_angl && !pr_bip_full) {
+  kol_fra_a++;
+  if (kol_fra_a<5) {
+    printStringWithShift(" Низ", 5);  play_frazi(6 ,212,dayOfWeek+30,  day+40, month+80, hour , minute+100); 
+
+  } else {kol_fra_a=0; f_angl=0;}
+ }
+
 if (!f_govorit_fraz)  //если говорим фразу то не опрашиваем датчики
 {
   f_iz_znach=paj7620_t.obrabotka_paj7620();

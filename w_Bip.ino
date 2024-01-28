@@ -68,7 +68,9 @@ void bip_UP()  {
 
 void bip_DOW()  { 
 #ifdef _ZVUK   
-  printStringWithShift(" Низ", 5);  play_frazi(6 ,212,dayOfWeek+30,  day+40, month+80, hour , minute+100);  delay(500);
+ f_angl=1;
+ // printStringWithShift(" Низ", 5);  play_frazi(6 ,212,dayOfWeek+30,  day+40, month+80, hour , minute+100);  delay(500);
+
 #endif
 }  //199 -зарядки оружея/211- типа типа пилинг подводной лодк
 
@@ -114,7 +116,8 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
     {   // Serial.println("");
         intFlag=0;////для прерывания
         f_govorit_fraz=1;
-        if (caun_zv2==masiv[0]) {//Serial.println("");Serial.print("cmd");Serial.print(caun_zv2);Serial.print(" ");
+        if (caun_zv2==masiv[0]) {//Serial.println("");Serial.print("cmd");Serial.print(caun_zv2);Serial.print(" "); 
+                                  //если количество фраз произнесененных станет равным нулевому элементу масива то оканчиваем возпроизвидение
                                  caun_zv2=0; f_govorit_fraz=0; pr_bip_full=0; f_kuku=0; pr_bip_vre3=0; 
                                   return;}
          caun_zv2++;

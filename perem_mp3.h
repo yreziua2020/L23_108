@@ -13,6 +13,9 @@ bool f_govorit_fraz; //флаг говориться фраза , чтобы н�
 
 void play_frazi(int kol_fraz=0, int fraz1 =0 , int fraz2 =0, int fraz3 =0, int fraz4=0 , int fraz5=0 , int fraz6=0 , int fraz7=0 , int fraz8=0);
 
+bool f_angl;
+uint8_t kol_fra_a;  //количество фраз англиских
+
 void  IRAM_ATTR btnIsr(){
   intFlag++;
   //intFlag=digitalRead(12) ;
