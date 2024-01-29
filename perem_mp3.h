@@ -12,7 +12,7 @@ uint8_t caun_zv2;
 bool f_govorit_fraz; //флаг говориться фраза , чтобы не выполнять все тормозящиие запросы
 
 void play_frazi(int kol_fraz=0, int fraz1 =0 , int fraz2 =0, int fraz3 =0, int fraz4=0 , int fraz5=0 , int fraz6=0 , int fraz7=0 , int fraz8=0 , int fraz9=0);
-String tekst [] ={"sss0","sss1","sss2","sss3","sss4","sss5","sss6","sss7","sss8","sss9","sss10","sss11","sss12","sss13","sss14","sss15","sss16","sss17","sss18" ,"sss19","sss20","sss21","sss22","sss23"};
+String tekst [] ={"A  ei эй ","B bi би","C si си","D di ди","E i и","F_ef_эф","G dʒi джи","H eitʃ эйч","I ai aй","J dʒei джей","sss10","sss11","sss12","sss13","sss14","sss15","sss16","sss17","sss18" ,"sss19","sss20","sss21","sss22","sss23"};
 
 bool f_angl;
 uint8_t kol_fra_a;  //количество фраз англиских
