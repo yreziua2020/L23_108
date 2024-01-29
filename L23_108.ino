@@ -463,7 +463,7 @@ void loop() {
   if (kol_fra_a<26) {
     play_frazi(1 ,kol_fra_a+1,6); 
     //String ttpp=" "+tekst[kol_fra_a];
-    String ttpp="\258";
+    String ttpp="\238";
     printStringWithShift(tekst[kol_fra_a].c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
     printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
   // Serial.print("\213=");Serial.println(\213);
