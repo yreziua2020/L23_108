@@ -96,7 +96,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  13  // 15 //17//11  //9 //максимальная громкость
+#define gromk  15  // 15 //17//11  //9 //максимальная громкость
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 //static uint32_t myTimer_pl;
@@ -461,7 +461,7 @@ void loop() {
  if (f_angl && !pr_bip_full) {
   kol_fra_a++;
   if (kol_fra_a<20) {
-    String ttpp=String(kol_fra_a);
+    String ttpp=" "+tekst[kol_fra_a] + " = "+ String(kol_fra_a)+" ";
     printStringWithShift(ttpp.c_str(), 15);  play_frazi(1 ,kol_fra_a,6); 
 
   } else {kol_fra_a=0; f_angl=0;}
@@ -589,7 +589,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
    {
     if(second>=10){
         if (second % 2 == 0 )
-        {if(fl_per==0)
+        {if(fl_per==0 && !f_angl) //если англиский говорит то  не переключаем время
           { fl_per=1;//perek++;
             //t0Lux = lightMeter.readLightLevel();  //читаем значение яркости
             
