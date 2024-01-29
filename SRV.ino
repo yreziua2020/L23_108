@@ -474,7 +474,7 @@ void handle_ntp() {
   memory_hour_start = server.arg("md_start").toInt();
   memory_hour_end = server.arg("md_stop").toInt();
   if(printCom) {  printTime();  Serial.println("Set NTP Server Name: " + ntpServerName + ",  NTP Time Zone: " + String(timeZone) + ",  isDayLightSaving: " + String(isDayLightSaving));  }
-  play_frazi(1 ,218 );  
+  play_frazi(1 ,218 ,7);  
   alarm_hold=0;
   saveConfig();
   timeUpdateNTP(); //при охранении настроек обновляем время
@@ -498,7 +498,7 @@ void handle_timepc() {
  //pr_bip_vre3=1; 
  //command2_bilo(3,0,3);  delay(500); 
   if(printCom) { Serial.println("время с ПК наверноез вук страницы");}
- play_frazi(7 ,218, 212, day+40, month+80, dayOfWeek+30, hour , minute+100);   //dayOfWeek+30,
+ play_frazi(7 ,218, 212, day+40, month+80, dayOfWeek+30, hour , minute+100,7);   //dayOfWeek+30,
  
   server.send(200, "text/plain", "OK");
 }
