@@ -29328,12 +29328,11 @@ END GROUP
  .rodata._Z10sensorsAllv.str1.1
                 0x000000003ffeb272       0x58 C:\Users\admin\AppData\Local\Temp\arduino\sketches\7936F36A721BA7EBDF94FC32D15CB63B\sketch\L23_108.ino.cpp.o
  .rodata.loop.str1.1
-                0x000000003ffeb2ca       0x5f C:\Users\admin\AppData\Local\Temp\arduino\sketches\7936F36A721BA7EBDF94FC32D15CB63B\sketch\L23_108.ino.cpp.o
-                                         0x61 (size before relaxing)
+                0x000000003ffeb2ca       0x62 C:\Users\admin\AppData\Local\Temp\arduino\sketches\7936F36A721BA7EBDF94FC32D15CB63B\sketch\L23_108.ino.cpp.o
  .rodata.setup.str1.1
-                0x000000003ffeb329       0xdb C:\Users\admin\AppData\Local\Temp\arduino\sketches\7936F36A721BA7EBDF94FC32D15CB63B\sketch\L23_108.ino.cpp.o
+                0x000000003ffeb32c       0xdb C:\Users\admin\AppData\Local\Temp\arduino\sketches\7936F36A721BA7EBDF94FC32D15CB63B\sketch\L23_108.ino.cpp.o
                                          0xe0 (size before relaxing)
- *fill*         0x000000003ffeb404        0x4 
+ *fill*         0x000000003ffeb407        0x1 
  .rodata._ZZN11ArduinoJson8V6214PB26detail11FloatTraitsIdLj8EE25negativeBinaryPowersOfTenEvE7factors
                 0x000000003ffeb408       0x48 C:\Users\admin\AppData\Local\Temp\arduino\sketches\7936F36A721BA7EBDF94FC32D15CB63B\sketch\L23_108.ino.cpp.o
                 0x000000003ffeb408                _ZZN11ArduinoJson8V6214PB26detail11FloatTraitsIdLj8EE25negativeBinaryPowersOfTenEvE7factors
