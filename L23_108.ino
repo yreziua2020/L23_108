@@ -460,10 +460,10 @@ void loop() {
 #ifdef d_104
  if (f_angl && !pr_bip_full && !f_govorit_fraz) {
   //kol_fra_a++;
-  if (kol_fra_a<20) {
+  if (kol_fra_a<25) {
     play_frazi(1 ,kol_fra_a+1,6); 
-    String ttpp=" "+tekst[kol_fra_a] +" ";
-    printStringWithShift(ttpp.c_str(), 25);  //play_frazi(1 ,kol_fra_a,6); 
+    String ttpp=" "+tekst[kol_fra_a];
+    printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
     kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
  }
