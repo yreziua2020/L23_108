@@ -96,7 +96,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  10  // 15 //17//11  //9 //максимальная громкость
+#define gromk  13  // 15 //17//11  //9 //максимальная громкость
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 //static uint32_t myTimer_pl;
@@ -460,8 +460,9 @@ void loop() {
 #ifdef d_104
  if (f_angl && !pr_bip_full) {
   kol_fra_a++;
-  if (kol_fra_a<5) {
-    printStringWithShift(" Низ", 5);  play_frazi(1 ,kol_fra_a,6); 
+  if (kol_fra_a<20) {
+    String ttpp=String(kol_fra_a);
+    printStringWithShift(ttpp.c_str(), 15);  play_frazi(1 ,kol_fra_a,6); 
 
   } else {kol_fra_a=0; f_angl=0;}
  }
