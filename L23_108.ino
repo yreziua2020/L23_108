@@ -458,13 +458,13 @@ void loop() {
   
   //-------------------------PAJ7620-------------------------------  
 #ifdef d_104
- if (f_angl && !pr_bip_full) {
-  kol_fra_a++;
+ if (f_angl && !pr_bip_full && !f_govorit_fraz) {
+  //kol_fra_a++;
   if (kol_fra_a<20) {
     play_frazi(1 ,kol_fra_a,6); 
     String ttpp=" "+tekst[kol_fra_a] +" ";
     printStringWithShift(ttpp.c_str(), 15);  //play_frazi(1 ,kol_fra_a,6); 
-
+    kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
  }
 
