@@ -462,8 +462,9 @@ void loop() {
   //kol_fra_a++;
   if (kol_fra_a<25) {
     play_frazi(1 ,kol_fra_a+1,6); 
-    String ttpp=" "+tekst[kol_fra_a];
-    printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
+    //String ttpp=" "+tekst[kol_fra_a];
+    //String ttpp=tekst[kol_fra_a];
+    printStringWithShift(tekst[kol_fra_a].c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
     kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
  }

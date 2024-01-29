@@ -12,8 +12,8 @@ uint8_t caun_zv2;
 bool f_govorit_fraz; //флаг говориться фраза , чтобы не выполнять все тормозящиие запросы
 
 void play_frazi(int kol_fraz=0, int fraz1 =0 , int fraz2 =0, int fraz3 =0, int fraz4=0 , int fraz5=0 , int fraz6=0 , int fraz7=0 , int fraz8=0 , int fraz9=0);
-String tekst [] ={"A  ei эй ","B bi би","C si си","D di ди","E i и","F_ef_эф","G dʒi джи","H eitʃ эйч","I ai aй","J dʒei джей","K kei кей","L el эл","M em эм","N en эн","O əʊ оу","P pi пи","Q kju кью","R a а","S es эс" ,"T ti ти","U ju ю","V vi ви","W 'dʌblju дабылю","X eks экс" ,"Y wai вай","Z zed зэд"};
-
+//String tekst [] ={"A ei эй","B bi би","C si си","D di ди","E i и","F_ef_эф","G dʒi джи","H eitʃ эйч","I ai aй","J dʒei джей","K kei кей","L el эл","M em эм","N en эн","O əʊ оу","P pi пи","Q kju кью","R a а","S es эс" ,"T ti ти","U ju ю","V vi ви","W 'dʌblju дабылю","X eks экс" ,"Y wai вай","Z zed зэд"};
+String tekst [] ={"  A ei","  B bi","  C si","  D di","  E i и","  F ef","  G dʒi"," H eitʃ"," I ai "," J dʒei"," K kei"," L el"," M em","N en эн","O əʊ оу","P pi пи","Q kju кью","R a а","S es эс" ,"T ti ти","U ju ю","V vi ви","W 'dʌblju дабылю","X eks экс" ,"Y wai вай","Z zed зэд"};
 bool f_angl;
 uint8_t kol_fra_a;  //количество фраз англиских
 
