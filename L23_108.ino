@@ -9,9 +9,9 @@ const short UserID=3;
 #include <WiFiClient.h>
 #include <Wire.h>
 
-//#define d_102  //d_102  по умолчанию 
+#define d_102  //d_102  по умолчанию 
 //#define d_103
-#define d_104
+//#define d_104
 
 #ifdef defined(d_102)
 #define _ipi 102     //указываем адрес
@@ -678,7 +678,7 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
    
     // ---------- 43 секунда оновленя мережевого часу кожну хвилину або в 5 хвилину кожного часу
     //if (((year==2018) && (statusUpdateNtpTime == 0 && second == 43) || (minute == 02 && second == 43)) && !alarm_stat) timeUpdateNTP();
-    if (hour ==01 && minute == 02 && second == 43 && !alarm_stat) timeUpdateNTP(); //обновляем раз в сутки
+    //if (hour ==01 && minute == 02 && second == 43 && !alarm_stat) timeUpdateNTP(); //обновляем раз в сутки //пока отключил а то не правельно время пказывает #################
     //if (minute == 02 && second == 43 && !alarm_stat) {  if (rtcStat) {getRTCDateTime(); hour=hour_rtc; minute=minute_rtc; second=second_rtc;day=day_rtc; month=month_rtc; year=year_rtc; dayOfWeek=dayOfWeek_rtc; if (printCom) {Serial.println("RTC update: "+String(hour)+":"+String(minute)+":"+String(second)+"   "+String(day)+"."+String(month)+"."+String(year)+" D="+String(dayOfWeek));}  }}
     // ---------- 46 cек. оновлюємо прогноз погоди -------------------------------------
  //   if (second == 46 && hour >= timeScrollStart && hour <= timeScrollStop && !alarm_stat) 
