@@ -7,7 +7,7 @@ void printStringWithShift(const char* s, int shiftDelay) {                      
   {  printCharWithShift(*s, shiftDelay);  s++;    
      server.handleClient();  
        //-------------------------PAJ7620-------------------------------  
-      #ifdef d_104
+      #ifdef d_103
       
         f_iz_znach=paj7620_t.obrabotka_paj7620();
          if(f_iz_znach!=-1) {Serial.println(f_iz_znach);

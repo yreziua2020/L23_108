@@ -85,7 +85,7 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
   irsend.begin();  // Инициализируем ИК передатчик
 #endif  
   //-------------------------PAJ7620-------------------------------
-#ifdef d_104
+#ifdef d_103
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
 #endif 
 //-------------------------PAJ7620-------------------------------
