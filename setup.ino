@@ -11,7 +11,8 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
    //mp3_com.begin(9600); 
    ////mp3_set_serial (mySerial); 
  
-    
+
+
   pinMode(PIN_MP3,INPUT_PULLUP );
   attachInterrupt(PIN_MP3, btnIsr, RISING);
 
@@ -89,8 +90,9 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
   int error = paj7620_t.paj7620Init();	if(error) { Serial.print(F("Initialisation error code: ")); Serial.println(error);	}	else {		Serial.println(F("Ready!"));	}
 #endif 
 //-------------------------PAJ7620-------------------------------
-
-
+#ifdef d_104
+  pinMode(PIN_knop,INPUT_PULLUP ); ////для кнопки
+#endif 
  // command2_bilo(3,0,3); delay(500);
 
 }

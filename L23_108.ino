@@ -10,8 +10,8 @@ const short UserID=3;
 #include <Wire.h>
 
 //#define d_102  //d_102  по умолчанию 
-#define d_103
-//#define d_104
+//#define d_103
+#define d_104
 
 #ifdef defined(d_102)
 #define _ipi 102     //указываем адрес
@@ -19,6 +19,7 @@ const short UserID=3;
 const int8_t PIN_MP3=12; //пин статуса плеера
 const uint16_t kIrLed = 16; //ПИН ИК передатчика 16
 String weatherHost0 = "api.weatherbit.io";
+#define gromk  15  // 15 //17//11  //9 //максимальная громкость
 
 #elif defined(d_103)
 #define _ipi 103     //указываем адрес
@@ -26,13 +27,16 @@ String weatherHost0 = "api.weatherbit.io";
 const int8_t PIN_MP3=16; //пин статуса плеера
 const uint16_t kIrLed = 12; //ПИН ИК передатчика 16
 String weatherHost0 = "api.weatherbit.io";
+#define gromk  17  // 15 //17//11  //9 //максимальная громкость
 
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
 #define _getv 41     //указываем шлюз
 const int8_t PIN_MP3=12; //пин статуса плеера
-const uint16_t kIrLed = 16; //ПИН ИК передатчика 16
+//const uint16_t kIrLed = 16; //ПИН ИК передатчика 16
+const uint16_t PIN_knop = 0;
 String weatherHost0 = "api.weatherbit.iot";
+#define gromk  5  // 15 //17//11  //9 //максимальная громкость
 
 #else 
 #define _ipi 102     //указываем адрес
@@ -101,7 +105,7 @@ IRsend irsend(kIrLed);
 //#include <DFPlayer_Mini_Mp3.h>
 //SoftwareSerial mp3_com(0, 12); // RX, TX  5,4
 //#define MP3_PIN   16
-#define gromk  17  // 15 //17//11  //9 //максимальная громкость
+
 const uint16_t zad_vool=2;//заданная громкость минимальная для будидьника
 uint16_t voll=zad_vool;   //громкость
 //static uint32_t myTimer_pl;
@@ -460,23 +464,30 @@ void loop() {
           ///play_frazi(5 ,212,  day+40, month+80, hour , minute+100); 
           //delay(100); 
        }
-  
-  //-------------------------PAJ7620-------------------------------  
-#ifdef d_103
- if (f_angl && !pr_bip_full && !f_govorit_fraz) {
+
+#ifdef d_104 
+  if(!digitalRead(PIN_knop)) { f_angl=1; Serial.println("input =>1");}
+ 
+  //if (f_angl &&f_govorit_fraz)  printStringWithShift(tekst[kol_fra_a+1].c_str(), 25);
+   if (f_angl && !pr_bip_full && !f_govorit_fraz) {
   //kol_fra_a++;
   if (kol_fra_a<26) {
     play_frazi(1 ,kol_fra_a+1,6); 
+    printStringWithShift(tekst[kol_fra_a].c_str(), 25);  //play_frazi(1 ,kol_fra_a,6); 
     //String ttpp=" "+tekst[kol_fra_a];
-    String ttpp="\239";
-    printStringWithShift(tekst[kol_fra_a].c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
-    printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
+    //String ttpp="\227\226";    printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
   // Serial.print("\213=");Serial.println(\213);
     kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
+  
+
  }
 
-if (!f_govorit_fraz)  //если говорим фразу то не опрашиваем датчики
+
+#endif 
+  //-------------------------PAJ7620-------------------------------  
+#ifdef d_103
+ if (!f_govorit_fraz)  //если говорим фразу то не опрашиваем датчики
 {
   f_iz_znach=paj7620_t.obrabotka_paj7620();
  // paj7620_tt.znach=UP;
@@ -488,6 +499,22 @@ if (!f_govorit_fraz)  //если говорим фразу то не опраш�
   if (f_iz_znach==3) bip_LEFT();
   } 
 }
+ 
+ 
+ if (f_angl && !pr_bip_full && !f_govorit_fraz) {
+  //kol_fra_a++;
+  if (kol_fra_a<26) {
+    play_frazi(1 ,kol_fra_a+1,6); 
+    //String ttpp=" "+tekst[kol_fra_a];
+   // String ttpp="\200";
+    printStringWithShift(tekst[kol_fra_a].c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
+   // printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
+  // Serial.print("\213=");Serial.println(\213);
+    kol_fra_a++;
+  } else {kol_fra_a=0; f_angl=0;}
+ }
+
+
 
 #endif 
  

@@ -12,7 +12,7 @@ void wifiConnect() {    //printTime -вывод времени в ком пор�
        if (printCom) {Serial.print(" IP adress : "); Serial.println(WiFi.localIP());}
         if (!firstStart) 
         { 
-          String aaa=WiFi.localIP().toString() + "                ";  if(NUM_MAX > 4) {for (int j=0; j<NUM_MAX - 4; j++) aaa += "  "; }   clr(); printStringWithShift(" IP: ", 15); printStringWithShift(aaa.c_str(), 25);
+          String aaa=WiFi.localIP().toString() + "                ";  if(NUM_MAX > 4) {for (int j=0; j<NUM_MAX - 4; j++) aaa += "  "; }   clr(); printStringWithShift(" IP: ", 15); printStringWithShift(aaa.c_str(), 15);
           
           bip_privet();
           printStringWithShift(_ver, 25);
