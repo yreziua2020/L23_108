@@ -470,13 +470,9 @@ void loop() {
  
   //if (f_angl &&f_govorit_fraz)  printStringWithShift(tekst[kol_fra_a+1].c_str(), 25);
    if (f_angl && !pr_bip_full && !f_govorit_fraz) {
-  //kol_fra_a++;
   if (kol_fra_a<26) {
     play_frazi(1 ,kol_fra_a+1,6); 
-    printStringWithShift(tekst[kol_fra_a].c_str(), 25);  //play_frazi(1 ,kol_fra_a,6); 
-    //String ttpp=" "+tekst[kol_fra_a];
-    //String ttpp="\227\226";    printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
-  // Serial.print("\213=");Serial.println(\213);
+    printStringWithShift(tekst[kol_fra_a].c_str(), 20);  //play_frazi(1 ,kol_fra_a,6); 
     kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
   
@@ -501,19 +497,16 @@ void loop() {
 }
  
  
- if (f_angl && !pr_bip_full && !f_govorit_fraz) {
-  //kol_fra_a++;
+  //if (f_angl &&f_govorit_fraz)  printStringWithShift(tekst[kol_fra_a+1].c_str(), 25);
+   if (f_angl && !pr_bip_full && !f_govorit_fraz) {
   if (kol_fra_a<26) {
     play_frazi(1 ,kol_fra_a+1,6); 
-    //String ttpp=" "+tekst[kol_fra_a];
-   // String ttpp="\200";
-    printStringWithShift(tekst[kol_fra_a].c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
-   // printStringWithShift(ttpp.c_str(), 35);  //play_frazi(1 ,kol_fra_a,6); 
-  // Serial.print("\213=");Serial.println(\213);
+    printStringWithShift(tekst[kol_fra_a].c_str(), 20);  //play_frazi(1 ,kol_fra_a,6); 
     kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
- }
+  
 
+ }
 
 
 #endif 
