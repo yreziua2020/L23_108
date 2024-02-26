@@ -36,7 +36,7 @@ const int8_t PIN_MP3=12; //пин статуса плеера
 //const uint16_t kIrLed = 16; //ПИН ИК передатчика 16
 const uint16_t PIN_knop = 0;
 String weatherHost0 = "api.weatherbit.iot";
-#define gromk  5  // 15 //17//11  //9 //максимальная громкость
+#define gromk  9  // 15 //17//11  //9 //максимальная громкость
 
 #else 
 #define _ipi 102     //указываем адрес
@@ -471,8 +471,9 @@ void loop() {
   //if (f_angl &&f_govorit_fraz)  printStringWithShift(tekst[kol_fra_a+1].c_str(), 25);
    if (f_angl && !pr_bip_full && !f_govorit_fraz) {
   if (kol_fra_a<26) {
+    
+    printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
     play_frazi(1 ,kol_fra_a+1,6); 
-    printStringWithShift(tekst[kol_fra_a].c_str(), 20);  //play_frazi(1 ,kol_fra_a,6); 
     kol_fra_a++;
   } else {kol_fra_a=0; f_angl=0;}
   
