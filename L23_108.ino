@@ -475,7 +475,7 @@ void loop() {
     printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
     play_frazi(1 ,kol_fra_a+1,6); 
     kol_fra_a++;
-  } else {kol_fra_a=0; f_angl=0;}
+  } else {kol_fra_a=0;  if(f_angl) { if(f_angl++>3) { f_angl=0;};} }
   
 
  }
@@ -504,7 +504,7 @@ void loop() {
     play_frazi(1 ,kol_fra_a+1,6); 
     printStringWithShift(tekst[kol_fra_a].c_str(), 20);  //play_frazi(1 ,kol_fra_a,6); 
     kol_fra_a++;
-  } else {kol_fra_a=0; f_angl=0;}
+   } else {kol_fra_a=0;  if(f_angl) { if(f_angl++>5) { f_angl=0;};} }
   
 
  }
