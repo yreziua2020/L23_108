@@ -26,6 +26,8 @@ String tekst [] ={" A\222ei\223эй"," B\222bi\222би"," C\222si\222си"," D\2
 
 #ifdef d_104 
 String tekst [] ={"   Aa [ei][эй] "," B [bi:][би:]","  Cc [si:][си:] ","  Dd [di:][ди:] ","    Ee [i:][и:] ","   Ff [ef][эф] ","  Gg [d\227i:]джи:","  Hh[eit\226] эйч","    Ii [ai][ай] "," Jj [d\227ei][джей]","   Kk [kei][кей]","  Ll  [el][эл] " ," Mm  [em][эм] "," Nn  [en][эн] ","  Oo [\224\225][оу]","  Pp [pi:][пи:] "," Qq [kju:]кью:","    Rr [a:][а:] ","  Ss [es][эс] " ,"  Tt [ti:][ти:] ","  Uu [ju:][ю:]","   Vv [vi][ви] "," W[dлblju:]даблью","  Xx [eks] экс" ,"  Yy [wai] уай","  Zz [zed] зед"};
+
+
 #endif 
 uint f_angl;
 uint8_t kol_fra_a;  //количество фраз англиских
