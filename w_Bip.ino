@@ -124,8 +124,12 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
         //Serial.println();Serial.print("cmd");Serial.print(caun_zv2);Serial.print(" ");
         if (caun_zv2 ==1) { if (digitalRead(PIN_MP3))  {/*Serial.println("Input hide");*/ f_Fold_ADVE=1; }  else  {f_Fold_ADVE=0; /*Serial.println("Input low");*/} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
                                                      //command2(Fold,7,masiv[caun_zv2]);  //masiv[masiv[0]+1] определяем из последнего элемента масива папку из каторой возпроизводить
-         if (f_Fold_ADVE) { /*Serial.print("ст_F=");  Serial.print(masiv[caun_zv2]);*/ command2(Fold,masiv[masiv[0]+1],masiv[caun_zv2]); } else  {/*Serial.print("ст_A="); Serial.print(masiv[caun_zv2]); */command2(ADVE,0,masiv[caun_zv2]); }
- 
+         //if (f_Fold_ADVE) { /*Serial.print("ст_F=");  Serial.print(masiv[caun_zv2]);*/ command2(Fold,masiv[masiv[0]+1],masiv[caun_zv2]); } else  {/*Serial.print("ст_A="); Serial.print(masiv[caun_zv2]); */command2(ADVE,0,masiv[caun_zv2]); }
+          if (f_Fold_ADVE) {Serial.print("старт_F="); Serial.println(masiv[caun_zv+1]); command2(Fold,masiv[1],masiv[caun_zv+1]);} 
+               else        {Serial.print("старт_A="); Serial.println(masiv[caun_zv+1]); command2(ADVE,0,masiv[caun_zv+1]); }
+
+
+
         myTimer_pl2= millis(); //запускаем отсчет ели вдруг не будет ответа чтобы не стопорить а все обновить
         otp_kom2=1; 
      } 
@@ -133,13 +137,15 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
       {
         if (millis() - myTimer_pl2 >= 5000) {  
           otp_kom2=0;
-          Serial.println("Привышенно время ожидания ответа для команды");   Serial.print(" intFlag=");  Serial.println(intFlag); 
+          if (digitalRead(PIN_MP3))   {  otp_kom2=0;  Serial.println("Привышенно время ожидания ответа для команды"); } //если плее не играет(если вход истина значит не чего не играет), а ожидание превышено то пробуем отправлять следующюю команду
+          else   {myTimer_pl2= millis(); Serial.print("p");}
           return;
         } // Serial.println("Привышенно время ожидания ответа для команды"); для того чтобы обнолить если вдруг не прийдет ответ, чтобы следующая команда выполнилась, а также повторно с работала    
         
       }        //if(otp_
 
-  if ( f_Fold_ADVE){ /* Serial.print(" intFlag=");  Serial.print(intFlag); */  if(intFlag>0){ otp_kom2=0; /*Serial.print("завершено_F");*/ }}  else { if(intFlag>1){ otp_kom2=0; /*Serial.print("завершено_A");*/} }
+  if ( f_Fold_ADVE){ if(intFlag)  { otp_kom2=0; /*Serial.print("завершено_F");*/ /* Serial.print(" intFlag=");  Serial.print(intFlag); */}}  
+              else { if(intFlag>1){ otp_kom2=0; delay(100); /*Serial.print("завершено_A");*/} }
   //if ( pr_bip_adve){  if(intFlag>1){ otp_kom=0; Serial.print("завершено_A"); }}
 
 }
@@ -203,13 +209,11 @@ String sbyte2hex(uint8_t b)
 //на ноль часов нет фразы  //
 //0 элемент определяет количество  фраз
 //полседний определяет с какой папки играть
-void play_frazi(int kol_fraz, int fraz1 , int fraz2 , int fraz3 , int fraz4 , int fraz5 , int fraz6 , int fraz7 , int fraz8 , int fraz9){
+void play_frazi(int kol_fraz, int folder ,  int fraz1 , int fraz2 , int fraz3 , int fraz4 , int fraz5 , int fraz6 , int fraz7 , int fraz8 , int fraz9, int fraz10 ){
    if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] =fraz1;masiv[2] =fraz2;masiv[3] =fraz3;masiv[4] =fraz4; masiv[5] =fraz5; masiv[6] =fraz6; masiv[7] =fraz7; masiv[8] =fraz8;masiv[9] =fraz9;
+    masiv[0] =kol_fraz; masiv[1] = folder;   masiv[2] =fraz1;masiv[3] =fraz2;masiv[4] =fraz3;masiv[5] =fraz4; masiv[6] =fraz5; masiv[7] =fraz6; masiv[8] =fraz7; masiv[9] =fraz8;masiv[10] =fraz9;masiv[11] =fraz10;
     pr_bip_full=1; 
    b_time_full_ad();
     }
   }
-
-
  
