@@ -1,14 +1,15 @@
 
 
-static uint8_t otp_kom2; //отправить команду если  ноль то отправляем комаду плееру
-static uint32_t myTimer_pl2;
+static uint8_t otp_kom; //отправить команду если  ноль то отправляем комаду плееру
+static uint32_t myTimer_pl;
+static uint32_t Timer_puaz_ang;
 uint16_t masiv[12];
-uint8_t  f_Fold_ADVE;  //если установлен значит Fold проигрыш из папки если нет то вставкаа  с ADVE
+uint8_t  f_Fold;  //если установлен значит Fold проигрыш из папки если нет то вставкаа  с ADVE
 volatile uint intFlag = false;  //для прерывания
 bool pr_bip_full; //пременая для бп чтобы отказаться от задержек
 
-uint8_t caun_zv2;
-//static uint8_t otp_kom2; //отправить команду если  ноль то отправляем комаду плееру
+uint8_t caun_zv;
+//static uint8_t otp_kom; //отправить команду если  ноль то отправляем комаду плееру
 
 bool f_govorit_fraz; //флаг говориться фраза , чтобы не выполнять все тормозящиие запросы
 
