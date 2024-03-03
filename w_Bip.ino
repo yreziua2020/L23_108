@@ -123,12 +123,10 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
          caun_zv++;
         //Serial.println();Serial.print("cmd");Serial.print(caun_zv);Serial.print(" ");
         if (caun_zv ==1) { if (digitalRead(PIN_MP3))  {f_Fold=1; /*Serial.println("Input hide");*/  }  
-                            else                       {f_Fold=0; /*Serial.println("Input low");*/} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
+                           else                       {f_Fold=0; /*Serial.println("Input low");*/} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
 
         if (f_Fold) {command2(Fold,masiv[1],masiv[caun_zv+1]);/*Serial.print("старт_F="); Serial.println(masiv[caun_zv+1]);*/ } 
-               else      {command2(ADVE,0,masiv[caun_zv+1]);       /*Serial.print("старт_A="); Serial.println(masiv[caun_zv+1]);*/ }
-
-
+          else      {command2(ADVE,0,masiv[caun_zv+1]);       /*Serial.print("старт_A="); Serial.println(masiv[caun_zv+1]);*/ }
 
         myTimer_pl= millis(); //запускаем отсчет ели вдруг не будет ответа чтобы не стопорить а все обновить
         otp_kom=1; 
@@ -144,13 +142,22 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
         
       }        //if(otp_
 
-  if ( f_Fold){         if(intFlag)  { otp_kom=0;            /*Serial.print("завершено_F");*/ /* Serial.print(" intFlag=");  Serial.print(intFlag); */}}  
-                else { if(intFlag>1){ otp_kom=0; delay(100); /*Serial.print("завершено_A");*/} }
-  //if ( pr_bip_adve){  if(intFlag>1){ otp_kom=0; Serial.print("завершено_A"); }}
+          if ( f_Fold){         
+                  if(intFlag)  {
+                                 if (millis() - Timer_puaz_ang >= 5000) {  //задержка поле проиграша
+                                  otp_kom=0; 
+                                }
+                  } else {Timer_puaz_ang=millis();}
+          }  
+          else {  //когда играет реклама то ждем прерывания второго так как первое возникнет при остановке музыки а второе после проиграша рекламы
+                  if(intFlag>1){ 
+                             if (millis() - Timer_puaz_ang >= 100) { 
+                                  otp_kom=0; //delay(100); 
+                               }
+                  } else {Timer_puaz_ang=millis();}
+          }
 
 }
-
-
 //--------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------
 void command2(int8_t cmd, int8_t Para_MSB, int8_t Para_LSB)   //без ответа о файле вроде

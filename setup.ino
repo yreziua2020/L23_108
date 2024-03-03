@@ -94,5 +94,5 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
   pinMode(PIN_knop,INPUT_PULLUP ); ////для кнопки
 #endif 
  // command2_bilo(3,0,3); delay(500);
-//dayOfWeek=7; // задать ренудитедьно нужный день
+//dayOfWeek=1; // задать ренудитедьно нужный день
 }
