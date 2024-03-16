@@ -83,7 +83,7 @@ void bip_prazn()  { Serial.println ("влет в праздники ");  /* comm
 void bip_bud_end()  //Вызываеться один раз когда сбрасываються все флаги будильника
 {    
 //Serial.println ("end будильник ");
-play_frazi(3,7 ,212, hour , minute+100);  //delay(500);
+play_frazi(3,7,100,212, hour , minute+100);  //delay(500);
 
 }
 //----------------------------------------------------------------------------------------------------------------
@@ -125,8 +125,8 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
         if (caun_zv ==1) { if (digitalRead(PIN_MP3))  {f_Fold=1; /*Serial.println("Input hide");*/  }  
                            else                       {f_Fold=0; /*Serial.println("Input low");*/} } //если вход истина значит не чего не играет запускаем проигаш из папки если игрпет то в вставка из  ADVE
 
-        if (f_Fold) {command2(Fold,masiv[1],masiv[caun_zv+1]);/*Serial.print("старт_F="); Serial.println(masiv[caun_zv+1]);*/ } 
-          else      {command2(ADVE,0,masiv[caun_zv+1]);       /*Serial.print("старт_A="); Serial.println(masiv[caun_zv+1]);*/ }
+        if (f_Fold) {command2(Fold,masiv[1],masiv[caun_zv+2]);/*Serial.print("старт_F="); Serial.println(masiv[caun_zv+1]);*/ } 
+          else      {command2(ADVE,0,masiv[caun_zv+2]);       /*Serial.print("старт_A="); Serial.println(masiv[caun_zv+1]);*/ }
 
         myTimer_pl= millis(); //запускаем отсчет ели вдруг не будет ответа чтобы не стопорить а все обновить
         otp_kom=1; 
@@ -144,7 +144,7 @@ void   b_time_full_ad() //Вызываеться один раз когда сб
 
           if ( f_Fold){         
                   if(intFlag)  {
-                                 if (millis() - Timer_puaz_ang >= 5000) {  //задержка поле проиграша
+                                 if (millis() - Timer_puaz_ang >= masiv[2]) {  //задержка поле проиграша
                                   otp_kom=0; 
                                 }
                   } else {Timer_puaz_ang=millis();}
@@ -212,13 +212,12 @@ String sbyte2hex(uint8_t b)
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 //на ноль часов нет фразы  //
-//0 элемент определяет количество  фраз
+//0-элемент определяет количество  фраз //1-скакой папки протговать//2-сколько хзадежки после фразы
 //полседний определяет с какой папки играть
-void play_frazi(int kol_fraz, int folder ,  int fraz1 , int fraz2 , int fraz3 , int fraz4 , int fraz5 , int fraz6 , int fraz7 , int fraz8 , int fraz9, int fraz10 ){
+void play_frazi(int kol_fraz, int folder ,  int time_zad , int fraz1 , int fraz2 , int fraz3 , int fraz4 , int fraz5 , int fraz6 , int fraz7 , int fraz8 , int fraz9, int fraz10 ){
    if (!pr_bip_full){
-    masiv[0] =kol_fraz; masiv[1] = folder;   masiv[2] =fraz1;masiv[3] =fraz2;masiv[4] =fraz3;masiv[5] =fraz4; masiv[6] =fraz5; masiv[7] =fraz6; masiv[8] =fraz7; masiv[9] =fraz8;masiv[10] =fraz9;masiv[11] =fraz10;
+    masiv[0] =kol_fraz; masiv[1] = folder;  masiv[2] = time_zad; masiv[3] =fraz1;masiv[4] =fraz2;masiv[5] =fraz3;masiv[6] =fraz4; masiv[7] =fraz5; masiv[8] =fraz6; masiv[9] =fraz7; masiv[10] =fraz8;masiv[11] =fraz9;masiv[12] =fraz10;
     pr_bip_full=1; 
    b_time_full_ad();
     }

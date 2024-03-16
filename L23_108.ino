@@ -10,8 +10,8 @@ const short UserID=3;
 #include <Wire.h>
 
 //#define d_102  //d_102  по умолчанию 
-//#define d_103
-#define d_104
+#define d_103
+//#define d_104
 
 const int8_t PIN_MP3=12; //пин статуса плеера
 //#define gromk  15  // 15 //17//11  //9 //максимальная громкость
@@ -456,58 +456,11 @@ void loop() {
           //delay(100); 
        }
 
-#ifdef d_104 
+ #ifdef d_104 
   if(!digitalRead(PIN_knop)) { f_angl=1; Serial.println("input =>1");}
- 
-  //if (f_angl &&f_govorit_fraz)  printStringWithShift(tekst[kol_fra_a+1].c_str(), 25);
-   if (f_angl && !pr_bip_full && !f_govorit_fraz) {
-
-     switch (f_angl)    
-      {
-       case 1:{
-          if (kol_fra_a<26) {
-            printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
-            play_frazi(1, 6 ,kol_fra_a+1); 
-            kol_fra_a++;
-          } else {kol_fra_a=0;   f_angl=2; }
-          //else {kol_fra_a=0;  if(f_angl) { if(f_angl++>3) { f_angl=0;};} 
-        break;}
-       case 2:{
-          if (kol_fra_a<26) {
-          printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
-            play_frazi(1, 6 ,kol_fra_a+1); 
-          kol_fra_a++;}
-          else {kol_fra_a=0;   f_angl=3; }
-          break;}
-        case 3:{
-          if (kol_fra_a<26) {
-          printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
-            play_frazi(1, 6 ,kol_fra_a+1); 
-          kol_fra_a++;}
-          else {kol_fra_a=0;   f_angl=4; }
-          break;}
-        case 4:{
-          if (kol_fra_a<26) {
-          printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
-            play_frazi(1, 6 ,kol_fra_a+1); 
-          kol_fra_a++;}
-          else {kol_fra_a=0;   f_angl=5; }
-          break;}
-         case 5:{
-          if (kol_fra_a<26) {
-          printStringWithShift(tekst[kol_fra_a].c_str(), 30);  //play_frazi(1 ,kol_fra_a,6); 
-            play_frazi(1, 6 ,kol_fra_a+1); 
-          kol_fra_a++;}
-          else {kol_fra_a=0;   f_angl=0; }
-          break;}
-      }
-    
-  
- }  //if (f_angl && !pr_bip_full && !f_govorit_fraz) {
-
-
-#endif 
-  //-------------------------PAJ7620-------------------------------  
+  anglihe();
+ #endif 
+   //-------------------------PAJ7620-------------------------------  
 #ifdef d_103
  if (!f_govorit_fraz)  //если говорим фразу то не опрашиваем датчики
 {
@@ -520,23 +473,9 @@ void loop() {
   if (f_iz_znach==1) bip_RIGHT();
   if (f_iz_znach==3) bip_LEFT();
   } 
-}
- 
- 
-  //if (f_angl &&f_govorit_fraz)  printStringWithShift(tekst[kol_fra_a+1].c_str(), 25);
-   if (f_angl && !pr_bip_full && !f_govorit_fraz) {
-  if (kol_fra_a<26) {
-    play_frazi(1,6 ,kol_fra_a+1); 
-    printStringWithShift(tekst[kol_fra_a].c_str(), 20);  //play_frazi(1 ,kol_fra_a,6); 
-    kol_fra_a++;
-   } else {kol_fra_a=0;  if(f_angl) { if(f_angl++>5) { f_angl=0;};} }
-  
-
- }
-
-
+} 
+anglihe();
 #endif 
- 
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);} //102
 #ifdef d_102
@@ -573,7 +512,7 @@ void loop() {
  } else secFr++;                                                                                                                          //пока секуда не закочилась увеличивает значение  тогла нарощуємо лічильник циклів secFr     //за секуду гдето 2180                                                       
   //---------Сигнал Каждый час  если минуты и секунды  и незакончилась первая секуда и если час больше чем кукушка вклечина и час меньше чем укушка выключена подаем сигнал полного часа
  //if (minute==0 && second==0 && secFr==0 && (hour>=kuOn && hour<kuOff)) { bip();bip();}
- if (minute==0 && second==0 && secFr==0 && (hour>=kuOn && hour<kuOff)) { f_kuku=1; play_frazi(5 , 7 ,212, dayOfWeek+30, day+40, month+80, hour);}  //при куку не говорим минуты минуты только с веба
+ if (minute==0 && second==0 && secFr==0 && (hour>=kuOn && hour<kuOff)) { f_kuku=1; play_frazi(5 , 7 , 200, 212, dayOfWeek+30, day+40, month+80, hour);}  //при куку не говорим минуты минуты только с веба
  //на 10 секунде читаем значение датчиков
  if (secFr == 0 && second == 25 && !alarm_stat) {sensorsAll();  /*dav_opros();kol_dav++;*/}//читаем значеение датчков  if (printCom){Serial.println("Обновление датчиков");};
   //----------- РОБОТА З БУДИЛЬНИКОМ------------------------------------------------------
