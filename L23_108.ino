@@ -10,28 +10,28 @@ const short UserID=3;
 #include <Wire.h>
 
 //#define d_102  //d_102  по умолчанию 
-#define d_103
-//#define d_104
+//#define d_103
+#define d_104
 
 const int8_t PIN_MP3=12; //пин статуса плеера
 //#define gromk  15  // 15 //17//11  //9 //максимальная громкость
 
-#ifdef defined(d_102)
+#if defined(d_102)      //defined возращает истину если  d_102 определена. внимание что  используем #if 
 #define _ipi 102     //указываем адрес
 #define _getv 199     //указываем шлюз
-String weatherHost0 = "api.weatherbit.io";
 #define gromk  16  // 15 //17//11  //9 //максимальная громкость
+String weatherHost0 = "api.weatherbit.io";
 #elif defined(d_103)
 #define _ipi 103     //указываем адрес
 #define _getv 199     //указываем шлюз
-String weatherHost0 = "api.weatherbit.io";
 #define gromk  16  // 15 //17//11  //9 //максимальная громкость
+String weatherHost0 = "api.weatherbit.io";
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
 #define _getv 41     //указываем шлюз
+#define gromk  9  // 15 //17//11  //9 //максимальная громкость
 const uint16_t PIN_knop = 0;
 String weatherHost0 = "api.weatherbit.iot";
-#define gromk  9  // 15 //17//11  //9 //максимальная громкость
 #else 
 #define _ipi 102     //указываем адрес
 #define _getv 199     //указываем шлюз
@@ -443,6 +443,7 @@ static uint8_t cmdbuf[8] = {0};
 //==================================================================================================================================================================================================================================================================
 //==================================================================================================================================================================================================================================================================
 //==================================================================================================================================================================================================================================================================
+//void disp_svich() ;
 //*********************************************************************************************************************************************************************************************************************************************************************
 //*********************************************************************************************************************************************************************************************************************************************************************
 //*********************************************************************************************************************************************************************************************************************************************************************
@@ -584,49 +585,10 @@ anglihe();
    {
     if(second>=10){
         if (second % 2 == 0 )
-        {if(fl_per==0 ) 
-          { fl_per=1;//perek++;
-            //t0Lux = lightMeter.readLightLevel();  //читаем значение яркости
-            
-            switch (++perek)    //  showSimplePre();  showSimplePre3();   showLux2(); showSimpleDate();
-            {
-           // case 1:{showSimpleTempDom1();  break;}
-            //case 1:{showSimplePre(); perek=0; break;}
-            case 1:{showSimpleDate(); break;}
-            case 2:{showAnimClock();   break;}
-            case 3:{showSimplePre();   break;}
-            case 4:{showAnimClock();   break;}
-            //case 5:{Kurs_disp();   break;}
-            case 5:{showSimpleTempDom1();   break;}
-            case 6:{ showAnimClock(); break;}  
-            case 7:{showSimpleHum(); break;}
-            case 8:{showAnimClock(); perek=0;break;}  
-            //case 2:{ perek=0; break;}
-           // case 2:{showSimpleTempDom1();  break;}
-           // case 3:{showSimpleHum();   break;} 
-           // case 4:{showSimpleHum();   break;}
-     //       case 5:{ perek=0; break;}
-           // case 5:{showSimplePre4();     break;}  //showLux2();showSimplePre4();
-    //        case 6:{showSimplePre();  break;}
-   //         case 7:{/*showSimplePre();*/  break;}
-               case 9:{showSimpleDate();   break;}
-            case 10:{showAnimClock();  break;}  
-            case 11:{showSimpleTempDom1();  break;}  
-            case 12:{showSimpleTempDom1();   break;}
-            case 13:{showSimpleHum(); break;}
-            case 14:{/*showSimpleHum();*/ break;}
-            
-            case 16:{  break;}
-            case 17:{showSimplePre();  break;}
-         
-            case 19:{showSimpleDate2();   break;}
-            case 20:{showSimpleDate2(); break;}
-            case 21:{showSimpleDate2();  break;}  
-            case 22:{ perek=0; break;}
-            default:{  break;}
-            }//switch
-          }
-        } else fl_per=0;
+        {
+          if(fl_per==0 )  { fl_per=1; disp_svich(); }  
+        } 
+        else fl_per=0;
       } else { perek=0; showAnimClock();}
    } else showAnimClock();  //чтобы вночное время показывать только часы 
   //**************

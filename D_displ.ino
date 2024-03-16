@@ -1,3 +1,40 @@
+void disp_svich() {
+           
+   #if defined(d_102) //|| defined(d_103) 
+            switch (++perek)    //  showSimplePre();  showSimplePre3();   showLux2(); showSimpleDate();
+            {
+            case 1:{showSimpleDate(); break;}
+            case 2:{showAnimClock();   break;}
+            case 3:{showSimplePre();   break;}
+            case 4:{showAnimClock();   break;}
+            case 5:{showSimpleTempDom1();   break;}
+            case 6:{ showAnimClock(); break;}  
+            case 7:{showSimpleHum(); break;}
+            case 8:{showAnimClock(); perek=0;break;}  
+            default:{  break;}
+            }//switch
+   #endif        
+
+   #if defined(d_103) 
+            switch (++perek)    //  showSimplePre();  showSimplePre3();   showLux2(); showSimpleDate();
+            {
+            case 1:{showSimpleDate_full(); break;}
+            case 2:{ showAnimClock(); perek=0; break;}  
+            default:{  break;}
+            }//switch
+   #endif       
+
+   #if defined(d_104) 
+            switch (++perek)    //  showSimplePre();  showSimplePre3();   showLux2(); showSimpleDate();
+            {
+            case 1:{showSimpleDate(); break;}
+            case 2:{ showAnimClock(); perek=0; break;}  
+            default:{  break;}
+            }//switch
+   #endif     
+
+
+}
 //==========ВИВІД НА ЕКРАН ТЕМПЕРАТУРИ В БУДИНКУ НЕ ИСПОЛЬЗУЮ для вывода отладки=========yyyyy===============================
 void showTest() {    fl_dom=1;  wrem_tm="  "+String(t0Lux);      printStringWithShift( wrem_tm.c_str(), 40); }
 
@@ -323,14 +360,47 @@ void showSimplePre2() {
   showDigit(pd2 , (p1 > 0 ? 10 : 5) + indent, dig5x8);  showDigit(pd3 , (p1 > 0 ? 16 : 11) + indent, dig5x8);  showDigit(pd4 , (p1 > 0 ? 22 : 17) + indent, dig5x8);  
   refreshAll();
 }
-
- 
+//==========ВИВІД НА ЕКРАН ДАТИ==============ddd===========================================
 //==========ВИВІД НА ЕКРАН ДАТИ==============ddd===========================================
 void showSimpleDate() {
   if (WiFi.status() == WL_CONNECTED) 
   {  fl_dat=1;  wrem_tm=" "+String(day/10)+String(day%10)+"\267";
       switch (dayOfWeek)    {case 1: {wrem_tm+="Вос"; break;} case 2: {wrem_tm+="Пон"; break;} case 3: {wrem_tm+="Вто"; break;} case 4: {wrem_tm+="Сре"; break;} case 5: {wrem_tm+="Чет"; break;} case 6: {wrem_tm+="Пят"; break;}  case 7: {wrem_tm+="Суб"; break;}  } 
       printStringWithShift( wrem_tm.c_str(), 15);
+  }
+}
+//==========ВИВІД НА ЕКРАН ДАТИ==============ddd===========================================
+void showSimpleDate_full() {
+  if (WiFi.status() == WL_CONNECTED) 
+  { fl_dat=1;  
+  wrem_tm=" ";
+  //wrem_tm+=String(day/10)+String(day%10)+"\267";
+  wrem_tm+=String(day/10)+String(day%10)+" ";
+  if(dayOfWeek==2) wrem_tm+="Понедельник"; 
+  if(dayOfWeek==3) wrem_tm+="Вторник"; 
+  if(dayOfWeek==4) wrem_tm+="Среда"; 
+  if(dayOfWeek==5) wrem_tm+="Четверг";
+  if(dayOfWeek==6) wrem_tm+="Пятница";
+  if(dayOfWeek==7) wrem_tm+="Суббота"; 
+  if(dayOfWeek==1) wrem_tm+="Воскресенье"; 
+  
+  
+/* 
+  if(month==1) wrem_tm+="Января"; 
+  if(month==2) wrem_tm+="Февраля"; 
+  if(month==3) wrem_tm+="Марта"; 
+  if(month==4) wrem_tm+="Апреля"; 
+  if(month==5) wrem_tm+="Мая"; 
+  if(month==6) wrem_tm+="Июня"; 
+  if(month==7) wrem_tm+="Июля"; 
+  if(month==8) wrem_tm+="Августа"; 
+  if(month==9) wrem_tm+="Сентября"; 
+  if(month==10) wrem_tm+="Октября"; 
+  if(month==11) wrem_tm+="Ноября"; 
+  if(month==12) wrem_tm+="Декабря";
+*/
+      //switch (dayOfWeek)    {case 1: {wrem_tm+="Воскресение"; break;} case 2: {wrem_tm+="Пониддельник"; break;} case 3: {wrem_tm+="Вто"; break;} case 4: {wrem_tm+="Сре"; break;} case 5: {wrem_tm+="Чет"; break;} case 6: {wrem_tm+="Пят"; break;}  case 7: {wrem_tm+="Суб"; break;}  } 
+      printStringWithShift( wrem_tm.c_str(), 13);
   }
 }
 //==========ВИВІД НА ЕКРАН ДАТИ 2=========================================================
