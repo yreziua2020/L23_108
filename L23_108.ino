@@ -29,7 +29,7 @@ String weatherHost0 = "api.weatherbit.io";
 #elif defined(d_104)
 #define _ipi 104     //указываем адрес
 #define _getv 41     //указываем шлюз
-#define gromk  9  // 15 //17//11  //9 //максимальная громкость
+#define gromk  11  // 15 //17//11  //9 //максимальная громкость
 const uint16_t PIN_knop = 0;
 String weatherHost0 = "api.weatherbit.iot";
 #else 
