@@ -490,7 +490,7 @@ void handle_timepc() {
   dayOfWeek = server.arg("dayOfWeek").toInt();
   month = server.arg("month").toInt();
   year = server.arg("year").toInt();
-  if(printCom){printTime();Serial.println("Set Date/Time from PC - "+String(day)+"."+String(month)+"."+String(year)+"     "+String(hour)+":"+String(minute)+":"+String(second)+"    timeZone="+String(timeZone));}  //Выводим в кком порт прочитаное время
+  if(printCom){printTime();Serial.println("Set Date/Time from PC - "+String(day)+"."+String(month)+"."+String(year)+"     "+String(hour)+":"+String(minute)+":"+String(second)+"    timeZone="+String(timeZone)+"    день недели="+String(dayOfWeek));}  //Выводим в кком порт прочитаное время
   if(rtcStat) {hour_rtc=hour;minute_rtc=minute;second_rtc= second;month_rtc=month;day_rtc=day;dayOfWeek_rtc=dayOfWeek;year_rtc=year;setRTCDateTime(); if(printCom){Serial.println("Time save iz KOMPA v RTC OK.");} }
   localMillisAtUpdate = millis();
   localEpoc = (hour * 60 * 60 + minute * 60 + second);
