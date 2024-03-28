@@ -19,7 +19,12 @@ void disp_svich() {
             switch (++perek)    //  showSimplePre();  showSimplePre3();   showLux2(); showSimpleDate();
             {
             case 1:{showSimpleDate_full(); break;}
-            case 2:{ showAnimClock(); perek=0; break;}  
+            case 2:{showAnimClock();       break;} 
+            case 3:{showSimpleTempDom1_hum();  break;}
+            case 4:{showSimpleTempDom1_hum();  break;}
+//            case 4:{showAnimClock();       break;}  
+//            case 5:{showSimpleHum();       break;} 
+            case 5:{showAnimClock(); perek=0;break;}  
             default:{  break;}
             }//switch
    #endif       
@@ -27,8 +32,10 @@ void disp_svich() {
    #if defined(d_104) 
             switch (++perek)    //  showSimplePre();  showSimplePre3();   showLux2(); showSimpleDate();
             {
-            case 1:{showSimpleDate(); break;}
-            case 2:{ showAnimClock(); perek=0; break;}  
+            case 1:{showSimpleDate();  break;}
+            case 2:{ showAnimClock();  break;} 
+            case 3:{showSimpleDate2(); break;}
+            case 4:{ showAnimClock(); perek=0; break;}  
             default:{  break;}
             }//switch
    #endif     
@@ -279,6 +286,28 @@ void showSimpleTempDom1() {
   showDigit(tt2, 27 + indent, dig5x8);   //дробная часть
   refreshAll();
 }
+void showSimpleTempDom1_hum() {
+  fl_dom=1;
+  byte indent = aliData * (NUM_MAX - 4) -32;  dx = dy = 0;  clr(); 
+ // byte indent = aliData * 4;  dx = dy = 0;  clr(); 
+  showDigit((t0 < 0.0 ? 4 : 3), indent, znaki5x8); // друкуємо D+ альбо D-
+ // showDigit(22, 4+indent, znaki5x8); // БУКВА МАЛЕНЬКАЯ о
+ // showDigit(24, 8+indent, znaki5x8); //  МАЛЕНЬКАЯ _1
+   if (t1 <= -10.0 || t1 >= 10) showDigit((t1 < 0 ? (t1 * -1) / 10 : t1 / 10), 7 + indent, dig5x8); //смичаем первую цифру в завсимотсти от значения стоб не выводить 0
+  showDigit((t1 < 0 ? (t1 * -1) % 10 : t1 % 10), 13 + indent, dig5x8);
+  showDigit(2, 19 + indent, znaki5x8);    //точка
+  showDigit(t2, 21 + indent, dig5x8);   //дробная часть
+  showDigit(tt2, 27 + indent, dig5x8);   //дробная часть
+  showDigit(7, 35 + indent, znaki5x8);     // друкуємо знак вологості
+  if (h1 >= 10) showDigit(h1 / 10, 47 + indent, dig5x8);
+  showDigit((h1 - (h1 / 10) * 10), 53 + indent, dig5x8);
+  showDigit(8, 59 + indent, znaki5x8);
+
+  refreshAll();
+
+
+
+}
 //==========ВИВІД НА ЕКРАН ТЕМПЕРАТУРИ НА ВУЛИЦІ======yyy=================================
 void showSimpleTempU() {
   if (WiFi.status() == WL_CONNECTED)   
@@ -376,13 +405,13 @@ void showSimpleDate_full() {
   wrem_tm=" ";
   //wrem_tm+=String(day/10)+String(day%10)+"\267";
   wrem_tm+=String(day/10)+String(day%10)+" ";
-  if(dayOfWeek==2) wrem_tm+="Понедельник"; 
+  if(dayOfWeek==2) wrem_tm+="Понедел"; 
   if(dayOfWeek==3) wrem_tm+="Вторник"; 
-  if(dayOfWeek==4) wrem_tm+="Среда"; 
+  if(dayOfWeek==4) wrem_tm+="Среда "; 
   if(dayOfWeek==5) wrem_tm+="Четверг";
   if(dayOfWeek==6) wrem_tm+="Пятница";
   if(dayOfWeek==7) wrem_tm+="Суббота"; 
-  if(dayOfWeek==1) wrem_tm+="Воскресенье"; 
+  if(dayOfWeek==1) wrem_tm+="Воскрес"; 
   
   
 /* 
@@ -408,14 +437,14 @@ void showSimpleDate2() {
   fl_dat=1;
   byte indent = aliData * (NUM_MAX - 4);
   dx = dy = 0;  clr();
-  showDigit(day / 10, indent, dig4x8);
-  showDigit(day % 10,  5 + indent, dig4x8);
-  showDigit(month / 10, 12 + indent, dig4x8);
-  showDigit(month % 10, 17 + indent, dig4x8);
+  showDigit(day / 10, indent-1, dig4x8);
+  showDigit(day % 10,  4 + indent, dig4x8);
+  showDigit(month / 10, 11 + indent, dig4x8);
+  showDigit(month % 10, 16 + indent, dig4x8);
   showDigit((year - 2000) / 10, 23 + indent, dig4x8);
   showDigit((year - 2000) % 10, 28 + indent, dig4x8);
-  setCol(10 + indent, 0xC0);
-  setCol(22 + indent, 0xC0);
+  setCol(9 + indent, 0xC0);
+  setCol(21 + indent, 0xC0);
   refreshAll();
 }
 //==========ВИВІД НА ЕКРАН АНІМАЦІЙНОГО ГОДИННИКА=======================================
