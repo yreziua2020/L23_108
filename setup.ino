@@ -30,8 +30,16 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
 
   //если работа смодулем разрешена то считываем данные смодуля
              // ищем модуль часовой ,на ходит модуль без кварца по адресу 68 , есили не искть то при rtcStat=1 будет виснуть на чтение данных из модуля
-          Wire.beginTransmission(0x67); errorRTC = Wire.endTransmission();  if (errorRTC == 0){ rtcAddr = 0x67;  if (printCom) Serial.println("YES!!! find RTC module addr: 0x67!"); } 
-  else  { Wire.beginTransmission(0x68); errorRTC = Wire.endTransmission();  if (errorRTC == 0){ rtcAddr = 0x68;  if (printCom) Serial.println("YES!!! find RTC module addr: 0x68!"); } else rtcStat = false;  }
+                 Wire.beginTransmission(0x67); errorRTC = Wire.endTransmission();  
+                  if (printCom) {Serial.print("errorRTC=");Serial.println(errorRTC);}
+          if (errorRTC == 0){ 
+                 rtcAddr = 0x67;  if (printCom) Serial.println("YES!!! find RTC module addr: 0x67!"); } 
+          else  { 
+                 Wire.beginTransmission(0x68); errorRTC = Wire.endTransmission();  
+                    if (errorRTC == 0){ 
+                    rtcAddr = 0x68;  if (printCom) Serial.println("YES!!! find RTC module addr: 0x68!"); 
+                    } else rtcStat = false;  
+                 }
   //при старте обновляем время
   if (rtcStat) { if (printCom)  Serial.println("RTC START");  getRTCDateTime(); hour=hour_rtc;minute=minute_rtc;second=second_rtc; day=day_rtc; month=month_rtc; year=year_rtc; dayOfWeek=dayOfWeek_rtc; if (printCom) {Serial.println("RTC update: "+String(hour)+":"+String(minute)+":"+String(second)+"    "+String(day)+"."+String(month)+"."+String(year)+" D=" + String(dayOfWeek)); }    } else if (printCom) Serial.println("RTC module off!");  // ------------------
   
