@@ -37,7 +37,7 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
           else  { 
                  Wire.beginTransmission(0x68); errorRTC = Wire.endTransmission();  
                     if (errorRTC == 0){ 
-                    rtcAddr = 0x68;  if (printCom) Serial.println("YES!!! find RTC module addr: 0x68!"); 
+                    rtcAddr = 0x68;  if (printCom) Serial.println("YES!!! ***find RTC module addr: 0x68!"); 
                     } else rtcStat = false;  
                  }
   //при старте обновляем время
