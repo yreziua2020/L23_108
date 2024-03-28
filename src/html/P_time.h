@@ -35,8 +35,10 @@ const char P_time[] PROGMEM =  R"=====(
                 var hours = date.getHours( );
                 var minute = date.getMinutes();
                 var sec = date.getSeconds();
+                var dayOfWeek = date.getDay();
                 var gmtHours = -date.getTimezoneOffset()/60;
-                server = "/timepc?hours="+hours+"&minute="+minute+"&sec="+sec+"&tz="+gmtHours+"&day="+day+"&month="+month+"&year="+year;
+                //server = "/timepc?hours="+hours+"&minute="+minute+"&sec="+sec+"&tz="+gmtHours+"&day="+day+"&month="+month+"&year="+year;
+                server = "/timepc?hours="+hours+"&minute="+minute+"&sec="+sec+"&tz="+gmtHours+"&day="+day+"&dayOfWeek="+dayOfWeek+"&month="+month+"&year="+year;
                 send_request(submit,server);
                 ///*****************************
                // Serial.println("Time PK.");

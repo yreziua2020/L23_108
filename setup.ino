@@ -41,7 +41,11 @@ uint32_t seed = 0;for (int i = 0; i < 16; i++) {  seed *= 4; seed += analogRead(
                     } else rtcStat = false;  
                  }
   //при старте обновляем время
-  if (rtcStat) { if (printCom)  Serial.println("RTC START");  getRTCDateTime(); hour=hour_rtc;minute=minute_rtc;second=second_rtc; day=day_rtc; month=month_rtc; year=year_rtc; dayOfWeek=dayOfWeek_rtc; if (printCom) {Serial.println("RTC update: "+String(hour)+":"+String(minute)+":"+String(second)+"    "+String(day)+"."+String(month)+"."+String(year)+" D=" + String(dayOfWeek)); }    } else if (printCom) Serial.println("RTC module off!");  // ------------------
+  if (rtcStat) { if (printCom)  Serial.println("RTC START");  
+                  getRTCDateTime();
+                  hour=hour_rtc;minute=minute_rtc;second=second_rtc; day=day_rtc; month=month_rtc; year=year_rtc; dayOfWeek=dayOfWeek_rtc; 
+                  if (printCom) {Serial.println("RTC update: "+String(hour)+":"+String(minute)+":"+String(second)+"    "+String(day)+"."+String(month)+"."+String(year)+" D=" + String(dayOfWeek)); }    
+  } else if (printCom) Serial.println("RTC module off!");  // ------------------
   
   sensorsDht();
   if (bmp.begin()) {    if (printCom) Serial.println("YES!!! find BMP280 sensor!");  bmp280 = true;  sensorsBmp(); } else if (printCom) Serial.println("Did not find BMP280 sensor!");

@@ -487,6 +487,7 @@ void handle_timepc() {
   second = server.arg("sec").toInt();
   timeZone = server.arg("tz").toFloat()-1;    //было timeZone = server.arg("tz").toFloat()
   day = server.arg("day").toInt();
+  dayOfWeek = server.arg("dayOfWeek").toInt();
   month = server.arg("month").toInt();
   year = server.arg("year").toInt();
   if(printCom){printTime();Serial.println("Set Date/Time from PC - "+String(day)+"."+String(month)+"."+String(year)+"     "+String(hour)+":"+String(minute)+":"+String(second)+"    timeZone="+String(timeZone));}  //Выводим в кком порт прочитаное время
