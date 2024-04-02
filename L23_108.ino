@@ -9,9 +9,9 @@ const short UserID=3;
 #include <WiFiClient.h>
 #include <Wire.h>
 
-#define d_102  //d_102  по умолчанию 
+//#define d_102  //d_102  по умолчанию 
 //#define d_103
-//#define d_104
+#define d_104
 
 const int8_t PIN_MP3=12; //пин статуса плеера
 //#define gromk  15  // 15 //17//11  //9 //максимальная громкость
@@ -505,8 +505,8 @@ anglihe();
                                               sendCmdAll(CMD_INTENSITY, levelBridhtness);} 
     else 
     {
-        if (hour>=timeDay && hour<timeNight)  sendCmdAll(CMD_INTENSITY, volBrightnessD);  
-        else                                  sendCmdAll(CMD_INTENSITY, volBrightnessN);  
+        if (hour>=timeDay && hour<timeNight)  { f_dny=1; sendCmdAll(CMD_INTENSITY, volBrightnessD);  } //утсанавливаем флаг дня и также меняем яркость дисплея на дневную
+        else                                  { f_dny=0; sendCmdAll(CMD_INTENSITY, volBrightnessN);  }
     }
  
    secFr = 0;// на початку нової секунди скидаємо secFr в "0"
@@ -518,7 +518,7 @@ anglihe();
       }      
       lastMinute = minute;
     }
- } else secFr++;                                                                                                                          //пока секуда не закочилась увеличивает значение  тогла нарощуємо лічильник циклів secFr     //за секуду гдето 2180                                                       
+ } else secFr++;   //пока секуда не прошла увеличиваем пременую                                                                                                                      //пока секуда не закочилась увеличивает значение  тогла нарощуємо лічильник циклів secFr     //за секуду гдето 2180                                                       
   //---------Сигнал Каждый час  если минуты и секунды  и незакончилась первая секуда и если час больше чем кукушка вклечина и час меньше чем укушка выключена подаем сигнал полного часа
  //if (minute==0 && second==0 && secFr==0 && (hour>=kuOn && hour<kuOff)) { bip();bip();}
  if (minute==0 && second==0 && secFr==0 && (hour>=kuOn && hour<kuOff)) { f_kuku=1; play_frazi(5 , 7 , 200, 212, dayOfWeek+30, day+40, month+80, hour);}  //при куку не говорим минуты минуты только с веба
@@ -526,7 +526,7 @@ anglihe();
  if (secFr == 0 && second == 25 && !alarm_stat) {sensorsAll();  /*dav_opros();kol_dav++;*/}//читаем значеение датчков  if (printCom){Serial.println("Обновление датчиков");};
   //----------- РОБОТА З БУДИЛЬНИКОМ------------------------------------------------------
   if (secFr==0)  {   
-      if (second>0 && alarms()) 
+      if (second>0 && alarms())  //ели секда не нуллевая и сработа авария то влитаем для того чтобы при 0 секудах сбросить аварию после минуты играния будильника так думаю
       {     //суда влетает постоянно когда сработал будильник
          
         if (!alarm_stat && alarm_numer!=255 && !alarm_hold)  {alarm_stat=1; }
@@ -536,7 +536,7 @@ anglihe();
                                   fl_bud_mp=0;  //чтобы установить начальную громкость и запустить трек только одинн раз при зсрабатывании будильника
                                 //Serial.println("обнуляем");
                               #ifdef d_102
-                                  if (hour==5||hour==5)  //чтобы только утром включало по будильнику
+                                  if (hour==5)  //чтобы только утром включало по будильнику
                                   {  
                                     //irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38); delay(300); irsend.sendRaw(rawData_sleep,71,38);delay(300);irsend.sendRaw(rawData_sleep, 71, 38); delay(300);
                                     irsend.sendRaw(rawData_on_off,71,38); 
@@ -549,9 +549,12 @@ anglihe();
       else if (alarm_hold != 0){ Serial.println("что то связано с выключением думаю");}
   }
   //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
-  if (secFr == 0) {  //КАЖДУЮ СЕКУДУ
+  if (secFr == 0) {  //КАЖДУЮ  новую секуду влетаем суда только раз 
     //if (minute == 0) { // minute % 5 == 1   //1, 6, 11, 16...56 хв.
-     if (minute==1 || minute==30 || minute==57 ) { 
+     if (minute==1 || minute==30 || minute==57 ) {  //когда показывать напоминания
+          #ifdef d_104
+            if (f_dny==1) { if (printCom) Serial.println("Посыылаю комаду на телек");}  
+          #endif
       if (hour >= memory_hour_start && hour <= memory_hour_end && second < 30 && second > 2 && !alarm_stat) {
         for (byte i = 0; i < 9; i++) 
         {   if (memory_date[i][0] == day && memory_date[i][1] == month) 
@@ -564,7 +567,8 @@ anglihe();
       }
     } else m_date = 0;
   
-  }  buttonHandling();
+  } 
+   buttonHandling();
    //Serial.print(String(secFr)); 
   //------------- НАШ ЧАС ----------------------nach------------------------------------------
  // if (hour == 0 && minute == 51) {     bip();       /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/  }
@@ -584,7 +588,7 @@ anglihe();
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  // if (minute % 5 == 1) {if ( pred_dav!=pressBmp) {if (pressBmp>pred_dav){nask_dav=int(pressBmp-pred_dav); dav_pov=1;} else {dav_pov=0; nask_dav=int(pred_dav-pressBmp);} pred_dav=pressBmp;}}
   // -------------------------------------------------------------------- ВИВІД НА ЕКРАН ГОДИННИКА АБО ТЕМПЕРАТУРИ ЧИ ВОЛОГОСТІ-------------------------------daf-----------------------------------------------------------------------------
-    if (!alarm_stat && millis() % 50 == 0) //ноль когда 50 100 150 ... 
+  if (!alarm_stat && millis() % 50 == 0) //ноль когда 50 100 150 ... 
   { 
     
   if(!f_angl){  //если англиский говорит то  не переключаем время
@@ -603,15 +607,15 @@ anglihe();
   }//if(!f_angl){
 
 
-  } 
+  } /// if (!alarm_stat && millis() % 50 == 0) //ноль когда 50 100 150 ... 
   else   if (alarm_stat) 
-  {  if (millis() % 50 == 0) showAnimClock(); 
-     if(secFr==0 && second>1 && second<=59) 
-    {     clr(); delay(100); refreshAll();       bip_budil_start();  }  
+  {  
+     if (millis() % 50 == 0) showAnimClock(); 
+     if(secFr==0 && second>1 && second<=59) {     clr(); delay(100); refreshAll();       bip_budil_start();  }  
   }  //----ббб-------------------будильник сработал и мигание времени /*clr(); refreshAll();bip();bip();*/
   
   // --------------------------------------------------------------------------------------------------------////секуда еще не закончилась   обновляем RTC в 3:01:10 //если используемfl_bud_mp=0;
-  if (secFr == 0)                                                                                                                                                                         
+  if (secFr == 0)      //3 ночи читаем время с часов реального времени если они установлены                                                                                                                                                                   
   {  if (hour==3 && minute==1 && second==10 )  {   if (rtcStat) {getRTCDateTime(); hour=hour_rtc; minute=minute_rtc; second=second_rtc;day=day_rtc; month=month_rtc; year=year_rtc; dayOfWeek=dayOfWeek_rtc; if (printCom) {Serial.println("RTC update: "+String(hour)+":"+String(minute)+":"+String(second)+"   "+String(day)+"."+String(month)+"."+String(year)+" D="+String(dayOfWeek));}  } }
    
     // ---------- 10 секунда - виводимо дату/погоду---------------pat-------------------------------------------

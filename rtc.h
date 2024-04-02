@@ -27,7 +27,7 @@ void setRTCDateTime() {   //только в одном месте(после ч�
   I2CStop();
 }
 //-------------------------------------
-void getRTCDateTime(void) {
+void getRTCDateTime(void) { //читаем врем из часов реального времени (рас в сутки в 3 часа)
   int v;
   I2CStart(rtcAddr);
   I2CWrite(DS_RTC_TIME);
