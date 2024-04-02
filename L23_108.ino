@@ -10,8 +10,8 @@ const short UserID=3;
 #include <Wire.h>
 
 //#define d_102  //d_102  по умолчанию 
-//#define d_103
-#define d_104
+#define d_103
+//#define d_104
 
 const int8_t PIN_MP3=12; //пин статуса плеера
 //#define gromk  15  // 15 //17//11  //9 //максимальная громкость
@@ -477,7 +477,8 @@ void loop() {
   if (f_iz_znach==3) bip_LEFT();
   } 
 } 
-anglihe();
+  anglihe();
+  if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1) {play_frazi(2,7,100, hour , minute+100);}      //постоянно влетает пока незакончет произношение 0 не играет 1- запускает голос 2- неиграет и ждет сброса
 #endif 
     //MPR121_update(); 
     //if(mp3_com.available()){ answer(100);} //102
@@ -491,7 +492,7 @@ anglihe();
     //if (pr_bip_vre3) {bip_vre4();} //звук с веба   дублируеться когда бежит строка чтоб не замолк
     //if (f_kuku) {bip_vre4();}      //звук скукушка дублируеться когда бежит строка чтоб не замолк
     // если установлен флаг говориться фраза то  постоянно  влетает а там проговариваем фразы из масива за ранее созданного
-    //if (one_f1==1||one_f2==1||one_f3==1||one_f4==1||one_f5==1||one_f6==1||one_f7==1) {bip_vre4();}      //постоянно влетает пока незакончет произношение 0 не играет 1- запускает голос 2- неиграет и ждет сброса
+  
 #endif 
   if (updateOTA) ArduinoOTA.handle();
   server.handleClient();   
@@ -551,9 +552,11 @@ anglihe();
   //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
   if (secFr == 0) {  //КАЖДУЮ  новую секуду влетаем суда только раз 
     //if (minute == 0) { // minute % 5 == 1   //1, 6, 11, 16...56 хв.
-     if (minute==1 || minute==16  ) {  //когда показывать напоминания
-          #ifdef d_104
-            if (f_dny==1 && second<=1) { if (printCom) Serial.println("Посыылаю комаду на телек");}  
+     if (minute==1 || minute==31  ) {  //когда показывать напоминания
+          #ifdef d_102
+            if (f_dny==1 && second==0) { if (printCom) Serial.println("Посыылаю комаду на телек");
+                                         irsend.sendRaw(rawData_info,71,38); //нажать кнопку инфо
+                                       }  
           #endif
       if (hour >= memory_hour_start && hour <= memory_hour_end && second < 30 && second > 2 && !alarm_stat) {
         for (byte i = 0; i < 9; i++) 
@@ -572,10 +575,10 @@ anglihe();
    //Serial.print(String(secFr)); 
   //------------- НАШ ЧАС ----------------------nach------------------------------------------
  // if (hour == 0 && minute == 51) {     bip();       /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/  }
- #ifdef d_103
+ #ifdef d_104
    //с устра включаем напоминание временем для 103 адреса
-      if (hour == 6) {
-        if (minute == 5 ){if (one_f1==0) {one_f1=1;}      }  else  {one_f1=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
+      if (hour == 18) {
+        if (minute == 50 ){if (one_f1==0) {one_f1=1;}      }  else  {one_f1=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
         if (minute == 10 ){if (one_f2==0) {one_f2=1;}      }  else  {one_f2=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
         if (minute == 15 ){if (one_f3==0) {one_f3=1;}      }  else  {one_f3=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
         if (minute == 20 ){if (one_f4==0) {one_f4=1;}      }  else  {one_f4=0;}    /*printStringWithShift(("       22:55 \200\200\200 " + tMes + " \200\200\200").c_str(), timeScrollSpeed);     return;*/ 
