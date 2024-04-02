@@ -551,9 +551,9 @@ anglihe();
   //------------- РОБОТА ЗІ СВЯТКОВИМИ ДАТАМИ ---------------------------------------------
   if (secFr == 0) {  //КАЖДУЮ  новую секуду влетаем суда только раз 
     //if (minute == 0) { // minute % 5 == 1   //1, 6, 11, 16...56 хв.
-     if (minute==1 || minute==27  ) {  //когда показывать напоминания
+     if (minute==1 || minute==16  ) {  //когда показывать напоминания
           #ifdef d_104
-            if (f_dny==1) { if (printCom) Serial.println("Посыылаю комаду на телек");}  
+            if (f_dny==1 && second<=1) { if (printCom) Serial.println("Посыылаю комаду на телек");}  
           #endif
       if (hour >= memory_hour_start && hour <= memory_hour_end && second < 30 && second > 2 && !alarm_stat) {
         for (byte i = 0; i < 9; i++) 
@@ -613,9 +613,9 @@ anglihe();
      if (millis() % 50 == 0) showAnimClock(); 
      if(secFr==0 && second>1 && second<=59) {     clr(); delay(100); refreshAll();       bip_budil_start();  }  
   }  //----ббб-------------------будильник сработал и мигание времени /*clr(); refreshAll();bip();bip();*/
-  
+  // -------------------------------------------------------------------------------------------------------
   // --------------------------------------------------------------------------------------------------------////секуда еще не закончилась   обновляем RTC в 3:01:10 //если используемfl_bud_mp=0;
-  if (secFr == 0)      //3 ночи читаем время с часов реального времени если они установлены                                                                                                                                                                   
+  if (secFr == 0)      // В 3:01 ночи читаем время с часов реального времени если они установлены                                                                                                                                                                   
   {  if (hour==3 && minute==1 && second==10 )  {   if (rtcStat) {getRTCDateTime(); hour=hour_rtc; minute=minute_rtc; second=second_rtc;day=day_rtc; month=month_rtc; year=year_rtc; dayOfWeek=dayOfWeek_rtc; if (printCom) {Serial.println("RTC update: "+String(hour)+":"+String(minute)+":"+String(second)+"   "+String(day)+"."+String(month)+"."+String(year)+" D="+String(dayOfWeek));}  } }
    
     // ---------- 10 секунда - виводимо дату/погоду---------------pat-------------------------------------------
