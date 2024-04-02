@@ -10,8 +10,9 @@ void disp_svich() {
             case 5:{showSimpleTempDom1();   break;}
             case 6:{ showAnimClock(); break;}  
             case 7:{showSimpleHum(); break;}
-            case 8:{showAnimClock(); perek=0;break;}  
-            default:{  break;}
+            case 8:{showAnimClock(); break;}  
+            case 9:{showSimpleHum(); perek=0;break;}
+            default:{ showAnimClock(); break;}
             }//switch
    #endif        
 
@@ -437,13 +438,14 @@ void showSimpleDate2() {
   fl_dat=1;
   byte indent = aliData * (NUM_MAX - 4);
   dx = dy = 0;  clr();
-  showDigit(day / 10, indent-1, dig4x8);
-  showDigit(day % 10,  4 + indent, dig4x8);
+  //Serial.print("month=");Serial.println(month);
+  showDigit(day / 10, indent, dig4x8);
+  showDigit(day % 10,  5 + indent, dig4x8);
   showDigit(month / 10, 11 + indent, dig4x8);
   showDigit(month % 10, 16 + indent, dig4x8);
   showDigit((year - 2000) / 10, 23 + indent, dig4x8);
   showDigit((year - 2000) % 10, 28 + indent, dig4x8);
-  setCol(9 + indent, 0xC0);
+  setCol(10 + indent, 0xC0);
   setCol(21 + indent, 0xC0);
   refreshAll();
 }

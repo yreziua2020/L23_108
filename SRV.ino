@@ -487,7 +487,7 @@ void handle_timepc() {
   second = server.arg("sec").toInt();
   timeZone = server.arg("tz").toFloat()-1;    //было timeZone = server.arg("tz").toFloat()
   day = server.arg("day").toInt();
-  dayOfWeek = server.arg("dayOfWeek").toInt();
+  dayOfWeek = server.arg("dayOfWeek").toInt()+1;
   month = server.arg("month").toInt();
   year = server.arg("year").toInt();
   if(printCom){printTime();Serial.println("Set Date/Time from PC - "+String(day)+"."+String(month)+"."+String(year)+"     "+String(hour)+":"+String(minute)+":"+String(second)+"    timeZone="+String(timeZone)+"    день недели="+String(dayOfWeek));}  //Выводим в кком порт прочитаное время
@@ -561,9 +561,9 @@ void handle_weather() {
 }
 //======================================================================================================
 void handle_setup(){
-  timeDay = server.arg("tbd").toInt();
-  volBrightnessD = server.arg("vbd").toInt();
-  timeNight = server.arg("tbn").toInt();
+  timeDay = server.arg("tbd").toInt();        ////////////
+  volBrightnessD = server.arg("vbd").toInt();   
+  timeNight = server.arg("tbn").toInt();      ////////////
   volBrightnessN = server.arg("vbn").toInt();
   volBrightnessAuto = server.arg("vba").toInt();
   clockNight = server.arg("clockNight").toInt();
